@@ -1,0 +1,34 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.transaction-header {
+  background: $brand-primary;
+
+  .transaction-header-grid {
+    display: grid;
+    padding: $padding-sides;
+    justify-content: start;
+    grid-template-areas:
+    "icon title title title"
+    "icon root  root  root";
+
+    .application-icon {
+      grid-area: icon;
+      height: 4.5rem;
+      margin-right: 1.5rem;
+      border-radius: 3px;
+    }
+
+    .application-title {
+      grid-area: title;
+      color: $brand-white;
+    }
+
+    .application-root {
+      grid-area: root;
+      color: $brand-white;
+      font-size: .9rem;
+      padding-top: .25rem;
+    }
+  }
+}

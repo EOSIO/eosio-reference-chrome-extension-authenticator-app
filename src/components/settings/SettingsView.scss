@@ -1,0 +1,49 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.settings-container {
+  display: flex;
+  min-height: 100vh;
+
+  h1, h2 {
+    padding-bottom: $padding-heading-gap;
+  }
+
+  .settings-navigation-container {
+    flex: 0 1 30%;
+    padding: 3rem 4rem;
+    background: $brand-bg;
+
+    .settings-navigation-content {
+      float: right;
+      text-align: left;
+
+      ul {
+        padding: 0;
+        overflow: auto;
+
+        li {
+          list-style-type: none;
+          margin: 1rem 0;
+
+          a {
+            font-weight: bold;
+            color: $brand-primary;
+            text-decoration: none;
+
+            &:not(.active) {
+              opacity: .6;
+              font-weight: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .settings-content-container {
+    flex: 0 1 70%;
+    padding: 2rem 2.5rem;
+    max-width: 700px;
+  }
+}

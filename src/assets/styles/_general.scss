@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media (min-width: 800px) {
+  html, body {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
+h1 {
+  margin: 0;
+  line-height: 2rem;
+  font-size: 2rem;
+  color: $brand-primary;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: $brand-primary;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: $brand-primary;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  color: $brand-secondary;
+}
+
+hr {
+  margin: 2rem 0;
+  border-top: 1px solid $brand-inactive-light;
+  opacity: .75;
+}
+
+img {
+  max-width: 350px;
+}
+
+button {
+  width: 100%;
+  padding: $padding-button;
+  border-radius: .5rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 2px solid rgba(255,255,255,0);
+  cursor: pointer;
+  background: $brand-primary;
+  color: $brand-white;
+  overflow: hidden;
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    background: $primary-hover;
+  }
+
+  &.secondary {
+    background: $brand-white;
+    color: $brand-secondary;
+
+    &:hover {
+      border: 2px solid $brand-inactive-light;
+      background: $brand-white;
+      color: $brand-primary;
+    }
+  }
+
+  &.bordered {
+    border: 2px solid $brand-inactive-light;
+
+    &:hover {
+      border: 2px solid $brand-inactive-dark;
+      background: $brand-white;
+      color: $brand-primary;
+    }
+  }
+
+  &:disabled {
+    background: $bg-disabled;
+    color: $font-disabled;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  &:active, &:focus {
+    outline: none;
+  }
+
+  .button-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 .75rem 0 0;
+  }
+}
+
+input {
+  border: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $brand-primary;
+  line-height: 2.75rem;
+  width: calc(100% - 2rem);
+  padding-left: $padding-input-gap;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:disabled {
+    color: $font-disabled;
+  }
+
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 30px white inset;
+    -webkit-box-shadow: 0 0 0 30px white inset;
+  }
+
+  &::placeholder {
+    font-size: 1rem;
+    font-weight: 500;
+    color: $brand-secondary;
+    letter-spacing: 0;
+  }
+}

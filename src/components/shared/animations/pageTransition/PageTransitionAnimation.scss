@@ -1,0 +1,40 @@
+.page-transition-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-transition {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.page-transition-enter.page-transition-enter-active,
+.page-transition-exit.page-transition-exit-active {
+  transition: transform 250ms ease-in-out;
+}
+
+.page-transition-enter {
+  transform: translate(100%, 0);
+
+  .page-transition-container--back & {
+    transform: translate(-100%, 0);
+  }
+}
+
+.page-transition-enter.page-transition-enter-active,
+.page-transition-exit {
+  transform: translate(0, 0);
+}
+
+.page-transition-exit.page-transition-exit-active {
+  transform: translate(-100%, 0);
+
+  .page-transition-container--back & {
+    transform: translate(100%, 0);
+  }
+}

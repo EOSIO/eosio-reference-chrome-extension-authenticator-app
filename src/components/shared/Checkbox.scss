@@ -1,0 +1,58 @@
+@import 'src/assets/styles/_colors.scss';
+
+.checkbox {
+  position: relative;
+  margin-right: .5rem;
+
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked + label::before {
+      background: $brand-primary;
+      border-color: $brand-primary;
+    }
+
+    & + label::after {
+      content: none;
+    }
+
+    &:checked + label::after {
+      content: "";
+    }
+
+    &:focus + label::before {
+      outline: rgb(59, 153, 252) auto 5px;
+    }
+  }
+
+  label {
+    position: relative;
+    display: inline-block;
+
+    &::before,
+    &::after {
+      content: "";
+      display: inline-block;
+    }
+
+    &::before {
+      height: 32px;
+      width: 32px;
+      background: $brand-white;
+      border: 2px solid $brand-inactive-light;
+      border-radius: 4px;
+      margin-right: 20px;
+    }
+
+    &::after {
+      position: absolute;
+      height: 7px;
+      width: 16px;
+      border-left: 4px solid $brand-secondary;
+      border-bottom: 4px solid $brand-secondary;
+      transform: rotate(-45deg);
+      left: 8px;
+      top: 10px;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import 'src/assets/styles/_colors.scss';
+
+.floating-input-container {
+  padding-bottom: 2rem;
+
+  .floating-input-error-border {
+    border-bottom: 1px solid $error;
+  }
+
+  .floating-input-border {
+    border-bottom: 1px solid $brand-inactive-dark;
+  }
+
+  .floating-input-error-text {
+    position: absolute;
+    font-size: .8rem;
+    color: $error;
+    letter-spacing: 0;
+    padding-left: .5rem;
+  }
+
+  .input-label {
+    color: $brand-secondary;
+    font-size: .75rem;
+    line-height: .75rem;
+  }
+
+  img {
+    width: 1rem;
+    cursor: pointer;
+  }
+}

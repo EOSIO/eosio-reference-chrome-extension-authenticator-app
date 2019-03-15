@@ -1,0 +1,8 @@
+@import 'src/assets/styles/_colors.scss';
+
+.accordion {
+  background: $brand-white;
+  overflow-y: auto;
+  flex-direction: column;
+  flex: 1;
+}

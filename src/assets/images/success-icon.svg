@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="171px" height="171px" viewBox="0 0 171 171" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="0%" x2="0%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#48AAFF" offset="0%"></stop>
+            <stop stop-color="#2871FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Apps-and-Devices-MVP-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Auths---Import-Key---Confirmation" transform="translate(-101.000000, -189.000000)" fill-rule="nonzero">
+            <g id="Group" transform="translate(101.000000, 189.000000)">
+                <circle id="Oval-2" fill-opacity="0.151098279" fill="#3BB8FF" cx="85.5" cy="85.5" r="85.5"></circle>
+                <g id="check-circle-08" transform="translate(45.000000, 45.000000)" fill="url(#linearGradient-1)">
+                    <path d="M41.5,0 C18.675,0 0,18.675 0,41.5 C0,64.325 18.675,83 41.5,83 C64.325,83 83,64.325 83,41.5 C83,18.675 64.325,0 41.5,0 Z M36.3125,59.1375 L18.675,41.5 L25.9375,34.2375 L36.3125,44.6125 L57.0625,23.8625 L64.325,31.125 L36.3125,59.1375 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

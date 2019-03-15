@@ -1,0 +1,45 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.auth-item-container {
+  padding: 0 1rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $brand-inactive-light;
+  }
+
+  .auth-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    text-decoration: none;
+    padding: 1.75rem 0;
+
+    .auth-icon {
+      justify-self: start;
+      margin-right: 1rem;
+    }
+  
+    .auth-name {
+      word-break: break-word;
+    }
+  
+    .auth-more-info {
+      justify-self: end;
+      margin-left: 1rem;
+    }
+  }
+
+  .auth-removed {
+    color: $brand-secondary;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.875rem 0;
+
+    a {
+      color: $brand-primary;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}

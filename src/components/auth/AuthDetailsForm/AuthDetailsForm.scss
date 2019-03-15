@@ -1,0 +1,63 @@
+@import 'src/assets/styles/_colors.scss';
+@import 'src/assets/styles/_constants.scss';
+
+.edit-auth-form {
+  display: grid;
+  grid-row-gap: $padding-input-gap;
+
+  .nickname-input-container {
+    position: relative;
+
+    input {
+      padding-right: 4rem;
+    }
+  }
+
+  %nickname-saved {
+    position: absolute;
+    color: $brand-secondary;
+    right: .5rem;
+    bottom: 3rem;
+  }
+
+  .nickname-saved-hide {
+    @extend %nickname-saved;
+    opacity: 0;
+    transition: opacity .7s linear;
+  }
+
+  .nickname-saved-showing {
+    @extend %nickname-saved;
+    opacity: 1;
+    transition: opacity .3s linear;
+  }
+
+  .editing-ellipsis {
+    @extend %nickname-saved;
+    bottom: 2.5rem;
+    width: 2rem;
+  }
+
+  .nickname-saved-editing {
+    @extend %nickname-saved;
+    opacity: 0;
+  }
+
+  .public-key-container {
+    position: relative;
+
+    input {
+      padding-right: 6rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  
+    button {
+      position: absolute;
+      width: auto;
+      bottom: 3rem;
+      right: 0rem;
+      padding: $padding-button 2rem;
+    }
+  }
+}

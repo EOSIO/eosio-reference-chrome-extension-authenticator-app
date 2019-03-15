@@ -1,0 +1,22 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.navbar-container {
+  padding: $padding-header;
+
+  .navbar-content {
+    color: $brand-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      cursor: pointer;
+    }
+
+    .navbar-logo {
+      flex: 10;
+      cursor: default;
+    }
+  }
+}

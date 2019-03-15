@@ -1,0 +1,9 @@
+
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.auth-details {
+  display: grid;
+  grid-row-gap: $padding-top;
+  padding: 1rem $padding-sides;
+}

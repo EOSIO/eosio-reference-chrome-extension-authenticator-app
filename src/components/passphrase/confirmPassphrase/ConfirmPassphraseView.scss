@@ -1,0 +1,12 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.confirm-passphrase {
+  padding: 0 $padding-sides;
+}
+
+.confirm-passphrase-heading {	
+  display: grid;	
+  grid-gap: $padding-heading-gap;	
+  padding-bottom: $padding-top;	
+}

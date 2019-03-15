@@ -1,0 +1,61 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.whitelist-form {
+  position: relative;
+  padding-top: $padding-top;
+
+  .whitelist-input-container {
+    display: flex;
+
+    .whitelist-input {
+      flex: 8;
+      padding: .25rem 0;
+    }
+
+    .whitelist-add-btn {
+      flex: 2;
+      padding: .25rem .75rem;
+      margin: 2rem 0 .25rem 1.5rem;
+      font-size: .9rem;
+    }
+  }
+
+  .url-list {
+    padding-top: 1.5rem;
+    color: $brand-secondary;
+
+    .whitelist-url-container {
+      display: flex;
+      justify-content: space-between;
+      margin: .75rem 0;
+      padding: $padding-button;
+      border-radius: .25rem;
+
+      &:hover {
+        background: $brand-bg;
+
+        .url {
+          flex: 9 1;
+        }
+
+        .whitelist-delete-btn {
+          display: inline;
+          flex: 1 1;
+          color: $brand-primary;
+          background: none;
+          padding: 0;
+          font-weight: 700;
+
+          &:hover {
+            color: $error;
+          }
+        }
+      }
+
+      .whitelist-delete-btn {
+        display: none;
+      }
+    }
+  }
+}

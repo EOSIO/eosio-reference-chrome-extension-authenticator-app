@@ -1,0 +1,14 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.add-auth-heading {
+  display: grid;
+  grid-gap: $padding-heading-gap;
+  padding: $padding-header;
+}
+
+.add-auth-input-container {
+  display: grid;
+  grid-gap: $padding-input-gap;
+  padding: 0rem $padding-sides;
+}

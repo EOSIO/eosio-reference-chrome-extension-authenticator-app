@@ -1,0 +1,21 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.disclosure-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .disclosure-content {
+    display: grid;
+    grid-gap: $padding-button;
+    padding: 0 $padding-sides;
+    text-align: center;
+  
+    .disclosure-icon {
+      height: 8rem;
+      margin: 2rem auto;
+    }
+  }
+}

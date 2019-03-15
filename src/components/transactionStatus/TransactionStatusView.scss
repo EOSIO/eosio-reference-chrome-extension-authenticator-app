@@ -1,0 +1,20 @@
+@import 'src/assets/styles/_constants.scss';
+
+.transaction-status-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .transaction-status-content {
+    display: grid;
+    grid-gap: $padding-sides;
+    padding: 0 $padding-sides;
+    text-align: center;
+  
+    img {
+      margin: 0 auto;
+      padding: 1rem;
+    }
+  }  
+}

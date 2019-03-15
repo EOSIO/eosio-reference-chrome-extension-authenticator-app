@@ -1,0 +1,42 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.create-passphrase {
+  padding: 0 $padding-sides;
+
+  .create-passphrase-heading {
+    display: grid;
+    grid-gap: $padding-heading-gap;
+    padding: $padding-top 0;
+
+    em {
+      font-weight: bold;
+      font-style: normal;
+      color: $brand-primary;
+    }
+  }
+
+  .create-passphrase-form-items {
+    display: grid;
+    grid-gap: $padding-input-gap;
+
+    .passphrase-requirement {
+      display: flex;
+      align-items: center;
+
+      img {
+        position: absolute;
+      }
+
+      p {
+        display: inline;
+        padding-left: 1.25rem;
+        margin: .5rem;
+      }
+    }
+
+    .create-passphrase-input {
+      padding-bottom: 1rem;
+    }
+  }
+}

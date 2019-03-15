@@ -1,0 +1,14 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.app-container {
+  height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+  .app-container {
+    padding-bottom: 3rem;
+  }
+}

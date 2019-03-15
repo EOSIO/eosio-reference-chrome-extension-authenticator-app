@@ -1,0 +1,29 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.contract {
+  color: $brand-primary;
+
+  #transfer-terms-conditions {
+    font-size: 1.1rem;
+    margin-bottom: .5rem;
+  }
+  
+  .variable {
+    display: inline;
+    font-weight: bold;
+  }
+
+  ol {
+    padding: 0 0 0 2rem;
+    margin: 0 0 1rem 0;
+
+    li {
+      padding-left: .5rem;
+
+      &:not(:last-child) {
+        margin-bottom: .5rem;
+      }
+    }
+  }
+}

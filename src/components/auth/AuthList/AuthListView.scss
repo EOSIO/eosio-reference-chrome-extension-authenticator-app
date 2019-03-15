@@ -1,0 +1,52 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.auth-list-container {
+  display: grid;
+  padding: 0 $padding-sides;
+
+  .auth-container:not(:last-child) {
+    border-bottom: 1px solid $brand-inactive-light;
+  }
+
+  .auth-container {
+    display: grid;
+    padding: 1.75rem 0;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    .auth-icon {
+      justify-self: start;
+      margin: 0 1rem;
+    }
+
+    .auth-name {
+      word-break: break-word;
+    }
+
+    .auth-more-info {
+      justify-self: end;
+      margin: 0 1rem;
+    }
+  }
+
+  .no-auths-container {
+    display: grid;
+    width: 100%;
+    margin: 6rem auto 0 auto;
+    justify-items: center;
+    color: $brand-inactive-dark;
+    grid-gap: 1.5rem;
+
+    .no-auths-title {
+      color: $brand-inactive-dark;
+    }
+
+    .no-auths-text {
+      color: $brand-inactive-dark;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<svg width="112px" height="112px" viewBox="0 0 112 112" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Success" transform="translate(-132.000000, -230.000000)" fill="#7ED321" fill-rule="nonzero">
+            <g id="check-circle-08" transform="translate(132.000000, 230.000000)">
+                <path d="M49,79.8 L25.2,56 L35,46.2 L49,60.2 L77,32.2 L86.8,42 L49,79.8 Z M56,0 C25.2,0 0,25.2 0,56 C0,86.8 25.2,112 56,112 C86.8,112 112,86.8 112,56 C112,25.2 86.8,0 56,0 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

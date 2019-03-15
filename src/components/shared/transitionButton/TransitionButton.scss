@@ -1,0 +1,112 @@
+@import 'src/assets/styles/_colors.scss';
+
+@keyframes slide-in {
+  from {
+    transform: translate(0, 200%);
+    visibility: hidden;
+  }
+
+  to {
+    transform: translate(0, 0);
+    visibility: visible;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translate(0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate(0, -200%);
+    visibility: hidden;
+  }
+}
+
+@keyframes success-color-in {
+  from {
+    background: $brand-primary;
+  }
+
+  to {
+    background: $success;
+  }
+}
+
+@keyframes success-color-out {
+  from {
+    background: $success;
+  }
+
+  to {
+    background: $brand-primary;
+  }
+}
+
+@keyframes error-color-in {
+  from {
+    background: $brand-primary;
+  }
+
+  to {
+    background: $error;
+  }
+}
+
+@keyframes error-color-out {
+  from {
+    background: $error;
+  }
+
+  to {
+    background: $brand-primary;
+  }
+}
+
+.transition-button-text-in {
+  animation: slide-in 0.25s ease-in forwards;
+}
+
+.transition-button-text-out {
+  animation: slide-out 0.25s ease-in forwards;
+}
+
+.transition-button-success-text {
+  position: absolute;
+  visibility: hidden;
+}
+
+.transition-button-loading-text {
+  position: absolute;
+  visibility: hidden;
+}
+
+.transition-button-error-text {
+  position: absolute;
+  visibility: hidden;
+}
+
+.transition-button-success-color-in {
+  button {
+    animation: success-color-in 0.25s ease-in forwards;
+  }
+}
+
+.transition-button-success-color-out {
+  button {
+    animation: success-color-out 0.25s ease-in;
+  }
+}
+
+.transition-button-error-color-in {
+  button {
+    animation: error-color-in 0.25s ease-in forwards;
+  }
+}
+
+.transition-button-error-color-out {
+  button {
+    animation: error-color-out 0.25s ease-in;
+  }
+}

@@ -1,0 +1,15 @@
+@import 'src/assets/styles/_constants.scss';
+
+.footer-container {
+  padding: $padding-button-container;
+  display: flex;
+
+  button {
+    flex: 1;
+    margin-left: $padding-button-container;
+
+    &:first-child {
+      margin-left: 0rem;
+    }
+  }
+}

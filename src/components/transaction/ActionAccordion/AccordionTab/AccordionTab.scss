@@ -1,0 +1,16 @@
+@import 'src/assets/styles/_colors.scss',
+        'src/assets/styles/_constants.scss';
+
+.accordion-tab {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px $brand-bg;
+}
+
+.accordion-content {
+  background: $brand-bg;
+  border-top: 2px solid $brand-inactive-light;
+  padding: 1rem $padding-sides;
+  flex: 1;
+  word-wrap: break-word;
+}
