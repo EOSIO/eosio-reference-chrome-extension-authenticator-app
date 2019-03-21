@@ -1,6 +1,12 @@
 # EOSIO Reference Chrome Extension Authenticator App
 A Chrome extension which allows users to sign transactions from EOSIO apps.
 
+![EOSIO Labs](https://img.shields.io/badge/EOSIO-LABS-blue.svg)
+
+## About EOSIO Labs
+
+EOSIO Labs repositories are experimental.  Developers in the community are encouraged to use EOSIO Labs repositories as the basis for code and concepts to incorporate into their applications. Community members are also welcome to contribute and further develop these repositories. Since these repositories are not supported by Block.one, we may not provide responses to issue reports, pull requests, updates to functionality, or other requests from the community, and we encourage the community to take responsibility for these.
+
 ## Overview
 The EOSIO ecosystem is rich with existing wallets providing users the ability to sign transactions on the EOSIO blockchain. However, we have identified some limitations and possible areas for improvement to the overall user experience:
 * Providing support for only Mainnet accounts and transactions.
