@@ -1,7 +1,7 @@
 # EOSIO Reference Chrome Extension Authenticator App
 A Chrome extension which allows users to sign transactions from EOSIO apps.
 
-![EOSIO Labs](https://img.shields.io/badge/EOSIO-LABS-blue.svg)
+![EOSIO Labs](https://img.shields.io/badge/EOSIO-Labs-5cb3ff.svg)
 
 ## About EOSIO Labs
 
