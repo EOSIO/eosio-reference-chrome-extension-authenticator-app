@@ -3,7 +3,7 @@ import {
   SignatureProviderRequestEnvelope,
   SignatureProviderRequest,
   SignatureProviderResponse,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 export const INSTALLATION_CHECK_ACTION = 'installationCheck'
 

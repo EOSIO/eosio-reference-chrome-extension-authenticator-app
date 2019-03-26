@@ -8,7 +8,7 @@ import * as sameOriginValidatorMocks from 'utils/sameOrigin/__mocks__/SameOrigin
 import * as manifestProviderMocks from 'utils/manifest/__mocks__/ManifestProvider.mock'
 import * as payloadData from '__mocks__/data.mock'
 
-import * as SPI from '@blockone/eosjs-signature-provider-interface'
+import * as SPI from 'eosjs-signature-provider-interface'
 
 import ActionHandler, { ERROR_MESSAGES } from 'background/ActionHandler'
 import * as envelopeGenerators from 'utils/requests/signatureProviderEnvelopeGenerators'

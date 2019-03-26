@@ -5,7 +5,7 @@ import {
   SecurityExclusions,
   HexAbi,
   Transaction as SignedTransaction,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import {
   SignatureProviderRequestWithInstallationCheck,

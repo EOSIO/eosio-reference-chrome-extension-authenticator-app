@@ -6,7 +6,7 @@ import * as assertActionCreatorMocks from 'utils/manifest/__mocks__/AssertAction
 import * as insecureModeStorageMocks from 'utils/storage/__mocks__/InsecureModeStorage.mock'
 
 import * as hash from 'hash.js'
-import { SecurityExclusions, ChainManifest, AppMetadata } from '@blockone/eosjs-signature-provider-interface'
+import { SecurityExclusions, ChainManifest, AppMetadata } from 'eosjs-signature-provider-interface'
 
 import ManifestValidator, { ERROR_MESSAGES, FETCH_RESPONSE_ERROR } from 'utils/manifest/ManifestValidator'
 import * as SecurityExclusionHelpers from 'utils/manifest/SecurityExclusion'

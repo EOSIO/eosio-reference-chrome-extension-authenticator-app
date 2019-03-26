@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RicardianContract } from '@blockone/ricardian-template-toolkit'
+import { RicardianContract } from 'ricardian-template-toolkit'
 import { Action } from 'eos/Transaction'
 import './AccordionTabHeader.css'
 

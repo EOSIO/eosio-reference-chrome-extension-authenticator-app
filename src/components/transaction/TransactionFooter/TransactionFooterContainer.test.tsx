@@ -3,7 +3,7 @@ import * as manifestData from 'utils/manifest/__mocks__/manifestData.mock'
 
 import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import { SignatureProviderRequestEnvelope } from '@blockone/eosjs-signature-provider-interface'
+import { SignatureProviderRequestEnvelope } from 'eosjs-signature-provider-interface'
 
 import { TransactionFooterContainer, mapStateToProps } from './TransactionFooterContainer'
 import TransactionFooterView from './TransactionFooterView'

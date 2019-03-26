@@ -8,7 +8,7 @@ import {
   SignatureProviderRequestEnvelope,
   ChainManifest,
   SecurityExclusions,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import SameOriginValidator from 'utils/sameOrigin/SameOriginValidator'
 import * as SecurityExclusionHelpers from 'utils/manifest/SecurityExclusion'

@@ -1,5 +1,5 @@
 import { sha256 } from 'hash.js'
-import { ChainManifest, AppMetadata } from '@blockone/eosjs-signature-provider-interface'
+import { ChainManifest, AppMetadata } from 'eosjs-signature-provider-interface'
 
 import { AppMetadataInfo, DappInfo } from 'utils/manifest/DappInfo'
 

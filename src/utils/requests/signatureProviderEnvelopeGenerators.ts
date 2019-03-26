@@ -6,7 +6,7 @@ import {
   envelopeDataType,
   EnvelopeDataType,
   SignatureProviderEnvelope,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import {
   checkIfInstallationType,

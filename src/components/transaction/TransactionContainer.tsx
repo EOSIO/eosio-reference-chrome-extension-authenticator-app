@@ -4,7 +4,7 @@ import {
   SignatureProviderRequestEnvelope,
   SignatureProviderRequest,
   ErrorCodes,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 import TransactionRoutes from 'components/transaction/TransactionRoutes'

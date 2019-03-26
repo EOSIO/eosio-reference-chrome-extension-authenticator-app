@@ -6,7 +6,7 @@ import {
   instanceOfChainManifest,
   ChainInfo,
   ContractAction,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import { TransactionInfo, Action } from 'eos/Transaction'
 import { shouldValidate } from 'utils/manifest/SecurityExclusion'

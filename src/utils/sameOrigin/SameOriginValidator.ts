@@ -2,7 +2,7 @@ import {
   SignatureProviderRequestEnvelope,
   AppManifest,
   SecurityExclusions,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import ManifestProvider from 'utils/manifest/ManifestProvider'
 import { shouldValidate } from 'utils/manifest/SecurityExclusion'
