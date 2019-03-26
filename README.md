@@ -1,5 +1,11 @@
 # EOSIO Reference Chrome Extension Authenticator App
-A Chrome extension which allows users to sign transactions from EOSIO apps.
+A Chrome extension which demonstrates how users could sign transactions from EOSIO apps using various EOSIO labs tools.
+
+![EOSIO Labs](https://img.shields.io/badge/EOSIO-Labs-5cb3ff.svg)
+
+## About EOSIO Labs
+
+EOSIO Labs repositories are experimental.  Developers in the community are encouraged to use EOSIO Labs repositories as the basis for code and concepts to incorporate into their applications. Community members are also welcome to contribute and further develop these repositories. Since these repositories are not supported by Block.one, we may not provide responses to issue reports, pull requests, updates to functionality, or other requests from the community, and we encourage the community to take responsibility for these.
 
 ## Overview
 The EOSIO ecosystem is rich with existing wallets providing users the ability to sign transactions on the EOSIO blockchain. However, we have identified some limitations and possible areas for improvement to the overall user experience:
@@ -131,8 +137,16 @@ To enable `insecure mode` follow the steps below for both the Chrome extension a
 ##### Application
 The integrating application must add the [securityExclusions](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec#securityexclusions-optional) options to the [Request Envelope](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec#request-envelope) as part of the [EOSIO Transport Protocol](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec#eosio-auth-transport-protocol).
 
-## Contribution
-Check out the [Contributing](https://github.com/EOSIO/eosio-reference-chrome-extension-authenticator-app/blob/develop/CONTRIBUTING.md) guide and please adhere to the [Code of Conduct](https://github.com/EOSIO/eosio-reference-chrome-extension-authenticator-app/blob/develop/CONTRIBUTING.md#conduct)
+## Contributing
+
+[Contributing Guide](./CONTRIBUTING.md)
+
+[Code of Conduct](./CONTRIBUTING.md#conduct)
 
 ## License
-[MIT licensed](https://github.com/EOSIO/eosio-reference-chrome-extension-authenticator-app/blob/develop/LICENSE)
+
+[MIT](./LICENSE)
+
+## Important
+
+See LICENSE for copyright and license terms.  Block.one makes its contribution on a voluntary basis as a member of the EOSIO community and is not responsible for ensuring the overall performance of the software or any related applications.  We make no representation, warranty, guarantee or undertaking in respect of the software or any related documentation, whether expressed or implied, including but not limited to the warranties or merchantability, fitness for a particular purpose and noninfringement. In no event shall we be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or documentation or the use or other dealings in the software or documentation.  Any test results or performance figures are indicative and will not reflect performance under all conditions.  Any reference to any third party or third-party product, service or other resource is not an endorsement or recommendation by Block.one.  We are not responsible, and disclaim any and all responsibility and liability, for your use of or reliance on any of these resources. Third-party resources may be updated, changed or terminated at any time, so the information here may be out of date or inaccurate.
