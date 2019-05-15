@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RicardianContractFactory } from '@blockone/ricardian-template-toolkit'
+import { RicardianContractFactory } from 'ricardian-template-toolkit'
 
 import './ActionAccordionView.css'
 

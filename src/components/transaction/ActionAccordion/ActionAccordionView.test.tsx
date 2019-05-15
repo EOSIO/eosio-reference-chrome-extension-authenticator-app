@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import * as CTT from '@blockone/ricardian-template-toolkit'
+import * as CTT from 'ricardian-template-toolkit'
 
 import ActionAccordionView from './ActionAccordionView'
 import AccordionTab from 'components/transaction/ActionAccordion/AccordionTab/AccordionTab'
