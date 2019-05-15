@@ -33,19 +33,6 @@
     eosjs "20.0.0-8b096ed.0"
     uuid "^3.3.2"
 
-"@blockone/ricardian-template-toolkit@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@blockone/ricardian-template-toolkit/-/ricardian-template-toolkit-0.0.12.tgz#d620cc0d6793fc212f81c8413bd7dfd9a6759690"
-  integrity sha512-W4vCpuEY8Kb2RwkRTzwKJu7f8y+5Dux64Hr/pr0+iHjC6BJ/bNOYc3jwa6RWuY2FHEPeo7YfBBBuEcUPjAChEQ==
-  dependencies:
-    front-matter "^2.3.0"
-    handlebars "^4.0.12"
-    he "^1.2.0"
-    is-url "^1.2.4"
-    remarkable "^1.7.1"
-    xss "^1.0.3"
-    yargs "^12.0.5"
-
 "@blockone/tslint-config-blockone@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@blockone/tslint-config-blockone/-/tslint-config-blockone-1.0.0.tgz#d8f906bad5936715dd43e12d44caffc5a9e603f8"
@@ -3450,10 +3437,10 @@ eosjs@20.0.0-8b096ed.0:
     eosjs-ecc "^4.0.1"
     text-encoding "^0.6.4"
 
-eosjs@20.0.0-92da292.0:
-  version "20.0.0-92da292.0"
-  resolved "https://registry.yarnpkg.com/eosjs/-/eosjs-20.0.0-92da292.0.tgz#329da0926e79347bd3a04d0de0601a2d281a0406"
-  integrity sha512-y0EMGBAQuAVJfAOHEmyx3iUeHcpMwNQyzpyMORtJAuAZan/GpmcMfMJVfhE41TuU3lJ+JMDQ6NXORTAFGbu2GQ==
+eosjs@^20.0.0:
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/eosjs/-/eosjs-20.0.0.tgz#43940abfe15cd191ce4027d60294036e914613e9"
+  integrity sha512-Ak9CPtZgCFayUmq43X3Nsn4v67lkLfSzEdTUfMk1XAWA5s4HRn7lBTeTeDCzJ/rggi+dZ170VeJwc5T3gPk4HQ==
   dependencies:
     babel-runtime "6.26.0"
     eosjs-ecc "4.0.4"
@@ -9344,6 +9331,19 @@ ret@~0.1.10:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
   integrity sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==
+
+ricardian-template-toolkit@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/ricardian-template-toolkit/-/ricardian-template-toolkit-0.1.2.tgz#8c939ad07454b73cf84c966d824d91d977f767da"
+  integrity sha512-5urmxaGBXkE+8TRgqf9ggM1ixDP0RJ+tRdcmEqD4vzdMzTWXxYmJxMsf9wwxFAf0TPoS/Lqs+nCdfAlmvJ6Blw==
+  dependencies:
+    front-matter "^2.3.0"
+    handlebars "^4.0.12"
+    he "^1.2.0"
+    is-url "^1.2.4"
+    remarkable "^1.7.1"
+    xss "^1.0.3"
+    yargs "^12.0.5"
 
 right-align@^0.1.1:
   version "0.1.3"

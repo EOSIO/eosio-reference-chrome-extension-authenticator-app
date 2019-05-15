@@ -23,6 +23,7 @@ import {
 } from 'utils/requests/signatureProviderEnvelopeGenerators'
 import RoutePath from 'constants/routePath'
 import {
+  transactionInfoSelector,
   transactionInfoWithoutRequireSelector,
   requestEnvelopeSelector,
 } from 'store/request/requestSelectors'
@@ -173,7 +174,7 @@ export class TransactionContainer extends React.Component<Props, State> {
 
 export const mapStateToProps = (state: AppState) => ({
   requestEnvelope: requestEnvelopeSelector(state),
-  transactionInfo: transactionInfoWithoutRequireSelector(state),
+  transactionInfo: transactionInfoSelector(state),
   auths: state.auths.data,
   canAccept: transactionInfoWithoutRequireSelector(state).actions.length === 1,
 })
