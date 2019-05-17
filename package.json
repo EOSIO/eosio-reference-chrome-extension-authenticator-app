@@ -41,7 +41,7 @@
     "wif": "^2.0.6"
   },
   "devDependencies": {
-    "@blockone/tslint-config-blockone": "^1.0.0",
+    "@blockone/tslint-config-blockone": "^4.0.0",
     "@types/bs58": "^4.0.0",
     "@types/chrome": "^0.0.74",
     "@types/classnames": "^2.2.7",
