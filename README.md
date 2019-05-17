@@ -29,7 +29,7 @@ yarn build
 2. Install the extension in your browser by following step 2 [here](https://support.google.com/chrome/a/answer/2714278?hl=en) and select the `build` folder.
 
 ## Integrating with Apps
-The Chrome extension follows the [EEOSIO Authentication Transport Protocol Specification](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec). There is some configuration needed in the integrating app, and there are a few different ways to interact with the Chrome extension from an integrating app:
+The Chrome extension follows the [EOSIO Authentication Transport Protocol Specification](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec). There is some configuration needed in the integrating app, and there are a few different ways to interact with the Chrome extension from an integrating app:
 1. Make sure your app follows the [Manifest Specification](https://github.com/EOSIO/manifest-spec).
 1. Choose a solution for interacting with the Chrome extension:
    1. (Easiest) Use the [Universal Authenticator Library](https://github.com/EOSIO/universal-authenticator-library).
