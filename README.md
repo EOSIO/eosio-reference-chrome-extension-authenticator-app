@@ -17,7 +17,7 @@ This Reference Implementation serves an example for wallet developers as possibl
 
 * It provides seamless multi-network support.
 * It securely stores private keys and signs transactions, showing a richly formatted [Ricardian Contract](https://github.com/EOSIO/ricardian-spec), which provide users with a human readable explanation of the action(s) the app is proposing and allows them to accept the contract’s terms.
-* By following the [Manifest Specification](https://github.com/EOSIO/manifest-spec), it shows metadata about apps to end users as they are signing transactions, which provides users with a better sense of trust of the app they are interacting with. It also runs various transaction pre-flight security checks comparing the contents of a transaction request with what apps have declared about themselves.
+* By following the [Manifest Specification](https://github.com/EOSIO/manifest-spec), it shows metadata about apps to end users as they are signing transactions, which provides users with a better sense of trust for the app they are interacting with. It also runs various transaction pre-flight security checks comparing the contents of a transaction request with what apps have declared about themselves.
 
 ## Installation
 1. Install dependencies and build the extension.
@@ -29,15 +29,15 @@ yarn build
 2. Install the extension in your browser by following step 2 [here](https://support.google.com/chrome/a/answer/2714278?hl=en) and select the `build` folder.
 
 ## Integrating with Apps
-The Chrome extension follows the [EOSIO Auth Transport Protocol](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec). There is some configuration needed in the integrating app, and there are a few different ways to interact with the Chrome extension from an integrating app.
+The Chrome extension follows the [EEOSIO Authentication Transport Protocol Specification](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec). There is some configuration needed in the integrating app, and there are a few different ways to interact with the Chrome extension from an integrating app:
 1. Make sure your app follows the [Manifest Specification](https://github.com/EOSIO/manifest-spec).
 1. Choose a solution for interacting with the Chrome extension:
    1. (Easiest) Use the [Universal Authenticator Library](https://github.com/EOSIO/universal-authenticator-library).
-      - UAL will detect if the Chrome extension is installed, and allows for easy integration. Read the documentation on the [Tropical example app](https://github.com/EOSIO/tropical-example-web-app) to learn how to use the UAL.
+      - UAL with the [EOSIO Reference Authenticator](https://github.com/EOSIO/ual-eosio-reference-authenticator) will detect if the Chrome extension is installed, and allows for easy integration. Read the documentation on the [Tropical example app](https://github.com/EOSIO/tropical-example-web-app) to learn how to use UAL.
    1. Use the [EOSJS Signature Provider for desktop browsers](https://github.com/EOSIO/eosjs-window-message-signature-provider-interface).
-      - This class implements the EOSJS Signature Provider interface. The documentation describes how to utilize it directly with EOSJS.
+      - This class implements the [EOSJS Signature Provider interface](https://github.com/EOSIO/eosjs-signature-provider-interface). The documentation describes how to utilize it directly with EOSJS.
    1. Directly use the [Window Messaging API](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage).
-      - The integrating app will need to post requests and listen for responses following the [EOSIO Auth Transport Protocols](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec) envelope formats.
+      - The integrating app will need to post requests and listen for responses following the [EOSIO Authentication Transport Protocol Specification's](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec) envelope formats.
 
 ## Usage
 * [Create a Passphrase](#how-to-create-a-passphrase)
@@ -92,7 +92,7 @@ The Chrome extension uses the [Chrome storage](https://developer.chrome.com/exte
 1. `sync` storage is used for storing Auths (encrypted private keys) and the user's hashed passphrase.
    - On first use, a user chooses a passphrase which will be used to encrypt private keys. A hashed version of the passphrase is stored to later check for a correct passphrase. The non-hashed version of the passphrase is _never_ stored.
    - All private keys are encrypted before storage with the passphrase chosen by the user.
-1. `local` storage is used as a buffer to move data from the background script to the extension window, as described in the [Data Flow](#data-flow) section above. It also stores developer settings such as the insecure mode settings.
+1. `local` storage is used as a buffer to move data from the background script to the extension window, as described in the [Data Flow](#data-flow) section above. It also stores developer settings such as the [insecure mode settings](https://github.com/EOSIO/eosio-reference-chrome-extension-authenticator-app#insecure-mode).
 
 ### Storage Listeners
 The main extension window and the settings page are separate React apps, so changes to the state of one doesn't automatically propagate to the other. Because of this, the states of the React apps need to update when the Chrome storage changes. This is done by adding listeners to the [onChanged event on Chrome storage](https://developer.chrome.com/extensions/storage#event-onChanged). Here is a quick explanation:
@@ -110,7 +110,7 @@ All [checks](https://github.com/EOSIO/manifest-spec#how-it-works) described in t
 #### Assert Action
 As part of the Manifest Specification, the Chrome extension will generate a [`eosio.assert::require` action](https://github.com/EOSIO/eosio-reference-chrome-extension-authenticator-app/blob/develop/src/contracts/eosio.assert.abi.json#L52) with the following parameters:
    * `chain_params_hash`: Hash of the chain information from the [Application Metadata](https://github.com/EOSIO/manifest-spec#application-metadata-specification) for the chain defined in the request envelope.
-   * `manifest_id`: Hash of the [Manifest](https://github.com/EOSIO/manifest-spec#application-manifest-spec) for the chain defined in the request envelope.
+   * `manifest_id`: Hash of the [Manifest](https://github.com/EOSIO/manifest-spec#application-manifest-specification) for the chain defined in the request envelope.
    * `actions`: An array of actions whitelisted in the Manifest.
    * `abi_hashes`: An array of the hashed abis included in the request envelope.
 
@@ -135,7 +135,7 @@ To enable `insecure mode` follow the steps below for both the Chrome extension a
 1. Enter the application URL in the input field and click the "Save" button.
 
 ##### Application
-The integrating application must add the [securityExclusions](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec#securityexclusions-optional) options to the [Request Envelope](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec#request-envelope) as part of the [EOSIO Transport Protocol](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec#eosio-auth-transport-protocol).
+The integrating application must add the [securityExclusions](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec#securityexclusions-optional) options to the [Request Envelope](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec#request-envelope) as part of the [EOSIO Authentication Transport Protocol Specification](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec).
 
 ## Contributing
 

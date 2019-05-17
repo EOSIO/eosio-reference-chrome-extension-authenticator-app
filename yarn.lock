@@ -33,10 +33,10 @@
     eosjs "20.0.0-8b096ed.0"
     uuid "^3.3.2"
 
-"@blockone/tslint-config-blockone@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@blockone/tslint-config-blockone/-/tslint-config-blockone-1.0.0.tgz#d8f906bad5936715dd43e12d44caffc5a9e603f8"
-  integrity sha512-7OIP1T/bV5BFF85DZl2seica+NKvRiD5knwwgcGY4vIXSgdRGnv1u4Q9X/DefBCTK4aImrf4BmtPIdNGF8U+iw==
+"@blockone/tslint-config-blockone@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@blockone/tslint-config-blockone/-/tslint-config-blockone-4.0.0.tgz#34ce165e7223acff5811f4bbae66290160c4bf56"
+  integrity sha512-5x4yzXr+rBJXpfr9bzfZRj36J2WfnWeKk9SBpWkeSQiMuPuiYuoQImcOzzscgZGgTMpHou9tz2M5s3SrT1uEdg==
   dependencies:
     tslint "^5.11.0"
     tslint-eslint-rules "^5.4.0"
