@@ -20,6 +20,7 @@
     ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
+    "no-floating-promises": false,
     "semicolon": [true, "never"],
     "variable-name": [true, "ban-keywords"]
   }
