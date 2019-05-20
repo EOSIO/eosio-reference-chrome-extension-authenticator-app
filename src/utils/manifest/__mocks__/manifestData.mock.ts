@@ -25,7 +25,7 @@ export const appMetadata: AppMetadata = {
   ],
 }
 
-export const chainManifests: ChainManifest[] = [{
+const chainManifests: ChainManifest[] = [{
   chainId: 'chainId1',
   manifest: {
     account: 'account',

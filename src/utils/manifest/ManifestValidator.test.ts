@@ -6,7 +6,12 @@ import * as assertActionCreatorMocks from 'utils/manifest/__mocks__/AssertAction
 import * as insecureModeStorageMocks from 'utils/storage/__mocks__/InsecureModeStorage.mock'
 
 import * as hash from 'hash.js'
-import { SecurityExclusions, ChainManifest, AppMetadata } from '@blockone/eosjs-signature-provider-interface'
+import {
+  SecurityExclusions,
+  AppManifest,
+  ChainManifest,
+  AppMetadata
+} from '@blockone/eosjs-signature-provider-interface'
 
 import ManifestValidator, { ERROR_MESSAGES, FETCH_RESPONSE_ERROR } from 'utils/manifest/ManifestValidator'
 import * as SecurityExclusionHelpers from 'utils/manifest/SecurityExclusion'
@@ -21,7 +26,7 @@ describe('ManifestValidator', () => {
   let appMetadata: AppMetadata
   let appMetadataHash: string
   let transactionInfo: TransactionInfo
-  let chainManifests: ChainManifest[]
+  let appManifest: AppManifest
   let chainManifest: ChainManifest
   let dappInfo: DappInfo
   let fetchMock: jest.Mock
@@ -31,8 +36,8 @@ describe('ManifestValidator', () => {
 
     appMetadata = clone(manifestData.appMetadata)
     appMetadataHash = clone(manifestData.dappInfo.appMetadataInfo.appMetadataHash)
-    chainManifests = clone(manifestData.chainManifests)
-    chainManifest = clone(manifestData.chainManifests[0])
+    appManifest = clone(manifestData.appManifest)
+    chainManifest = clone(manifestData.appManifest.manifests[0])
     dappInfo = clone(manifestData.dappInfo)
     transactionInfo = clone(payloadData.transactionWithMultipleActions)
     securityExclusions = clone(payloadData.securityExclusions)
@@ -43,7 +48,7 @@ describe('ManifestValidator', () => {
       appMetadataHash,
     })
     manifestProvider.getChainManifest.mockResolvedValue(chainManifest)
-    manifestProvider.getChainManifests.mockResolvedValue(chainManifests)
+    manifestProvider.getAppManifest.mockResolvedValue(appManifest)
     manifestProvider.getDappInfo.mockResolvedValue(dappInfo)
     manifestProvider.rootUrl = 'http://domain.one'
 
