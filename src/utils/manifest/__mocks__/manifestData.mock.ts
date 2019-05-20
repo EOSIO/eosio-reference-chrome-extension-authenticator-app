@@ -1,8 +1,9 @@
-import { ChainManifest, AppMetadata } from '@blockone/eosjs-signature-provider-interface'
+import { AppManifest, ChainManifest, AppMetadata } from '@blockone/eosjs-signature-provider-interface'
 
 import { DappInfo } from 'utils/manifest/DappInfo'
 
 export const appMetadata: AppMetadata = {
+  spec_version: '0.7.0',
   name: 'App Name',
   shortname: 'App Short Name',
   scope: '/',
@@ -65,6 +66,11 @@ export const chainManifests: ChainManifest[] = [{
     },
   },
 ]
+
+export const appManifest: AppManifest = {
+  spec_version: '0.7.0',
+  manifests: chainManifests
+}
 
 export const dappInfo: DappInfo = {
   chainManifest: chainManifests[0],
