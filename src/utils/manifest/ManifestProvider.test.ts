@@ -31,14 +31,14 @@ describe('ManifestProvider', () => {
     let chainId: string
 
     beforeEach(() => {
-      chainId = manifestMocks.chainManifests[0].chainId
+      chainId = manifestMocks.appManifest.manifests[0].chainId
     })
 
     describe('if the fetch is successful', () => {
       beforeEach(() => {
         windowFetchMock.mockReturnValue({
           ok: true,
-          json: () => manifestMocks.chainManifests,
+          json: () => manifestMocks.appManifest,
         })
       })
 
@@ -52,7 +52,7 @@ describe('ManifestProvider', () => {
       it('returns fetched chain manifest', async () => {
         const result = await manifestProvider.getChainManifest(chainId)
 
-        expect(result).toEqual(manifestMocks.chainManifests[0])
+        expect(result).toEqual(manifestMocks.appManifest.manifests[0])
       })
     })
 
@@ -78,7 +78,7 @@ describe('ManifestProvider', () => {
       beforeEach(() => {
         windowFetchMock.mockReturnValueOnce({
           ok: true,
-          json: () => manifestMocks.chainManifests,
+          json: () => manifestMocks.appManifest,
         })
       })
 
@@ -92,26 +92,26 @@ describe('ManifestProvider', () => {
     })
   })
 
-  describe('getChainManifests', () => {
+  describe('getAppManifest', () => {
     describe('if the fetch is successful', () => {
       beforeEach(() => {
         windowFetchMock.mockReturnValue({
           ok: true,
-          json: () => manifestMocks.chainManifests,
+          json: () => manifestMocks.appManifest,
         })
       })
 
-      it('fetches the chain manifests from the correct URL', async () => {
-        await manifestProvider.getChainManifests()
+      it('fetches the app manifest from the correct URL', async () => {
+        await manifestProvider.getAppManifest()
 
         expect(windowFetchMock)
           .toHaveBeenCalledWith(`http://domain.one/${CHAIN_MANIFESTS_FILENAME}`, expect.any(Object))
       })
 
-      it('returns fetched chain manifests', async () => {
-        const result = await manifestProvider.getChainManifests()
+      it('returns fetched app manifest', async () => {
+        const result = await manifestProvider.getAppManifest()
 
-        expect(result).toEqual(manifestMocks.chainManifests)
+        expect(result).toEqual(manifestMocks.appManifest)
       })
     })
 
@@ -124,26 +124,26 @@ describe('ManifestProvider', () => {
 
       it('throws an error', async (done) => {
         try {
-          await manifestProvider.getChainManifests()
+          await manifestProvider.getAppManifest()
         } catch (e) {
           return done()
         }
 
-        done.fail('getChainManifests did not fail when fetch failed')
+        done.fail('getAppManifest did not fail when fetch failed')
       })
     })
 
-    describe('if there are cached chain manifests', () => {
+    describe('if there is a cached app manifest', () => {
       beforeEach(() => {
         windowFetchMock.mockReturnValueOnce({
           ok: true,
-          json: () => manifestMocks.chainManifests,
+          json: () => manifestMocks.appManifest,
         })
       })
 
-      it('returns cached chain manifests if called more than once', async () => {
-        const result1 = await manifestProvider.getChainManifests()
-        const result2 = await manifestProvider.getChainManifests()
+      it('returns cached app manifest if called more than once', async () => {
+        const result1 = await manifestProvider.getAppManifest()
+        const result2 = await manifestProvider.getAppManifest()
 
         expect(windowFetchMock).toHaveBeenCalledTimes(1)
         expect(result1 === result2).toBe(true)
@@ -155,7 +155,7 @@ describe('ManifestProvider', () => {
     let chainId: string
 
     beforeEach(() => {
-      chainId = manifestMocks.chainManifests[0].chainId
+      chainId = manifestMocks.appManifest.manifests[0].chainId
     })
 
     describe('if the fetch is successful', () => {
@@ -164,7 +164,7 @@ describe('ManifestProvider', () => {
           if (url.indexOf(CHAIN_MANIFESTS_FILENAME) >= 0) {
             return {
               ok: true,
-              json: () => manifestMocks.chainManifests,
+              json: () => manifestMocks.appManifest,
             }
           } else if (url.indexOf('app-metadata.json') >= 0) {
             return {
@@ -203,7 +203,7 @@ describe('ManifestProvider', () => {
           if (url.indexOf(CHAIN_MANIFESTS_FILENAME) >= 0) {
             return {
               ok: true,
-              json: () => manifestMocks.chainManifests,
+              json: () => manifestMocks.appManifest,
             }
           } else if (url.indexOf('app-metadata.json') >= 0) {
             return {
@@ -232,7 +232,7 @@ describe('ManifestProvider', () => {
           if (url.indexOf(CHAIN_MANIFESTS_FILENAME) >= 0) {
             return {
               ok: true,
-              json: () => manifestMocks.chainManifests,
+              json: () => manifestMocks.appManifest,
             }
           } else if (url.indexOf('app-metadata.json') >= 0 && !hasFetched) {
             hasFetched = true
@@ -264,7 +264,7 @@ describe('ManifestProvider', () => {
           if (url.indexOf(CHAIN_MANIFESTS_FILENAME) >= 0) {
             return {
               ok: true,
-              json: () => manifestMocks.chainManifests,
+              json: () => manifestMocks.appManifest,
             }
           } else if (url.indexOf('app-metadata.json') >= 0) {
             return {
@@ -307,13 +307,13 @@ describe('ManifestProvider', () => {
     let chainId: string
 
     beforeEach(() => {
-      chainId = manifestMocks.chainManifests[1].chainId
+      chainId = manifestMocks.appManifest.manifests[1].chainId
 
       windowFetchMock.mockImplementation((url: string) => {
         if (url.indexOf(CHAIN_MANIFESTS_FILENAME) >= 0) {
           return {
             ok: true,
-            json: () => manifestMocks.chainManifests,
+            json: () => manifestMocks.appManifest,
           }
         } else if (url.indexOf('app-metadata.json') >= 0) {
           return {
@@ -337,7 +337,7 @@ describe('ManifestProvider', () => {
           appMetadata: manifestMocks.appMetadata,
           appMetadataHash: 'hashed',
         },
-        chainManifest: manifestMocks.chainManifests[1],
+        chainManifest: manifestMocks.appManifest.manifests[1],
         rootUrl: 'http://domain.one',
       })
     })

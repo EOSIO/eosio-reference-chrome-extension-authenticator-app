@@ -1,13 +1,13 @@
 import * as ManifestProvider from 'utils/manifest/ManifestProvider'
 
 export const getChainManifest = jest.fn()
-export const getChainManifests = jest.fn()
+export const getAppManifest = jest.fn()
 export const getAppMetadataInfo = jest.fn()
 export const getDappInfo = jest.fn()
 
 export const manifestProviderMock = {
   getChainManifest,
-  getChainManifests,
+  getAppManifest,
   getAppMetadataInfo,
   getDappInfo,
   rootUrl: 'http://domain.one',

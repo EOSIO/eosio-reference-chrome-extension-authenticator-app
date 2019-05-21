@@ -1,6 +1,6 @@
 import {
   SignatureProviderRequestEnvelope,
-  AppManifest,
+  Manifest,
   SecurityExclusions,
 } from '@blockone/eosjs-signature-provider-interface'
 
@@ -72,10 +72,10 @@ export default class SameOriginValidator {
   }
 
   private async validateManifestDomains(declaredDomain: string): Promise<void> {
-    const chainManifests = await this.manifestProvider.getChainManifests()
-    const appManifests = chainManifests.map((chainManifest) => chainManifest.manifest)
+    const appManifest = await this.manifestProvider.getAppManifest()
+    const chainManifests = appManifest.manifests.map((chainManifest) => chainManifest.manifest)
 
-    const urlsMatch = appManifests.every((manifest: AppManifest) => {
+    const urlsMatch = chainManifests.every((manifest: Manifest) => {
       const manifestDomainUrl = new URL(manifest.domain)
       const declaredDomainUrl = new URL(declaredDomain)
       return manifestDomainUrl.origin === declaredDomainUrl.origin
@@ -87,8 +87,8 @@ export default class SameOriginValidator {
   }
 
   private async validateAppmetaHashes(): Promise<void> {
-    const chainManifests = await this.manifestProvider.getChainManifests()
-    const appmetaHashes = chainManifests.map((chainManifest) => {
+    const appManifest = await this.manifestProvider.getAppManifest()
+    const appmetaHashes = appManifest.manifests.map((chainManifest) => {
       return chainManifest.manifest.appmeta.split('#')[1]
     })
 
