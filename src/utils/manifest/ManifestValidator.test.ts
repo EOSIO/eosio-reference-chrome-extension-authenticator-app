@@ -37,7 +37,7 @@ describe('ManifestValidator', () => {
     appMetadata = clone(manifestData.appMetadata)
     appMetadataHash = clone(manifestData.dappInfo.appMetadataInfo.appMetadataHash)
     appManifest = clone(manifestData.appManifest)
-    chainManifest = clone(manifestData.appManifest.manifests[0])
+    chainManifest = appManifest.manifests[0]
     dappInfo = clone(manifestData.dappInfo)
     transactionInfo = clone(payloadData.transactionWithMultipleActions)
     securityExclusions = clone(payloadData.securityExclusions)
@@ -47,7 +47,7 @@ describe('ManifestValidator', () => {
       appMetadata,
       appMetadataHash,
     })
-    manifestProvider.getChainManifest.mockResolvedValue(chainManifest)
+    manifestProvider.getChainManifest.mockResolvedValue(appManifest.manifests[0])
     manifestProvider.getAppManifest.mockResolvedValue(appManifest)
     manifestProvider.getDappInfo.mockResolvedValue(dappInfo)
     manifestProvider.rootUrl = 'http://domain.one'
@@ -275,11 +275,11 @@ describe('ManifestValidator', () => {
     })
   })
 
-  describe('validateChainManifest', () => {
+  describe('validateAppManifest', () => {
     describe('without security exclusions', () => {
       it('passes for a valid chain manifest', async (done) => {
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           return done.fail(e.toString())
         }
@@ -290,7 +290,7 @@ describe('ManifestValidator', () => {
         chainManifest.manifest.domain = 'http://domain.one/'
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           return done.fail(e.toString())
         }
@@ -301,72 +301,72 @@ describe('ManifestValidator', () => {
         chainManifest.manifest.domain = 'https://domain.one'
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           expect(e.message).toBe(ERROR_MESSAGES.INVALID_DOMAIN_MATCH)
           return done()
         }
-        done.fail('validateChainManifest did not fail on a mismatched domain protocol')
+        done.fail('validateAppManifest did not fail on a mismatched domain protocol')
       })
 
       it('fails when chain manifest domain field is subdomain of request domain', async (done) => {
         chainManifest.manifest.domain = 'http://sub.domain.one'
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           expect(e.message).toBe(ERROR_MESSAGES.INVALID_DOMAIN_MATCH)
           return done()
         }
-        done.fail('validateChainManifest did not fail for sub domain of request domain')
+        done.fail('validateAppManifest did not fail for sub domain of request domain')
       })
 
       it('fails when chain manifest domain field doesn\'t match request domain', async (done) => {
         chainManifest.manifest.domain = 'WRONG DOMAIN'
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           expect(e.message).toBe('Invalid URL')
           return done()
         }
-        done.fail('validateChainManifest did not fail for mismatched request domain')
+        done.fail('validateAppManifest did not fail for mismatched request domain')
       })
 
       it('fails for an invalid chain manifest with a missing required field', async (done) => {
         delete chainManifest.manifest.account
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           expect(e.message).toBe(ERROR_MESSAGES.INVALID_CHAIN_MANIFEST_SCHEMA)
           return done()
         }
-        done.fail('validateChainManifest did not fail for missing required field')
+        done.fail('validateAppManifest did not fail for missing required field')
       })
 
       it('fails for an invalid chain manifest with an appmeta that has a missing hash', async (done) => {
         chainManifest.manifest.appmeta = 'http://domain.one/app-metadata.json'
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           expect(e.message).toBe(ERROR_MESSAGES.MISSING_FILE_HASH('appmeta'))
           return done()
         }
-        done.fail('validateChainManifest did not fail for missing hash on appmeta')
+        done.fail('validateAppManifest did not fail for missing hash on appmeta')
       })
 
       it('fails for an invalid chain manifest with an appmeta that has a wrong hash', async (done) => {
         chainManifest.manifest.appmeta = 'http://domain.one/app-metadata.json#WRONG_HASH'
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           expect(e.message).toBe(ERROR_MESSAGES.MISMATCHED_FILE_HASH('appmeta'))
           return done()
         }
-        done.fail('validateChainManifest did not fail for wrong hash on appmeta')
+        done.fail('validateAppManifest did not fail for wrong hash on appmeta')
       })
     })
 
@@ -379,7 +379,7 @@ describe('ManifestValidator', () => {
         delete chainManifest.manifest.account
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           return done.fail(e.toString())
         }
@@ -394,7 +394,7 @@ describe('ManifestValidator', () => {
         chainManifest.manifest.appmeta = 'http://domain.one/app-metadata.json#WRONG_HASH'
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           return done.fail(e.toString())
         }
@@ -409,7 +409,7 @@ describe('ManifestValidator', () => {
         chainManifest.manifest.domain = 'WRONG DOMAIN'
 
         try {
-          await manifestValidator.validateChainManifest(chainManifest.chainId)
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
           return done.fail(e.toString())
         }
