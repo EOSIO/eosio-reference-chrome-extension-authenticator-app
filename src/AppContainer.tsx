@@ -42,7 +42,7 @@ export class AppContainer extends React.Component<Props> {
     )
   }
 
-  private initRoute() {
+  private async initRoute() {
     const { history, passphraseHash, request } = this.props
     const routeState = { skipAnimation: true }
 
