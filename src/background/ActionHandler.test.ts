@@ -174,7 +174,7 @@ describe('Action Handler', () => {
       })
     })
 
-    it('validates the chain manifest', async () => {
+    it('validates the app manifest', async () => {
       await actionHandler.handleAction({ requestEnvelope, port, manifestProvider })
 
       expect(manifestValidatorMocks.validateAppManifest).toHaveBeenCalledWith('chainId1')
@@ -200,7 +200,7 @@ describe('Action Handler', () => {
         .toHaveBeenCalledWith('unpackedTransaction', 'chainId1', requestEnvelope)
     })
 
-    describe('if the chain manifest and transaction are valid', () => {
+    describe('if the app manifest and transaction are valid', () => {
       it('sets the payload in request storage', async () => {
         await actionHandler.handleAction({ requestEnvelope, port, manifestProvider })
 
@@ -217,7 +217,7 @@ describe('Action Handler', () => {
       })
     })
 
-    describe('if the chain manifest is not valid', () => {
+    describe('if the app manifest is not valid', () => {
       beforeEach(() => {
         manifestValidatorMocks.validateAppManifest.mockRejectedValue(new Error('error'))
       })

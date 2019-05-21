@@ -277,7 +277,7 @@ describe('ManifestValidator', () => {
 
   describe('validateAppManifest', () => {
     describe('without security exclusions', () => {
-      it('passes for a valid chain manifest', async (done) => {
+      it('passes for a valid app manifest', async (done) => {
         try {
           await manifestValidator.validateAppManifest(chainManifest.chainId)
         } catch (e) {
@@ -345,6 +345,30 @@ describe('ManifestValidator', () => {
         done.fail('validateAppManifest did not fail for missing required field')
       })
 
+      it('fails for an invalid app manifest with a missing required field', async (done) => {
+        delete appManifest.spec_version
+
+        try {
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
+        } catch (e) {
+          expect(e.message).toBe(ERROR_MESSAGES.INVALID_CHAIN_MANIFEST_SCHEMA)
+          return done()
+        }
+        done.fail('validateAppManifest did not fail for missing required field')
+      })
+
+      it('fails for an invalid app manifest with a missing manifests field', async (done) => {
+        delete appManifest.manifests
+
+        try {
+          await manifestValidator.validateAppManifest(chainManifest.chainId)
+        } catch (e) {
+          expect(e.message).toBe(ERROR_MESSAGES.INVALID_CHAIN_MANIFEST_SCHEMA)
+          return done()
+        }
+        done.fail('validateAppManifest did not fail for missing manifests field')
+      })
+
       it('fails for an invalid chain manifest with an appmeta that has a missing hash', async (done) => {
         chainManifest.manifest.appmeta = 'http://domain.one/app-metadata.json'
 
@@ -371,7 +395,7 @@ describe('ManifestValidator', () => {
     })
 
     describe('with security exclusions', () => {
-      it('passes for invalid chain manifest when appMetadataIntegrity exclusion is active', async (done) => {
+      it('passes for invalid app manifest when appMetadataIntegrity exclusion is active', async (done) => {
         jest.spyOn(SecurityExclusionHelpers, 'shouldValidate').mockImplementation((exclusion: string) => {
           return exclusion !== 'appMetadataIntegrity'
         })
