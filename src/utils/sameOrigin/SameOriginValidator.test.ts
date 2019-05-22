@@ -6,7 +6,7 @@ import * as insecureModeStorageMocks from 'utils/storage/__mocks__/InsecureModeS
 
 import {
   SignatureProviderRequestEnvelope,
-  ChainManifest,
+  AppManifest,
   SecurityExclusions,
 } from '@blockone/eosjs-signature-provider-interface'
 
@@ -20,7 +20,7 @@ describe('SameOriginValidator', () => {
   let manifestProvider: any
   let requestEnvelope: SignatureProviderRequestEnvelope
   let securityExclusions: SecurityExclusions
-  let chainManifests: ChainManifest[]
+  let appManifest: AppManifest
   let senderUrl: string
 
   beforeEach(() => {
@@ -33,12 +33,12 @@ describe('SameOriginValidator', () => {
       request: {},
     }
 
-    chainManifests = clone(manifestData.chainManifests)
+    appManifest = clone(manifestData.appManifest)
     securityExclusions = clone(payloadData.securityExclusions)
     manifestProvider = manifestProviderMocks.manifestProviderMock
 
     insecureModeStorageMocks.get.mockResolvedValue({})
-    manifestProvider.getChainManifests.mockResolvedValue(chainManifests)
+    manifestProvider.getAppManifest.mockResolvedValue(appManifest)
     manifestProvider.rootUrl = 'http://domain.one'
 
     senderUrl = 'http://domain.one'
@@ -59,7 +59,7 @@ describe('SameOriginValidator', () => {
   })
 
   it('should pass even if manifest domain has a trailing slash', async (done) => {
-    chainManifests[0].manifest.domain = 'http://domain.one/'
+    appManifest.manifests[0].manifest.domain = 'http://domain.one/'
 
     try {
       await sameOriginValidator.validateSameOriginPolicy(requestEnvelope, senderUrl)
@@ -240,7 +240,7 @@ describe('SameOriginValidator', () => {
   describe('manifest domains', () => {
     describe('without security exclusions', () => {
       it('should fail if manifest domains do not match declared domain', async (done) => {
-        chainManifests[0].manifest.domain = 'http://domain.two'
+        appManifest.manifests[0].manifest.domain = 'http://domain.two'
 
         try {
           await sameOriginValidator.validateSameOriginPolicy(requestEnvelope, senderUrl)
@@ -262,7 +262,7 @@ describe('SameOriginValidator', () => {
 
       // tslint:disable-next-line:max-line-length
       it('should pass if manifest domains do not match declared domain if domainMatch exclusion is active', async (done) => {
-        chainManifests[0].manifest.domain = 'http://domain.two'
+        appManifest.manifests[0].manifest.domain = 'http://domain.two'
 
         try {
           await sameOriginValidator.validateSameOriginPolicy(requestEnvelope, senderUrl)
@@ -278,7 +278,7 @@ describe('SameOriginValidator', () => {
   describe('app metadata hashes', () => {
     describe('without security exclusions', () => {
       it('should pass if just appmeta urls do not match one another', async (done) => {
-        chainManifests[1].manifest.appmeta = 'http://domain.two/app-metadata.json#SHA256Hash'
+        appManifest.manifests[1].manifest.appmeta = 'http://domain.two/app-metadata.json#SHA256Hash'
 
         try {
           await sameOriginValidator.validateSameOriginPolicy(requestEnvelope, senderUrl)
@@ -290,7 +290,7 @@ describe('SameOriginValidator', () => {
       })
 
       it('should fail if appmeta hashes do not match one another', async (done) => {
-        chainManifests[1].manifest.appmeta = 'http://domain.one/app-metadata.json#WRONG_HASH'
+        appManifest.manifests[1].manifest.appmeta = 'http://domain.one/app-metadata.json#WRONG_HASH'
 
         try {
           await sameOriginValidator.validateSameOriginPolicy(requestEnvelope, senderUrl)
@@ -312,7 +312,7 @@ describe('SameOriginValidator', () => {
 
       // tslint:disable-next-line:max-line-length
       it('should pass if just appmeta urls do not match one another if domainMatch exclusion is active', async (done) => {
-        chainManifests[1].manifest.appmeta = 'http://domain.two/app-metadata.json#SHA256Hash'
+        appManifest.manifests[1].manifest.appmeta = 'http://domain.two/app-metadata.json#SHA256Hash'
 
         try {
           await sameOriginValidator.validateSameOriginPolicy(requestEnvelope, senderUrl)
@@ -324,7 +324,7 @@ describe('SameOriginValidator', () => {
       })
 
       it('should pass if appmeta hashes do not match one another if domainMatch exclusion is active', async (done) => {
-        chainManifests[1].manifest.appmeta = 'http://domain.one/app-metadata.json#WRONG_HASH'
+        appManifest.manifests[1].manifest.appmeta = 'http://domain.one/app-metadata.json#WRONG_HASH'
 
         try {
           await sameOriginValidator.validateSameOriginPolicy(requestEnvelope, senderUrl)

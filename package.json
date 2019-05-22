@@ -19,7 +19,7 @@
   "private": true,
   "sideEffects": false,
   "dependencies": {
-    "@blockone/eosjs-signature-provider-interface": "^4.2.0",
+    "@blockone/eosjs-signature-provider-interface": "^7.0.0",
     "bip38": "^2.0.2",
     "bs58": "^4.0.1",
     "classnames": "^2.2.6",
@@ -41,7 +41,7 @@
     "wif": "^2.0.6"
   },
   "devDependencies": {
-    "@blockone/tslint-config-blockone": "^1.0.0",
+    "@blockone/tslint-config-blockone": "^4.0.0",
     "@types/bs58": "^4.0.0",
     "@types/chrome": "^0.0.74",
     "@types/classnames": "^2.2.7",

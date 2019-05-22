@@ -25,18 +25,18 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@blockone/eosjs-signature-provider-interface@^4.2.0":
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/@blockone/eosjs-signature-provider-interface/-/eosjs-signature-provider-interface-4.2.3.tgz#5044d7af8008cb93638fe95ec4be403131da3d0c"
-  integrity sha512-FXu+0CgBjZNB5dzLeSQb6dHe1Z5tCWGwF/XliUohQXC4T9IoqA6wBbsVHZrfdQzjsc4fOtwjTXCDl4XxlRK+Xg==
+"@blockone/eosjs-signature-provider-interface@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@blockone/eosjs-signature-provider-interface/-/eosjs-signature-provider-interface-7.0.0.tgz#d9827bb4caf71e3ab933ea9ffab16ddaa54271c5"
+  integrity sha512-tRlWOwDI268t0OUY9b2k1/QbiQynx5Z2iBuWO82/dxaMYNYHAjVkwCVmLM3p2OOUFctbMVPQOgxVRACAhKKzoQ==
   dependencies:
-    eosjs "20.0.0-8b096ed.0"
+    eosjs "^20.0.0"
     uuid "^3.3.2"
 
-"@blockone/tslint-config-blockone@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@blockone/tslint-config-blockone/-/tslint-config-blockone-1.0.0.tgz#d8f906bad5936715dd43e12d44caffc5a9e603f8"
-  integrity sha512-7OIP1T/bV5BFF85DZl2seica+NKvRiD5knwwgcGY4vIXSgdRGnv1u4Q9X/DefBCTK4aImrf4BmtPIdNGF8U+iw==
+"@blockone/tslint-config-blockone@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@blockone/tslint-config-blockone/-/tslint-config-blockone-4.0.0.tgz#34ce165e7223acff5811f4bbae66290160c4bf56"
+  integrity sha512-5x4yzXr+rBJXpfr9bzfZRj36J2WfnWeKk9SBpWkeSQiMuPuiYuoQImcOzzscgZGgTMpHou9tz2M5s3SrT1uEdg==
   dependencies:
     tslint "^5.11.0"
     tslint-eslint-rules "^5.4.0"
@@ -148,11 +148,6 @@
   version "22.2.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
   integrity sha512-e74sM9W/4qqWB6D4TWV9FQk0WoHtX1X4FJpbjxucMSVJHtFjbQOH3H6yp+xno4br0AKG0wz/kPtaN599GUOvAg==
-
-"@types/jest@^23.3.1":
-  version "23.3.14"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.14.tgz#37daaf78069e7948520474c87b80092ea912520a"
-  integrity sha512-Q5hTcfdudEL2yOmluA1zaSyPbzWPmJ3XfSWeP3RyoYvS9hnje1ZyagrZOuQ6+1nQC1Gw+7gap3pLNL3xL6UBug==
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -3413,7 +3408,7 @@ enzyme@^3.9.0:
     rst-selector-parser "^2.2.3"
     string.prototype.trim "^1.1.2"
 
-eosjs-ecc@4.0.4, eosjs-ecc@^4.0.1, eosjs-ecc@^4.0.2:
+eosjs-ecc@4.0.4, eosjs-ecc@^4.0.2:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/eosjs-ecc/-/eosjs-ecc-4.0.4.tgz#431450f30a6f73088ff5d7ba1ebdfe967a5ca4ab"
   integrity sha512-9wAYefts4TidHOu+eN9nAisZdWpUzlUimZrB63oP7+/s4xRNJEn2Vvep2ICRODpxpidbshM1L7WaSYW9oiV5gA==
@@ -3426,16 +3421,6 @@ eosjs-ecc@4.0.4, eosjs-ecc@^4.0.1, eosjs-ecc@^4.0.2:
     create-hmac "^1.1.6"
     ecurve "^1.0.5"
     randombytes "^2.0.5"
-
-eosjs@20.0.0-8b096ed.0:
-  version "20.0.0-8b096ed.0"
-  resolved "https://registry.yarnpkg.com/eosjs/-/eosjs-20.0.0-8b096ed.0.tgz#8c30d5bc14a2a4f12826b200562c676a9439f113"
-  integrity sha512-ehiKHxqAxuSr1Eb+Duu8+ApiYWAM7Rh6/gGb1RHDuM/dgy4YCXTPfRenhNjkEI4u1XTqh1pxdpPrTd+xaHjvHQ==
-  dependencies:
-    "@types/jest" "^23.3.1"
-    babel-runtime "^6.26.0"
-    eosjs-ecc "^4.0.1"
-    text-encoding "^0.6.4"
 
 eosjs@^20.0.0:
   version "20.0.0"
@@ -10346,11 +10331,6 @@ text-encoding@0.7.0, text-encoding@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/text-encoding/-/text-encoding-0.7.0.tgz#f895e836e45990624086601798ea98e8f36ee643"
   integrity sha512-oJQ3f1hrOnbRLOcwKz0Liq2IcrvDeZRHXhd9RgLrsT+DjWY/nty1Hi7v3dtkaEYbPYe0mUoOfzRrMwfXXwgPUA==
-
-text-encoding@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/text-encoding/-/text-encoding-0.6.4.tgz#e399a982257a276dae428bb92845cb71bdc26d19"
-  integrity sha1-45mpgiV6J22uQou5KEXLcb3CbRk=
 
 text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"

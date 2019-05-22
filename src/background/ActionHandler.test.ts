@@ -43,7 +43,7 @@ describe('Action Handler', () => {
     manifestProviderMocks.getDappInfo.mockReturnValue(dappInfo)
 
     manifestValidatorMocks.validateAppMetadata.mockResolvedValue(null)
-    manifestValidatorMocks.validateChainManifest.mockResolvedValue(null)
+    manifestValidatorMocks.validateAppManifest.mockResolvedValue(null)
     manifestValidatorMocks.validateTransaction.mockResolvedValue(null)
     manifestValidatorMocks.transactionWithAssertAction.mockResolvedValue(null)
 
@@ -174,10 +174,10 @@ describe('Action Handler', () => {
       })
     })
 
-    it('validates the chain manifest', async () => {
+    it('validates the app manifest', async () => {
       await actionHandler.handleAction({ requestEnvelope, port, manifestProvider })
 
-      expect(manifestValidatorMocks.validateChainManifest).toHaveBeenCalledWith('chainId1')
+      expect(manifestValidatorMocks.validateAppManifest).toHaveBeenCalledWith('chainId1')
     })
 
     it('validates the transaction', async () => {
@@ -200,7 +200,7 @@ describe('Action Handler', () => {
         .toHaveBeenCalledWith('unpackedTransaction', 'chainId1', requestEnvelope)
     })
 
-    describe('if the chain manifest and transaction are valid', () => {
+    describe('if the app manifest and transaction are valid', () => {
       it('sets the payload in request storage', async () => {
         await actionHandler.handleAction({ requestEnvelope, port, manifestProvider })
 
@@ -217,9 +217,9 @@ describe('Action Handler', () => {
       })
     })
 
-    describe('if the chain manifest is not valid', () => {
+    describe('if the app manifest is not valid', () => {
       beforeEach(() => {
-        manifestValidatorMocks.validateChainManifest.mockRejectedValue(new Error('error'))
+        manifestValidatorMocks.validateAppManifest.mockRejectedValue(new Error('error'))
       })
 
       it('sends an error response', async () => {

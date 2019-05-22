@@ -1,5 +1,5 @@
 import { sha256 } from 'hash.js'
-import { ChainManifest, AppMetadata } from '@blockone/eosjs-signature-provider-interface'
+import { ChainManifest, AppMetadata, AppManifest } from '@blockone/eosjs-signature-provider-interface'
 
 import { AppMetadataInfo, DappInfo } from 'utils/manifest/DappInfo'
 
@@ -7,7 +7,7 @@ const CHAIN_MANIFESTS_FILENAME = 'chain-manifests.json'
 
 export default class ManifestProvider {
   public readonly declaredDomain: string
-  private chainManifests: ChainManifest[]
+  private appManifest: AppManifest
   private appMetadataInfoMap: {
     [chainId: string]: AppMetadataInfo,
   }
@@ -21,18 +21,18 @@ export default class ManifestProvider {
    * @description Lazy loads and caches Chain Manifest.
    */
   public async getChainManifest(chainId: string): Promise<ChainManifest> {
-    const chainManifests = await this.getChainManifests()
-    return chainManifests.find((manifest) => manifest.chainId === chainId)
+    const appManifest = await this.getAppManifest()
+    return appManifest.manifests.find((manifest) => manifest.chainId === chainId)
   }
 
   /**
    * @description Lazy loads and caches Chain Manifests.
    */
-  public async getChainManifests(): Promise<ChainManifest[]> {
-    if (!this.chainManifests) {
-      this.chainManifests = await this.fetchChainManifests()
+  public async getAppManifest(): Promise<AppManifest> {
+    if (!this.appManifest) {
+      this.appManifest = await this.fetchAppManifest()
     }
-    return this.chainManifests
+    return this.appManifest
   }
 
   /**
@@ -42,13 +42,13 @@ export default class ManifestProvider {
    */
   public async getAppMetadataInfo(chainId?: string): Promise<AppMetadataInfo> {
     if (!chainId) {
-      const chainManifests = await this.getChainManifests()
+      const appManifest = await this.getAppManifest()
 
-      if (!chainManifests.length) {
-        throw new Error(`No chain manifests found in ${CHAIN_MANIFESTS_FILENAME}`)
+      if (!appManifest) {
+        throw new Error(`No App Manifest found in ${CHAIN_MANIFESTS_FILENAME}`)
       }
 
-      chainId = chainManifests[0].chainId
+      chainId = appManifest.manifests[0].chainId
     }
 
     if (!this.appMetadataInfoMap[chainId]) {
@@ -86,11 +86,11 @@ export default class ManifestProvider {
     }
   }
 
-  private async fetchChainManifests(): Promise<ChainManifest[]> {
+  private async fetchAppManifest(): Promise<AppManifest> {
     const appManifestUrl = new URL(CHAIN_MANIFESTS_FILENAME, this.rootUrl)
     const response = await fetch(appManifestUrl.toString(), this.fetchRequestInit)
     if (response.ok) {
-      return await response.json() as ChainManifest[]
+      return await response.json() as AppManifest
     } else {
       throw new Error(`Not able to retrive the ${CHAIN_MANIFESTS_FILENAME} at the application root`)
     }

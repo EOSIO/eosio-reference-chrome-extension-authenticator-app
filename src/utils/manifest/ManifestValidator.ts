@@ -3,7 +3,7 @@ import {
   SecurityExclusions,
   SignatureProviderRequestEnvelope,
   instanceOfAppMetadata,
-  instanceOfChainManifest,
+  instanceOfAppManifest,
   ChainInfo,
   ContractAction,
 } from '@blockone/eosjs-signature-provider-interface'
@@ -60,13 +60,14 @@ export default class ManifestValidator {
     }
   }
 
-  public async validateChainManifest(chainId: string): Promise<void> {
+  public async validateAppManifest(chainId: string): Promise<void> {
+    const appManifest = await this.manifestProvider.getAppManifest()
     const chainManifest = await this.manifestProvider.getChainManifest(chainId)
     const { appMetadataHash } = await this.manifestProvider.getAppMetadataInfo(chainId)
     const insecureMode = await this.insecureModeStorage.get()
 
     if (shouldValidate('appMetadataIntegrity', this.securityExclusions, insecureMode, this.rootUrl)
-    && !instanceOfChainManifest(chainManifest)) {
+    && !instanceOfAppManifest(appManifest)) {
       throw new Error(ERROR_MESSAGES.INVALID_CHAIN_MANIFEST_SCHEMA)
     }
 

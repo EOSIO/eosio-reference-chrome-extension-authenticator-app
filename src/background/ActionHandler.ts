@@ -129,7 +129,7 @@ export default class ActionHandler {
     const manifestValidator = new ManifestValidator({ manifestProvider, securityExclusions })
 
     try {
-      await manifestValidator.validateChainManifest(chainId)
+      await manifestValidator.validateAppManifest(chainId)
     } catch (error) {
       return this.handleErrorResponse({
         port,
