@@ -2,7 +2,7 @@
 import 'babel-polyfill'
 import {
   SignatureProviderRequestEnvelope,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import BackgroundMessageHandler from 'background/BackgroundMessageHandler'
 

@@ -1,6 +1,6 @@
 {
   "name": "eosio-reference-chrome-extension-authenticator-app",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "author": {
     "name": "block.one",
@@ -19,12 +19,12 @@
   "private": true,
   "sideEffects": false,
   "dependencies": {
-    "@blockone/eosjs-signature-provider-interface": "^7.0.0",
     "bip38": "^2.0.2",
     "bs58": "^4.0.1",
     "classnames": "^2.2.6",
     "eosjs": "^20.0.0",
     "eosjs-ecc": "^4.0.2",
+    "eosjs-signature-provider-interface": "^0.1.0",
     "hash.js": "1.1.5",
     "lodash": "^4.17.11",
     "react": "^16.4.1",

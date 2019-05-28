@@ -4,7 +4,7 @@ import {
   HexAbi,
   arrayToHex,
   Transaction as SignedTransaction,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import AbiProvider from 'eos/AbiProvider'
 import AuthorityProvider from 'eos/AuthorityProvider'

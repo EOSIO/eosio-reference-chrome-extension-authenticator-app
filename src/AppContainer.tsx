@@ -5,7 +5,7 @@ import {
   ErrorCodes,
   envelopeDataType,
   EnvelopeDataType,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import App from 'App'
 import RoutePath from 'constants/routePath'

@@ -1,10 +1,10 @@
 import '__mocks__/chrome.mock'
 import * as data from '__mocks__/data.mock'
 
-import * as spi from '@blockone/eosjs-signature-provider-interface'
+import * as spi from 'eosjs-signature-provider-interface'
 
 import * as WindowMessengerImport from 'content/WindowMessenger'
-import { packEnvelope, ErrorCodes } from '@blockone/eosjs-signature-provider-interface'
+import { packEnvelope, ErrorCodes } from 'eosjs-signature-provider-interface'
 import { createErrorResponseEnvelope } from 'utils/requests/signatureProviderEnvelopeGenerators'
 
 describe('windowMessenger', () => {

@@ -1,4 +1,4 @@
-import { AppManifest, ChainManifest, AppMetadata } from '@blockone/eosjs-signature-provider-interface'
+import { AppManifest, ChainManifest, AppMetadata } from 'eosjs-signature-provider-interface'
 
 import { DappInfo } from 'utils/manifest/DappInfo'
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { AppMetadata } from '@blockone/eosjs-signature-provider-interface'
+import { AppMetadata } from 'eosjs-signature-provider-interface'
 import './TransactionHeaderView.css'
 
 interface Props {

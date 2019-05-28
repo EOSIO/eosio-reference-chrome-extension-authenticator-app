@@ -3,7 +3,7 @@ import * as data from '__mocks__/data.mock'
 import {
   SignatureProviderResponseEnvelope,
   SignatureProviderEnvelope,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import './signatureProviderEnvelopeGenerators'
 import {
