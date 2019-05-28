@@ -6,7 +6,7 @@ import {
   packEnvelope,
   ErrorCodes,
   SignatureProviderRequestEnvelope,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import { createErrorResponseEnvelope } from 'utils/requests/signatureProviderEnvelopeGenerators'
 import {

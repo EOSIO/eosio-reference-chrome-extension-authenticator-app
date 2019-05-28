@@ -1,4 +1,4 @@
-import { SecurityExclusions } from '@blockone/eosjs-signature-provider-interface'
+import { SecurityExclusions } from 'eosjs-signature-provider-interface'
 
 import { InsecureMode } from 'utils/insecureMode/InsecureMode'
 

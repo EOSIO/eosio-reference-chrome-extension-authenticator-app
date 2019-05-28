@@ -4,7 +4,7 @@ import {
   envelopeDataType,
   EnvelopeDataType,
   instanceOfTransactionSignatureRequest,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import Api from 'utils/Api'
 import ManifestValidator from 'utils/manifest/ManifestValidator'

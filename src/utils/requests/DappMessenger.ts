@@ -1,6 +1,6 @@
 import {
   SignatureProviderResponseEnvelope,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 export class DappMessenger {
   private sentRequestIds: string[] = []

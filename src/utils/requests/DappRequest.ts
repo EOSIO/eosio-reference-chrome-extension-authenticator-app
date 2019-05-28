@@ -1,4 +1,4 @@
-import { SignatureProviderRequestEnvelope } from '@blockone/eosjs-signature-provider-interface'
+import { SignatureProviderRequestEnvelope } from 'eosjs-signature-provider-interface'
 
 import { TransactionInfo } from 'eos/Transaction'
 

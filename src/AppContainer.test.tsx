@@ -5,7 +5,7 @@ import * as data from '__mocks__/data.mock'
 
 import * as React from 'react'
 import { shallow } from 'enzyme'
-import { ErrorCodes, EnvelopeDataType } from '@blockone/eosjs-signature-provider-interface'
+import { ErrorCodes, EnvelopeDataType } from 'eosjs-signature-provider-interface'
 
 import { AppContainer, mapDispatchToProps } from './AppContainer'
 import RoutePath from 'constants/routePath'
