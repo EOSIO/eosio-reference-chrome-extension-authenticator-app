@@ -8,7 +8,7 @@ import * as data from '__mocks__/data.mock'
 
 import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import { SignatureProviderResponseEnvelope, ErrorCodes } from '@blockone/eosjs-signature-provider-interface'
+import { SignatureProviderResponseEnvelope, ErrorCodes } from 'eosjs-signature-provider-interface'
 
 import { TransactionContainer, mapStateToProps, ERROR_MESSAGES } from './TransactionContainer'
 import TransactionRoutes from './TransactionRoutes'

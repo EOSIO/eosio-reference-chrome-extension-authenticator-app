@@ -1,7 +1,7 @@
 import {
   SignatureProviderRequestEnvelope,
   SignatureProviderResponseEnvelope,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import getDefaultWindowManager from 'utils/WindowManager'
 import ActionHandler from 'background/ActionHandler'

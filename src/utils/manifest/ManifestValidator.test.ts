@@ -11,7 +11,7 @@ import {
   AppManifest,
   ChainManifest,
   AppMetadata
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import ManifestValidator, { ERROR_MESSAGES, FETCH_RESPONSE_ERROR } from 'utils/manifest/ManifestValidator'
 import * as SecurityExclusionHelpers from 'utils/manifest/SecurityExclusion'

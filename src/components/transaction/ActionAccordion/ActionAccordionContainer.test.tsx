@@ -4,7 +4,7 @@ import * as securityExclusionMocks from 'utils/manifest/__mocks__/SecurityExclus
 
 import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import { SecurityExclusions } from '@blockone/eosjs-signature-provider-interface'
+import { SecurityExclusions } from 'eosjs-signature-provider-interface'
 
 import { ActionAccordionContainer, mapStateToProps } from './ActionAccordionContainer'
 import ActionAccordionView from './ActionAccordionView'

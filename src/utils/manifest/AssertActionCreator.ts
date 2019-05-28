@@ -5,7 +5,7 @@ import {
   SignatureProviderRequestEnvelope,
   ChainManifest,
   hexToArray,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import { TransactionInfo, Action, PermissionLevel } from 'eos/Transaction'
 import getAssertAbiHex from 'contracts/eosio.assert.abi.hex'

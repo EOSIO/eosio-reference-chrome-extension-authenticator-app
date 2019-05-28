@@ -2,7 +2,7 @@ import * as data from '__mocks__/data.mock'
 
 import * as eosjs from 'eosjs'
 import * as eosjsSignatureProvider from 'eosjs/dist/eosjs-jssig'
-import * as SPI from '@blockone/eosjs-signature-provider-interface'
+import * as SPI from 'eosjs-signature-provider-interface'
 
 import Api from 'utils/Api'
 import { TransactionInfo } from 'eos/Transaction'

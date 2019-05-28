@@ -4,7 +4,7 @@ import {
   Authorizer,
   ErrorCodes,
   SignatureProviderRequestEnvelope,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import SelectiveDisclosureView from 'components/selectiveDisclosure/SelectiveDisclosureView'
 import AppState from 'store/AppState'

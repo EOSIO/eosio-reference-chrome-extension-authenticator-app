@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {
   SignatureProviderRequest,
   SignatureProviderRequestEnvelope,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import ActionAccordionView from './ActionAccordionView'
 import { TransactionInfo, AbiInfo } from 'eos/Transaction'

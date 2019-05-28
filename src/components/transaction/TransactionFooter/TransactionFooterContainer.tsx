@@ -4,7 +4,7 @@ import {
   ChainInfo,
   SignatureProviderRequestEnvelope,
   SignatureProviderRequest,
-} from '@blockone/eosjs-signature-provider-interface'
+} from 'eosjs-signature-provider-interface'
 
 import TransactionFooterView from 'components/transaction/TransactionFooter/TransactionFooterView'
 import AppState from 'store/AppState'

@@ -25,14 +25,6 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@blockone/eosjs-signature-provider-interface@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@blockone/eosjs-signature-provider-interface/-/eosjs-signature-provider-interface-7.0.0.tgz#d9827bb4caf71e3ab933ea9ffab16ddaa54271c5"
-  integrity sha512-tRlWOwDI268t0OUY9b2k1/QbiQynx5Z2iBuWO82/dxaMYNYHAjVkwCVmLM3p2OOUFctbMVPQOgxVRACAhKKzoQ==
-  dependencies:
-    eosjs "^20.0.0"
-    uuid "^3.3.2"
-
 "@blockone/tslint-config-blockone@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@blockone/tslint-config-blockone/-/tslint-config-blockone-4.0.0.tgz#34ce165e7223acff5811f4bbae66290160c4bf56"
@@ -3421,6 +3413,14 @@ eosjs-ecc@4.0.4, eosjs-ecc@^4.0.2:
     create-hmac "^1.1.6"
     ecurve "^1.0.5"
     randombytes "^2.0.5"
+
+eosjs-signature-provider-interface@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/eosjs-signature-provider-interface/-/eosjs-signature-provider-interface-0.1.0.tgz#7af358acffd6c38d3fe54c5574d399cc81908a0f"
+  integrity sha512-C6B1FYMqxgJFoZmKbyEsrmcBGp6Cip45oNAgJL3bUovV7KbGEzCGbZujzw7iNWnWYA5A7lothMoS6C4akOCMWg==
+  dependencies:
+    eosjs "^20.0.0"
+    uuid "^3.3.2"
 
 eosjs@^20.0.0:
   version "20.0.0"

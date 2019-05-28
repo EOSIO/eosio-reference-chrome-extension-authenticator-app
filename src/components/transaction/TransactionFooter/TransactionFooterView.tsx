@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ChainInfo } from '@blockone/eosjs-signature-provider-interface'
+import { ChainInfo } from 'eosjs-signature-provider-interface'
 import './TransactionFooterView.css'
 
 import FooterView from 'components/shared/layout/FooterView'
