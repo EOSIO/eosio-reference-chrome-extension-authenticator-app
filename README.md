@@ -76,6 +76,8 @@ The Chrome extension follows the [EOSIO Authentication Transport Protocol Specif
 1. If the request is accepted, the Chrome extension will prompt for your passphrase.
 1. If the passphrase is correct, the Chrome extension will generate a signature, which will be returned to the requesting app.
 
+![](docs/sign-transaction.gif)
+
 ## Architecture
 ### Data Flow
 <img src='./docs/data-flow-diagram.png' height='500px' alt='Data Flow Diagram'>
