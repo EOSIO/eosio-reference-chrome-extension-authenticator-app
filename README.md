@@ -1,13 +1,13 @@
-# EOSIO Reference Chrome Extension Authenticator App
+# EOSIO Reference Chrome Extension Authenticator App <!-- omit in toc -->
 A Chrome extension which demonstrates how users could sign transactions from EOSIO apps using various EOSIO labs tools.
 
 ![EOSIO Labs](https://img.shields.io/badge/EOSIO-Labs-5cb3ff.svg)
 
-## About EOSIO Labs
+## About EOSIO Labs <!-- omit in toc -->
 
 EOSIO Labs repositories are experimental.  Developers in the community are encouraged to use EOSIO Labs repositories as the basis for code and concepts to incorporate into their applications. Community members are also welcome to contribute and further develop these repositories. Since these repositories are not supported by Block.one, we may not provide responses to issue reports, pull requests, updates to functionality, or other requests from the community, and we encourage the community to take responsibility for these.
 
-## Overview
+## Overview <!-- omit in toc -->
 The EOSIO ecosystem is rich with existing wallets providing users the ability to sign transactions on the EOSIO blockchain. However, we have identified some limitations and possible areas for improvement to the overall user experience:
 * Providing support for only Mainnet accounts and transactions.
 * Lack of support for displaying Ricardian Contracts.
@@ -18,6 +18,30 @@ This Reference Implementation serves an example for wallet developers as possibl
 * It provides seamless multi-network support.
 * It securely stores private keys and signs transactions, showing a richly formatted [Ricardian Contract](https://github.com/EOSIO/ricardian-spec), which provide users with a human readable explanation of the action(s) the app is proposing and allows them to accept the contract’s terms.
 * By following the [Manifest Specification](https://github.com/EOSIO/manifest-spec), it shows metadata about apps to end users as they are signing transactions, which provides users with a better sense of trust for the app they are interacting with. It also runs various transaction pre-flight security checks comparing the contents of a transaction request with what apps have declared about themselves.
+
+## Table of Contents <!-- omit in toc -->
+- [Installation](#installation)
+- [Integrating with Apps](#integrating-with-apps)
+- [Getting Started with an Example Web App](#getting-started-with-an-example-web-app)
+- [Usage](#usage)
+  - [How to Create a Passphrase](#how-to-create-a-passphrase)
+  - [How to Add a Private Key](#how-to-add-a-private-key)
+  - [How to Accept a Selective Disclosure Request](#how-to-accept-a-selective-disclosure-request)
+  - [How to Sign Transactions](#how-to-sign-transactions)
+- [Architecture](#architecture)
+  - [Data Flow](#data-flow)
+  - [Data storage](#data-storage)
+  - [Storage Listeners](#storage-listeners)
+  - [Web Workers](#web-workers)
+  - [Manifest Specification](#manifest-specification)
+    - [Assert Action](#assert-action)
+  - [Security](#security)
+  - [Insecure Mode](#insecure-mode)
+      - [Chrome extension](#chrome-extension)
+      - [Application](#application)
+- [Contributing](#contributing)
+- [License](#license)
+- [Important](#important)
 
 ## Installation
 1. Install dependencies and build the extension.
@@ -39,6 +63,11 @@ The Chrome extension follows the [EOSIO Authentication Transport Protocol Specif
       - This class implements the [EOSJS Signature Provider interface](https://github.com/EOSIO/eosjs-signature-provider-interface). The documentation describes how to utilize it directly with EOSJS.
    1. Directly use the [Window Messaging API](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage).
       - The integrating app will need to post requests and listen for responses following the [EOSIO Authentication Transport Protocol Specification's](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec) envelope formats.
+
+## Getting Started with an Example Web App
+If you want to start out by test driving the EOSIO Reference Chrome Extension Authenticator App for yourself, we recommend checking out our [Tropical Example web app](https://github.com/EOSIO/tropical-example-web-app/). Tropical Example is a mock web application for renting properties and provides instructions and a script for setting up a local chain bootstrapped with all of the necessary, compliant contracts for making the experience work.
+
+Specifically, follow the instructions under the [Running Tropical Example](https://github.com/EOSIO/tropical-example-web-app/#running-tropical-example) header. (Of course, we recommend reading the rest of the README there too, which will provide more context around how the pieces work together to provide the user with a secure and positive user experience.)
 
 ## Usage
 * [Create a Passphrase](#how-to-create-a-passphrase)
