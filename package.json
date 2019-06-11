@@ -35,7 +35,7 @@
     "react-transition-group": "^2.5.3",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "ricardian-template-toolkit": "^0.1.2",
+    "ricardian-template-toolkit": "^0.2.0",
     "ripemd160": "^2.0.2",
     "uuid": "^3.3.2",
     "wif": "^2.0.6"
