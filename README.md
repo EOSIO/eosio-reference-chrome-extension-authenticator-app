@@ -20,28 +20,34 @@ This Reference Implementation serves an example for wallet developers as possibl
 * By following the [Manifest Specification](https://github.com/EOSIO/manifest-spec), it shows metadata about apps to end users as they are signing transactions, which provides users with a better sense of trust for the app they are interacting with. It also runs various transaction pre-flight security checks comparing the contents of a transaction request with what apps have declared about themselves.
 
 ## Table of Contents <!-- omit in toc -->
-- [Installation](#installation)
-- [Integrating with Apps](#integrating-with-apps)
-- [Getting Started with an Example Web App](#getting-started-with-an-example-web-app)
-- [Usage](#usage)
-  - [How to Create a Passphrase](#how-to-create-a-passphrase)
-  - [How to Add a Private Key](#how-to-add-a-private-key)
-  - [How to Accept a Selective Disclosure Request](#how-to-accept-a-selective-disclosure-request)
-  - [How to Sign Transactions](#how-to-sign-transactions)
-- [Architecture](#architecture)
-  - [Data Flow](#data-flow)
-  - [Data storage](#data-storage)
-  - [Storage Listeners](#storage-listeners)
-  - [Web Workers](#web-workers)
-  - [Manifest Specification](#manifest-specification)
-    - [Assert Action](#assert-action)
-  - [Security](#security)
-  - [Insecure Mode](#insecure-mode)
-      - [Chrome extension](#chrome-extension)
-      - [Application](#application)
-- [Contributing](#contributing)
-- [License](#license)
-- [Important](#important)
+- [Required Tools](#Required-Tools)
+- [Installation](#Installation)
+- [Integrating with Apps](#Integrating-with-Apps)
+- [Getting Started with an Example Web App](#Getting-Started-with-an-Example-Web-App)
+- [Usage](#Usage)
+  - [How to Create a Passphrase](#How-to-Create-a-Passphrase)
+  - [How to Add a Private Key](#How-to-Add-a-Private-Key)
+  - [How to Accept a Selective Disclosure Request](#How-to-Accept-a-Selective-Disclosure-Request)
+  - [How to Sign Transactions](#How-to-Sign-Transactions)
+- [Architecture](#Architecture)
+  - [Data Flow](#Data-Flow)
+  - [Data storage](#Data-storage)
+  - [Storage Listeners](#Storage-Listeners)
+  - [Web Workers](#Web-Workers)
+  - [Manifest Specification](#Manifest-Specification)
+    - [Assert Action](#Assert-Action)
+  - [Security](#Security)
+  - [Insecure Mode](#Insecure-Mode)
+      - [Chrome extension](#Chrome-extension)
+      - [Application](#Application)
+- [Contributing](#Contributing)
+- [License](#License)
+- [Important](#Important)
+
+## Required Tools
+
+* [Yarn](https://yarnpkg.com/lang/en/) with support at `^1.15.2` (latest stable).
+* [Node.js](https://nodejs.org/en/) with support at `^10.15.3` LTS. **NOTICE** This project will not build on the current version of Node.js `12.3.1` due to an error in a sub-dependency of `react-scripts`.
 
 ## Installation
 1. Install dependencies and build the extension.
