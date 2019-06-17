@@ -3414,10 +3414,10 @@ eosjs-ecc@4.0.4, eosjs-ecc@^4.0.2:
     ecurve "^1.0.5"
     randombytes "^2.0.5"
 
-eosjs-signature-provider-interface@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/eosjs-signature-provider-interface/-/eosjs-signature-provider-interface-0.1.0.tgz#7af358acffd6c38d3fe54c5574d399cc81908a0f"
-  integrity sha512-C6B1FYMqxgJFoZmKbyEsrmcBGp6Cip45oNAgJL3bUovV7KbGEzCGbZujzw7iNWnWYA5A7lothMoS6C4akOCMWg==
+eosjs-signature-provider-interface@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/eosjs-signature-provider-interface/-/eosjs-signature-provider-interface-0.1.1.tgz#b91e7e4ac5ce5a6c37c93c49412291f22c30facf"
+  integrity sha512-6A3ecy1GExc+f2IVVHF7klEAUzSt3CvTg90CrfeqOhC/3XZS98v0faYtSAgWAE7SBsfGyMCASESmqPwelKpKDg==
   dependencies:
     eosjs "^20.0.0"
     uuid "^3.3.2"
