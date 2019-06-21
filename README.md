@@ -61,7 +61,7 @@ yarn build
 ## Integrating with Apps
 The Chrome extension follows the [EOSIO Authentication Transport Protocol Specification](https://github.com/EOSIO/eosio-authentication-transport-protocol-spec). There is some configuration needed in the integrating app, and there are a few different ways to interact with the Chrome extension from an integrating app:
 1. Make sure your app follows the [Manifest Specification v0.7.0](https://github.com/EOSIO/manifest-spec/tree/v0.7.0).
-1. Make sure your application's Ricardian Contracts follow the [Ricardian Specification v0.1.1](https://github.com/EOSIO/ricardian-spec/tree/v0.1.1).
+1. Make sure your application's Ricardian Contracts follow the [Ricardian Specification v0.2.0](https://github.com/EOSIO/ricardian-spec/tree/v0.2.0).
 1. Choose a solution for interacting with the Chrome extension:
    1. (Easiest) Use the [Universal Authenticator Library](https://github.com/EOSIO/universal-authenticator-library).
       - UAL with the [EOSIO Reference Authenticator](https://github.com/EOSIO/ual-eosio-reference-authenticator) will detect if the Chrome extension is installed, and allows for easy integration. Read the documentation on the [Tropical example app](https://github.com/EOSIO/tropical-example-web-app) to learn how to use UAL.
