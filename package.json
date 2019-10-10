@@ -1,6 +1,6 @@
 {
   "name": "eosio-reference-chrome-extension-authenticator-app",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "license": "MIT",
   "author": {
     "name": "block.one",
@@ -26,7 +26,7 @@
     "eosjs-ecc": "^4.0.2",
     "eosjs-signature-provider-interface": "^0.1.1",
     "hash.js": "1.1.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.11",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.1.0",
@@ -46,6 +46,7 @@
     "@types/chrome": "^0.0.74",
     "@types/classnames": "^2.2.7",
     "@types/enzyme": "^3.1.12",
+    "@types/handlebars": "^4.0.39",
     "@types/jest": "^22.2.3",
     "@types/lodash": "^4.14.119",
     "@types/node": "^10.5.3",
@@ -90,9 +91,7 @@
     "worker-loader": "^2.0.0"
   },
   "resolutions": {
-    "@types/sinon": "5.0.2",
-    "eslint-utils": "1.4.1",
-    "handlebars": "4.3.0"
+    "@types/sinon": "5.0.2"
   },
   "scripts": {
     "build": "npm-run-all -p build-css build-js build-scripts",
