@@ -1,5 +1,5 @@
 import { sha256 } from 'hash.js'
-import { Api as EosApi, JsonRpc, Serialize } from 'eosjs'
+import { Api as EosApi, Serialize } from 'eosjs'
 import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig'
 import {
   SignatureProviderRequestEnvelope,
@@ -31,10 +31,9 @@ export default class AssertActionCreator {
   private api: EosApi
 
   constructor() {
-    const rpc = new JsonRpc(null)
     const signatureProvider = new JsSignatureProvider([])
     this.api = new EosApi({
-      rpc,
+      rpc: null,
       signatureProvider,
       chainId: null,
     })

@@ -1,5 +1,6 @@
-import { privateToPublic } from 'eosjs-ecc'
 import { sha256 } from 'hash.js'
+import { ec as EC } from 'elliptic'
+import { PrivateKey, PublicKey } from 'eosjs/dist/eosjs-jssig'
 
 import { Dispatch } from 'store/storeHelpers'
 import { AsyncAction, AsyncActionCreator } from 'store/storeHelpers'
@@ -7,7 +8,8 @@ import AppState, { DelayedRemovable } from 'store/AppState'
 import Auth from 'utils/Auth'
 import AuthStorage from 'utils/storage/AuthStorage'
 import { encrypt } from 'utils/encrypter'
-import { isValidPrivate } from 'eosjs-ecc'
+
+const ec = new EC('secp256k1')
 
 const REMOVE_DELAY = 6000
 
@@ -76,12 +78,15 @@ export const authAdd = (nickname: string, privateKey: string, passphrase: string
       const auths = getState().auths.data || []
       const storedPassphraseHash = getState().passphraseHash.data
       const passphraseHash = sha256().update(passphrase).digest('hex')
+      let publicKey
 
       if (storedPassphraseHash !== passphraseHash) {
         throw new Error('Invalid Passphrase')
       }
 
-      if (!isValidPrivate(privateKey)) {
+      try {
+        publicKey = recoverPublicKey(privateKey, passphrase)
+      } catch (e) {
         throw new Error('Invalid private key')
       }
 
@@ -96,7 +101,7 @@ export const authAdd = (nickname: string, privateKey: string, passphrase: string
       auths.push({
         nickname,
         encryptedPrivateKey: await encrypt(privateKey, passphrase),
-        publicKey: privateToPublic(privateKey),
+        publicKey
       })
       await authStorage.set(auths)
       dispatch(authsModifyAsync.success(auths))
@@ -104,6 +109,19 @@ export const authAdd = (nickname: string, privateKey: string, passphrase: string
       dispatch(authsModifyAsync.error(e))
     }
   }
+
+export const recoverPublicKey = (privateKey: string, data: string) => {
+  const ellipticHashedData = ec.hash().update(data).digest()
+  const privateKeyElliptic = PrivateKey.fromString(privateKey).toElliptic(ec)
+  const ellipticSig = privateKeyElliptic.sign(ellipticHashedData)
+  const recoveredPublicKey = ec.recoverPubKey(
+            ellipticHashedData,
+            ellipticSig,
+            ellipticSig.recoveryParam
+        )
+  const ellipticKPub = ec.keyFromPublic(recoveredPublicKey)
+  return PublicKey.fromElliptic(ellipticKPub).toString()
+}
 
 export const authUpdate = (currentNickname: string, newNickname: string) =>
   async (dispatch: Dispatch, getState: () => AppState) => {

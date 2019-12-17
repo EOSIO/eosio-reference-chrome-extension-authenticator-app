@@ -4,8 +4,8 @@ import * as dappMessengerMocks from 'utils/__mocks__/DappMessenger.mock'
 
 import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import * as ecc from 'eosjs-ecc'
 import * as hashjs from 'hash.js'
+import { PublicKey } from 'eosjs/dist/eosjs-jssig'
 
 import { AddAuthContainer, mapDispatchToProps, ERROR_MESSAGES } from 'components/auth/AddAuth/AddAuthContainer'
 import AddAuthView from 'components/auth/AddAuth/AddAuthView'
@@ -20,12 +20,20 @@ describe('AddAuthContainer', () => {
   let auth: Auth
   let history: any
   let addAuthErrors: AddAuthFormInputs
+  let privateKeys: string[]
 
   beforeEach(() => {
+
+    privateKeys = [
+      '5Juww5SS6aLWxopXBAWzwqrwadiZKz7XpKAiktXTKcfBGi1DWg8',
+      '5JnHjSFwe4r7xyqAUAaVs51G7HmzE86DWGa3VAA5VvQriGYnSUr',
+      '5K4XZH5XR2By7Q5KTcZnPAmUMU5yjUNBdoKzzXyrLfmiEZJqoKE',
+    ]
+
     auth = {
       nickname: 'nickname1',
-      publicKey: 'publicKey1',
-      encryptedPrivateKey: 'privateKey1',
+      publicKey: 'PUB_K1_8VaY5CiTexYqgQZyPTJkc3qvWuZUi12QrZL9ssjqW2es7e7bRJ',
+      encryptedPrivateKey: privateKeys[0],
     }
 
     history = {
@@ -75,14 +83,12 @@ describe('AddAuthContainer', () => {
     describe('when there are no errors', () => {
       beforeEach(() => {
         addAuthContainer.setState({
-          privateKey: 'privateKey2',
+          privateKey: privateKeys[2],
           nickname: 'nickname2',
           passphrase: 'passphrase2',
           addAuthErrors: {},
         })
 
-        jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(true)
-        jest.spyOn(ecc, 'privateToPublic').mockReturnValue('pubKey2')
         jest.spyOn(hashjs, 'sha256').mockReturnValue({
           update: jest.fn().mockReturnValue({
             digest: jest.fn().mockReturnValue('hashedPassphrase'),
@@ -92,7 +98,7 @@ describe('AddAuthContainer', () => {
       })
 
       it('calls the auth add callback', () => {
-        expect(onAuthAdd).toHaveBeenCalledWith('nickname2', 'privateKey2', 'passphrase2')
+        expect(onAuthAdd).toHaveBeenCalledWith('nickname2', privateKeys[2], 'passphrase2')
       })
 
       it('navigates to the auths page', () => {
@@ -104,13 +110,12 @@ describe('AddAuthContainer', () => {
       describe('any error', () => {
         beforeEach(() => {
           addAuthContainer.setState({
-            privateKey: 'privateKey2',
+            privateKey: privateKeys[1],
             nickname: 'nickname2',
             passphrase: 'passphrase2',
             addAuthErrors: {},
           })
 
-          jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(false)
           addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
         })
 
@@ -127,13 +132,19 @@ describe('AddAuthContainer', () => {
         describe('when there are duplicate nicknames', () => {
           beforeEach(() => {
             addAuthContainer.setState({
-              privateKey: 'privateKey2',
+              privateKey: privateKeys[2],
               nickname: 'nickname1',
               passphrase: 'passphrase2',
               addAuthErrors: {},
             })
 
-            jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(true)
+            jest.spyOn(hashjs, 'sha256').mockReturnValue({
+              update: jest.fn().mockReturnValue({
+                digest: jest.fn().mockReturnValue('hashedPassphrase'),
+              }),
+            })
+            jest.spyOn(PublicKey.prototype, 'toString').mockReturnValueOnce('publicKey2')
+
             addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
           })
 
@@ -146,7 +157,7 @@ describe('AddAuthContainer', () => {
             }
 
             expect(addAuthContainer.state()).toEqual({
-              privateKey: 'privateKey2',
+              privateKey: privateKeys[2],
               nickname: 'nickname1',
               passphrase: 'passphrase2',
               addAuthErrors,
@@ -154,16 +165,22 @@ describe('AddAuthContainer', () => {
           })
         })
 
-        describe('when the nickame is empty', () => {
+        describe('when the nickname is empty', () => {
           beforeEach(() => {
             addAuthContainer.setState({
-              privateKey: 'privateKey2',
+              privateKey: privateKeys[1],
               nickname: '',
               passphrase: 'passphrase2',
               addAuthErrors: {},
             })
 
-            jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(true)
+            jest.spyOn(hashjs, 'sha256').mockReturnValue({
+              update: jest.fn().mockReturnValue({
+                digest: jest.fn().mockReturnValue('hashedPassphrase'),
+              }),
+            })
+            jest.spyOn(PublicKey.prototype, 'toString').mockReturnValueOnce('publicKey1')
+
             addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
           })
 
@@ -175,7 +192,7 @@ describe('AddAuthContainer', () => {
             }
 
             expect(addAuthContainer.state()).toEqual({
-              privateKey: 'privateKey2',
+              privateKey: privateKeys[1],
               nickname: '',
               passphrase: 'passphrase2',
               addAuthErrors,
@@ -188,14 +205,18 @@ describe('AddAuthContainer', () => {
         describe('when there are duplicate private keys', () => {
           beforeEach(() => {
             addAuthContainer.setState({
-              privateKey: 'privateKey2',
+              privateKey: privateKeys[1],
               nickname: 'nickname2',
               passphrase: 'passphrase2',
               addAuthErrors: {},
             })
 
-            jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(true)
-            jest.spyOn(ecc, 'privateToPublic').mockReturnValue('publicKey1')
+            jest.spyOn(hashjs, 'sha256').mockReturnValue({
+              update: jest.fn().mockReturnValue({
+                digest: jest.fn().mockReturnValue('hashedPassphrase'),
+              }),
+            })
+
             addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
           })
 
@@ -207,7 +228,7 @@ describe('AddAuthContainer', () => {
             }
 
             expect(addAuthContainer.state()).toEqual({
-              privateKey: 'privateKey2',
+              privateKey: privateKeys[1],
               nickname: 'nickname2',
               passphrase: 'passphrase2',
               addAuthErrors,
@@ -224,7 +245,12 @@ describe('AddAuthContainer', () => {
               addAuthErrors: {},
             })
 
-            jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(false)
+            jest.spyOn(hashjs, 'sha256').mockReturnValue({
+              update: jest.fn().mockReturnValue({
+                digest: jest.fn().mockReturnValue('hashedPassphrase'),
+              }),
+            })
+
             addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
           })
 
@@ -248,20 +274,18 @@ describe('AddAuthContainer', () => {
       describe('passphrase error', () => {
         beforeEach(() => {
           addAuthContainer.setState({
-            privateKey: 'privateKey2',
+            privateKey: privateKeys[1],
             nickname: 'nickname2',
             passphrase: 'passphrase2',
             addAuthErrors: {},
           })
-
-          jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(true)
-          jest.spyOn(ecc, 'privateToPublic').mockReturnValue('publicKey2')
 
           jest.spyOn(hashjs, 'sha256').mockReturnValue({
             update: jest.fn().mockReturnValue({
               digest: jest.fn().mockReturnValue('badHash'),
             }),
           })
+          jest.spyOn(PublicKey.prototype, 'toString').mockReturnValueOnce('publicKey1')
 
           addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
         })
@@ -274,7 +298,7 @@ describe('AddAuthContainer', () => {
           }
 
           expect(addAuthContainer.state()).toEqual({
-            privateKey: 'privateKey2',
+            privateKey: privateKeys[1],
             nickname: 'nickname2',
             passphrase: 'passphrase2',
             addAuthErrors,
