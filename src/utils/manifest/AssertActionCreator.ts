@@ -49,15 +49,21 @@ export default class AssertActionCreator {
     const assertAction = this.generateAssertAction(chainHash, manifestHash, abiHashes, transactionInfo)
 
     transactionInfo.actions.push(assertAction)
-    requestEnvelope.request.transactionSignature.abis.push({
-      accountName: ACCOUNT_NAME,
-      abi: getAssertAbiHex(),
-    })
+    this.addAssertAbi(requestEnvelope)
 
     return {
       transactionInfo,
       requestEnvelope,
     }
+  }
+
+  private addAssertAbi(requestEnvelope: SignatureProviderRequestEnvelope): void {
+    requestEnvelope.request.transactionSignature.abis.push({
+      accountName: ACCOUNT_NAME,
+      abi: getAssertAbiHex(),
+    })
+    requestEnvelope.request.transactionSignature.abis =
+      requestEnvelope.request.transactionSignature.abis.sort((a, b) => (a.accountName > b.accountName) ? 1 : -1)
   }
 
   private generateAssertAction(

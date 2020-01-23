@@ -1,7 +1,5 @@
 ///<reference types="chrome"/>
 
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-
 type Extend<TType extends Object, TExtension extends Object> = { [K in keyof TType]: TType[K] } & TExtension
 
 declare module "*.svg" {
