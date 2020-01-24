@@ -1,5 +1,5 @@
-import * as bip38 from 'bip38'
-import * as wif from 'wif'
+import bip38 from 'bip38'
+import wif from 'wif'
 
 const progressCallback: () => {} = undefined
 const scryptParams = { N: 512, r: 8, p: 8 }

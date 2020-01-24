@@ -26,7 +26,11 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./src/__types__/"
+    ]
   },
   "exclude": [
     "node_modules",
@@ -36,6 +40,7 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
+    "src/__types__",
     "background"
   ],
   "include": [
