@@ -109,6 +109,33 @@ describe('AssertActionCreator', () => {
       })
     })
 
+    it('orders abis correctly by accountName', async () => {
+      const abi1 = { accountName: 'aaa', abi: 'hex4' }
+      const abi2 = { accountName: 'zzz', abi: 'hex5' }
+      const assertAbi = { accountName: 'eosio.assert', abi: 'hex3' }
+
+      const expectedAbis = [
+        abi1,
+        requestEnvelope.request.transactionSignature.abis[0],
+        requestEnvelope.request.transactionSignature.abis[1],
+        assertAbi,
+        abi2,
+      ]
+
+      requestEnvelope.request.transactionSignature.abis.push(abi1)
+      requestEnvelope.request.transactionSignature.abis.push(abi2)
+
+      const result = assertActionCreator.transactionWithAssertAction({
+        dappInfo,
+        transactionBundle: {
+          transactionInfo,
+          requestEnvelope,
+        },
+      })
+
+      expect(result.requestEnvelope.request.transactionSignature.abis).toEqual(expectedAbis)
+    })
+
     it('returns the assert action with the authorizations unioned', async () => {
       const updatedTransferAction = {
         account: 'account.one',
