@@ -6,23 +6,16 @@ import { shallow, mount, ShallowWrapper, ReactWrapper } from 'enzyme'
 import { MemoryRouter as Router, NavLink } from 'react-router-dom'
 
 import SettingsView from './SettingsView'
-import * as DeveloperSettingsViewImport from 'components/settings/developer/DeveloperSettingsView'
-import * as GeneralSettingsViewImport from 'components/settings/general/GeneralSettingsView'
 import RoutePath from 'constants/routePath'
+
+jest.mock('components/settings/developer/DeveloperSettingsView', () => () => <div id='DeveloperSettingsView' />)
+jest.mock('components/settings/general/GeneralSettingsView', () => () => <div id='GeneralSettingsView' />)
 
 describe('SettingsView', () => {
   let router: ReactWrapper
   let settings: ShallowWrapper
 
-  let DeveloperSettingsView: any
-  let GeneralSettingsView: any
-
   beforeEach(() => {
-    DeveloperSettingsView = <div id='DeveloperSettingsView' />
-    jest.spyOn(DeveloperSettingsViewImport, 'default').mockImplementation(jest.fn(() => DeveloperSettingsView))
-    GeneralSettingsView = <div id='GeneralSettingsView' />
-    jest.spyOn(GeneralSettingsViewImport, 'default').mockImplementation(jest.fn(() => GeneralSettingsView))
-
     settings = shallow(<SettingsView />)
   })
 

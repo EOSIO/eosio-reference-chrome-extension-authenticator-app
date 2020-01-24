@@ -1,6 +1,6 @@
 import * as manifestMocks from 'utils/manifest/__mocks__/manifestData.mock'
 
-import * as hash from 'hash.js'
+import hashjs from 'hash.js'
 
 import ManifestProvider from 'utils/manifest/ManifestProvider'
 
@@ -17,11 +17,11 @@ describe('ManifestProvider', () => {
     windowFetchMock = jest.fn()
     window.fetch = windowFetchMock
 
-    jest.spyOn(hash, 'sha256').mockImplementation(() => ({
-      update: () => ({
-        digest: () => 'hashed',
+    jest.spyOn(hashjs, 'sha256').mockReturnValue({
+      update: jest.fn().mockReturnValue({
+        digest: jest.fn().mockReturnValue('hashed'),
       }),
-    }))
+    } as any)
 
     declaredDomain = 'http://domain.one'
     manifestProvider = new ManifestProvider(declaredDomain)

@@ -4,59 +4,33 @@ import 'utils/__mocks__/encrypter.mock'
 import * as React from 'react'
 import { mount, ReactWrapper } from 'enzyme'
 import { MemoryRouter as Router } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
 import App from './App'
-import * as AuthListContainerImport from 'components/auth/AuthList/AuthListContainer'
-import * as AddAuthContainerImport from 'components/auth/AddAuth/AddAuthContainer'
-import * as AuthDetailsContainerImport from 'components/auth/AuthDetails/AuthDetailsContainer'
-import * as SelectiveDisclosureImport from 'components/selectiveDisclosure/SelectiveDisclosureContainer'
-import * as TransactionContainerImport from 'components/transaction/TransactionContainer'
-import * as ErrorContainerImport from 'components/error/ErrorContainer'
-import * as CreatePassphraseContainerImport from 'components/passphrase/createPassphrase/CreatePassphraseContainer'
 import RoutePath from 'constants/routePath'
+import store from 'store/store'
+
+jest.mock('components/auth/AuthList/AuthListContainer', () => () => <div id='AuthListContainer' />)
+jest.mock('components/auth/AddAuth/AddAuthContainer', () => () => <div id='AddAuthContainer' />)
+jest.mock('components/auth/AuthDetails/AuthDetailsContainer', () => () => <div id='AuthDetailsContainer' />)
+jest.mock('components/selectiveDisclosure/SelectiveDisclosureContainer', () => () => <div id='SelectiveDisclosureContainer' />)
+jest.mock('components/transaction/TransactionContainer', () => () => <div id='TransactionContainer' />)
+jest.mock('components/error/ErrorContainer', () => () => <div id='ErrorContainer' />)
+jest.mock('components/passphrase/createPassphrase/CreatePassphraseContainer', () => () => <div id='CreatePassphraseContainer'></div>)
 
 describe('App', () => {
   let router: ReactWrapper
-
-  let AuthListContainer: any
-  let AuthDetailsContainer: any
-  let ImportContainer: any
-  let SelectiveDisclosureContainer: any
-  let TransactionContainer: any
-  let ErrorContainer: any
-  let CreatePassphraseContainer: any
   const testPublicKey: string = 'testPublicKey'
-
-  beforeEach(() => {
-    AuthListContainer = <div id='AuthListContainer' />
-    jest.spyOn(AuthListContainerImport, 'default').mockImplementation(jest.fn(() => AuthListContainer))
-
-    AuthDetailsContainer = <div id='AuthDetailsContainer' />
-    jest.spyOn(AuthDetailsContainerImport, 'default').mockImplementation(jest.fn(() => AuthDetailsContainer))
-
-    ImportContainer = <div id='ImportContainer' />
-    jest.spyOn(AddAuthContainerImport, 'default').mockImplementation(jest.fn(() => ImportContainer))
-
-    SelectiveDisclosureContainer = <div id='SelectiveDisclosureContainer' />
-    jest.spyOn(SelectiveDisclosureImport, 'default').mockImplementation(jest.fn(() => SelectiveDisclosureContainer))
-
-    TransactionContainer = <div id='TransactionContainer' />
-    jest.spyOn(TransactionContainerImport, 'default').mockImplementation(jest.fn(() => TransactionContainer))
-
-    ErrorContainer = <div id='ErrorContainer' />
-    jest.spyOn(ErrorContainerImport, 'default').mockImplementation(jest.fn(() => ErrorContainer))
-
-    CreatePassphraseContainer = <div id='CreatePassphraseContainer' />
-    jest.spyOn(CreatePassphraseContainerImport, 'default').mockImplementation(jest.fn(() => CreatePassphraseContainer))
-  })
 
   describe('rendering', () => {
     describe(`when the path is: ${RoutePath.AUTHS}`, () => {
       beforeEach(() => {
         router = mount(
-          <Router initialEntries={[RoutePath.AUTHS]}>
-            <App />
-          </Router>,
+          <Provider store={store}>
+            <Router initialEntries={[RoutePath.AUTHS]}>
+              <App />
+            </Router>
+          </Provider>,
         )
       })
 
@@ -68,23 +42,27 @@ describe('App', () => {
     describe(`when the path is: ${RoutePath.ADD_AUTH}`, () => {
       beforeEach(() => {
         router = mount(
-          <Router initialEntries={[RoutePath.ADD_AUTH]}>
-            <App />
-          </Router>,
+          <Provider store={store}>
+            <Router initialEntries={[RoutePath.ADD_AUTH]}>
+              <App />
+            </Router>
+          </Provider>,
         )
       })
 
       it('renders the Import screen', () => {
-        expect(router.find('#ImportContainer')).toHaveLength(1)
+        expect(router.find('#AddAuthContainer')).toHaveLength(1)
       })
     })
 
     describe(`when the path is: ${RoutePath.AUTH_DETAILS}/${testPublicKey}`, () => {
       beforeEach(() => {
         router = mount(
-          <Router initialEntries={[`${RoutePath.AUTH_DETAILS}/${testPublicKey}`]}>
-            <App />
-          </Router>,
+          <Provider store={store}>
+            <Router initialEntries={[`${RoutePath.AUTH_DETAILS}/${testPublicKey}`]}>
+              <App />
+            </Router>
+          </Provider>,
         )
       })
 
@@ -96,9 +74,11 @@ describe('App', () => {
     describe(`when the path is: ${RoutePath.SELECTIVE_DISCLOSURE}`, () => {
       beforeEach(() => {
         router = mount(
-          <Router initialEntries={[RoutePath.SELECTIVE_DISCLOSURE]}>
-            <App />
-          </Router>,
+          <Provider store={store}>
+            <Router initialEntries={[RoutePath.SELECTIVE_DISCLOSURE]}>
+              <App />
+            </Router>
+          </Provider>,
         )
       })
 
@@ -110,9 +90,11 @@ describe('App', () => {
     describe(`when the path is: ${RoutePath.TRANSACTION}`, () => {
       beforeEach(() => {
         router = mount(
-          <Router initialEntries={[RoutePath.TRANSACTION]}>
-            <App />
-          </Router>,
+          <Provider store={store}>
+            <Router initialEntries={[RoutePath.TRANSACTION]}>
+              <App />
+            </Router>
+          </Provider>,
         )
       })
 
@@ -124,9 +106,11 @@ describe('App', () => {
     describe(`when the path is: ${RoutePath.ERROR}`, () => {
       beforeEach(() => {
         router = mount(
-          <Router initialEntries={[RoutePath.ERROR]}>
-            <App />
-          </Router>,
+          <Provider store={store}>
+            <Router initialEntries={[RoutePath.ERROR]}>
+              <App />
+            </Router>
+          </Provider>,
         )
       })
 
@@ -138,9 +122,11 @@ describe('App', () => {
     describe(`when the path is: ${RoutePath.CREATE_PASSPHRASE}`, () => {
       beforeEach(() => {
         router = mount(
-          <Router initialEntries={[RoutePath.CREATE_PASSPHRASE]}>
-            <App />
-          </Router>,
+          <Provider store={store}>
+            <Router initialEntries={[RoutePath.CREATE_PASSPHRASE]}>
+              <App />
+            </Router>
+          </Provider>,
         )
       })
 

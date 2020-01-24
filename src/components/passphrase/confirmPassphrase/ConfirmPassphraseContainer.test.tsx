@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import * as hashjs from 'hash.js'
+import hashjs from 'hash.js'
 
 import { ConfirmPassphraseContainer } from 'components/passphrase/confirmPassphrase/ConfirmPassphraseContainer'
 import ConfirmPassphraseView from 'components/passphrase/confirmPassphrase/ConfirmPassphraseView'
@@ -28,7 +28,7 @@ describe('ConfirmPassphraseView', () => {
         update: jest.fn().mockReturnValue({
           digest: jest.fn().mockReturnValue('hash'),
         }),
-      })
+      } as any)
     })
 
     it('should invoke the onConfirmPassphrase callback', () => {
@@ -43,7 +43,7 @@ describe('ConfirmPassphraseView', () => {
         update: jest.fn().mockReturnValue({
           digest: jest.fn().mockReturnValue('wronghash'),
         }),
-      })
+      } as any)
 
       confirmPassphraseContainer.find(ConfirmPassphraseView).prop('onConfirmPassphrase')('passphrase')
     })

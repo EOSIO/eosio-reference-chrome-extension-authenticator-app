@@ -1,24 +1,24 @@
+import '__mocks__/chrome.mock'
 import * as data from '__mocks__/data.mock'
 import * as manifestData from 'utils/manifest/__mocks__/manifestData.mock'
 
 import * as React from 'react'
 import { shallow, mount, ShallowWrapper, ReactWrapper } from 'enzyme'
 import { MemoryRouter as Router } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import { Location } from 'history'
+import store from 'store/store'
 
 import { TransactionRoutes } from './TransactionRoutes'
 import TXStatus from 'constants/txStatus'
-import * as ConfirmPassphraseContainerImport from 'components/passphrase/confirmPassphrase/ConfirmPassphraseContainer'
-import * as TransactionStatusContainerImport from 'components/transactionStatus/TransactionStatusContainer'
-import * as TransactionViewImport from 'components/transaction/TransactionView/TransactionView'
 import RoutePath from 'constants/routePath'
+
+jest.mock('components/passphrase/confirmPassphrase/confirmPassphraseContainer', () => () => <div id='ConfirmPassphraseContainer' />)
+jest.mock('components/transactionStatus/TransactionStatusContainer', () => () => <div id='TransactionStatusContainer' />)
+jest.mock('components/transaction/TransactionView/TransactionView', () => () => <div id='TransactionView' />)
 
 describe('TransactionRoutes', () => {
   let router: ReactWrapper
-
-  let ConfirmPassphraseContainer: any
-  let TransactionStatusContainer: any
-  let TransactionView: any
 
   let transactionView: ShallowWrapper
   let onTransactionSign: jest.Mock
@@ -35,16 +35,6 @@ describe('TransactionRoutes', () => {
   let location: Location
 
   beforeEach(() => {
-    ConfirmPassphraseContainer = <div id='ConfirmPassphraseContainer' />
-    jest.spyOn(ConfirmPassphraseContainerImport, 'default').mockImplementation(
-      jest.fn(() => ConfirmPassphraseContainer),
-    )
-
-    TransactionView = <div id='TransactionView' />
-    jest.spyOn(TransactionViewImport, 'default').mockImplementation(
-      jest.fn(() => TransactionView),
-    )
-
     onTransactionSign = jest.fn()
     onTransactionCancel = jest.fn()
     onTransactionError = jest.fn()
@@ -90,11 +80,6 @@ describe('TransactionRoutes', () => {
 
       describe(`when the path is: ${RoutePath.TRANSACTION_APPROVED}`, () => {
         beforeEach(() => {
-          TransactionStatusContainer = <div id='TransactionStatusContainerApproved' />
-          jest.spyOn(TransactionStatusContainerImport, 'default').mockImplementation(
-            jest.fn(() => TransactionStatusContainer),
-          )
-
           location.pathname = RoutePath.TRANSACTION_APPROVED
 
           router = mount(
@@ -105,17 +90,12 @@ describe('TransactionRoutes', () => {
         })
 
         it('renders the approved transaction status page', () => {
-          expect(router.find('#TransactionStatusContainerApproved')).toHaveLength(1)
+          expect(router.find('#TransactionStatusContainer')).toHaveLength(1)
         })
       })
 
       describe(`when the path is: ${RoutePath.TRANSACTION_CANCELLED}`, () => {
         beforeEach(() => {
-          TransactionStatusContainer = <div id='TransactionStatusContainerCancelled' />
-          jest.spyOn(TransactionStatusContainerImport, 'default').mockImplementation(
-            jest.fn(() => TransactionStatusContainer),
-          )
-
           location.pathname = RoutePath.TRANSACTION_CANCELLED
 
           router = mount(
@@ -126,7 +106,7 @@ describe('TransactionRoutes', () => {
         })
 
         it('renders the cancelled transaction status page', () => {
-          expect(router.find('#TransactionStatusContainerCancelled')).toHaveLength(1)
+          expect(router.find('#TransactionStatusContainer')).toHaveLength(1)
         })
       })
 
@@ -135,9 +115,11 @@ describe('TransactionRoutes', () => {
           location.pathname = RoutePath.TRANSACTION_CONFIRM_PASSPHRASE
 
           router = mount(
-            <Router>
-              <TransactionRoutes {...defaultData} />
-            </Router>,
+            <Provider store={store}>
+              <Router>
+                <TransactionRoutes {...defaultData} />
+              </Router>
+            </Provider>,
           )
         })
 

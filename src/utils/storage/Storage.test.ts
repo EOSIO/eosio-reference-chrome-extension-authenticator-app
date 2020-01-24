@@ -1,4 +1,4 @@
-// import chrome from "__mocks__/chrome.mock"
+// import * as chrome from "__mocks__/chrome.mock"
 
 import Storage, { StorageAreaName, StorageChanges } from 'utils/storage/Storage'
 

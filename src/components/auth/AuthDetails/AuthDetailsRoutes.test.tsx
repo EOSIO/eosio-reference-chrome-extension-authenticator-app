@@ -3,16 +3,14 @@ import { mount, ReactWrapper } from 'enzyme'
 import { MemoryRouter as Router } from 'react-router-dom'
 
 import { AuthDetailsRoutes } from './AuthDetailsRoutes'
-import * as AuthDetailsViewImport from 'components/auth/AuthDetails/AuthDetailsView'
-import * as ConfirmPassphraseContainerImport from 'components/passphrase/confirmPassphrase/ConfirmPassphraseContainer'
 import Auth from 'utils/Auth'
 import RoutePath from 'constants/routePath'
 
+jest.mock('components/auth/AuthDetails/AuthDetailsView', () => () => <div id='AuthDetailsView' />)
+jest.mock('components/passphrase/confirmPassphrase/ConfirmPassphraseContainer', () => () => <div id='ConfirmPassphraseContainer' />)
+
 describe('AuthDetailsRoutes', () => {
   let router: ReactWrapper
-
-  let AuthDetailsView: any
-  let ConfirmPassphraseContainer: any
 
   let auths: Auth[]
   let auth: Auth
@@ -24,16 +22,6 @@ describe('AuthDetailsRoutes', () => {
   let onFailPassphrase: jest.Mock
 
   beforeEach(() => {
-    AuthDetailsView = <div id='AuthDetailsView' />
-    jest.spyOn(AuthDetailsViewImport, 'default').mockImplementation(
-      jest.fn(() => AuthDetailsView),
-    )
-
-    ConfirmPassphraseContainer = <div id='ConfirmPassphraseContainer' />
-    jest.spyOn(ConfirmPassphraseContainerImport, 'default').mockImplementation(
-      jest.fn(() => ConfirmPassphraseContainer),
-    )
-
     auths = [
       {
         nickname: 'nickname1',

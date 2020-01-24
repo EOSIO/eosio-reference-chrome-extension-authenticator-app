@@ -143,7 +143,7 @@ describe('AddAuthView', () => {
     let footerButton: ShallowWrapper
 
     beforeEach(() => {
-      footerButton = addAuthView.find(Button).first()
+      footerButton = addAuthView.find(Button).first() as any
     })
 
     it('has the cancel text', () => {

@@ -4,7 +4,7 @@ import * as dappMessengerMocks from 'utils/__mocks__/DappMessenger.mock'
 
 import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import * as hashjs from 'hash.js'
+import hashjs from 'hash.js'
 import { PublicKey } from 'eosjs/dist/eosjs-jssig'
 
 import { AddAuthContainer, mapDispatchToProps, ERROR_MESSAGES } from 'components/auth/AddAuth/AddAuthContainer'
@@ -93,7 +93,7 @@ describe('AddAuthContainer', () => {
           update: jest.fn().mockReturnValue({
             digest: jest.fn().mockReturnValue('hashedPassphrase'),
           }),
-        })
+        } as any)
         addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
       })
 
@@ -142,7 +142,7 @@ describe('AddAuthContainer', () => {
               update: jest.fn().mockReturnValue({
                 digest: jest.fn().mockReturnValue('hashedPassphrase'),
               }),
-            })
+            } as any)
             jest.spyOn(PublicKey.prototype, 'toString').mockReturnValueOnce('publicKey2')
 
             addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
@@ -178,7 +178,7 @@ describe('AddAuthContainer', () => {
               update: jest.fn().mockReturnValue({
                 digest: jest.fn().mockReturnValue('hashedPassphrase'),
               }),
-            })
+            } as any)
             jest.spyOn(PublicKey.prototype, 'toString').mockReturnValueOnce('publicKey1')
 
             addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
@@ -215,7 +215,7 @@ describe('AddAuthContainer', () => {
               update: jest.fn().mockReturnValue({
                 digest: jest.fn().mockReturnValue('hashedPassphrase'),
               }),
-            })
+            } as any)
 
             addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
           })
@@ -249,7 +249,7 @@ describe('AddAuthContainer', () => {
               update: jest.fn().mockReturnValue({
                 digest: jest.fn().mockReturnValue('hashedPassphrase'),
               }),
-            })
+            } as any)
 
             addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
           })
@@ -284,7 +284,7 @@ describe('AddAuthContainer', () => {
             update: jest.fn().mockReturnValue({
               digest: jest.fn().mockReturnValue('badHash'),
             }),
-          })
+          } as any)
           jest.spyOn(PublicKey.prototype, 'toString').mockReturnValueOnce('publicKey1')
 
           addAuthContainer.find(AddAuthView).prop('onAuthAdd')()
@@ -338,7 +338,7 @@ describe('AddAuthContainer', () => {
   it('maps authAdd prop to authAdd action', () => {
     const { onAuthAdd: dispatchAuthAdd } = mapDispatchToProps(dispatch)
 
-    jest.spyOn(authsActions, 'authAdd').mockReturnValue('auth add action')
+    jest.spyOn(authsActions, 'authAdd').mockReturnValue('auth add action' as any)
 
     dispatchAuthAdd('name', 'privateKey', 'blah')
     expect(dispatch).toHaveBeenCalledWith('auth add action')
