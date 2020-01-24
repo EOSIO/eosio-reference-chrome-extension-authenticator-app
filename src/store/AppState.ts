@@ -14,7 +14,7 @@ export type DelayedRemovable<T> = Extend<T, {
 }>
 
 export default interface AppState {
-  auths: AsyncState<Array<DelayedRemovable<Auth>>>
+  auths: AsyncState<DelayedRemovable<Auth>[]>
   dappInfo: AsyncState<DappInfo>
   global: AsyncState<null>
   insecureMode: AsyncState<InsecureMode>

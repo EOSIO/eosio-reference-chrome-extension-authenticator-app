@@ -20,7 +20,7 @@ import Auth from 'utils/Auth'
 interface Props extends RouteComponentProps {
   request: DappRequest
   passphraseHash: string
-  auths: Array<DelayedRemovable<Auth>>
+  auths: DelayedRemovable<Auth>[]
   authDelayedRemove: (publicKey: string) => void
 }
 

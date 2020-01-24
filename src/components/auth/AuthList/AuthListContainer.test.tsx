@@ -13,7 +13,7 @@ import { DelayedRemovable } from 'store/AppState'
 
 describe('AuthListContainer', () => {
   let authListContainer: ShallowWrapper
-  let auths: Array<DelayedRemovable<Auth>>
+  let auths: DelayedRemovable<Auth>[]
   let onAuthRemoveUndo: jest.Mock
   let history: any
   let dispatch: jest.Mock
