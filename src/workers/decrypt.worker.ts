@@ -5,7 +5,7 @@ export interface DecryptMessage {
   passphrase: string
 }
 
-const worker: Worker = self as any
+const worker: Worker = window.self as any
 
 worker.addEventListener('message', (event) => {
   const request = event.data as DecryptMessage
