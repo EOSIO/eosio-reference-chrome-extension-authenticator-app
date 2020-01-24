@@ -22,19 +22,9 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.tsx?$/,
-        loader: "ts-loader",
-      },
-      {
-        test: /\.js$/,
+        test: /\.(js(x?)|ts(x?))$/,
         exclude: /node_modules/,
-        use: [{
-          loader: "babel-loader",
-          options: {
-            presets: ["env", "react", "stage-3"],
-            plugins: ["transform-class-properties"],
-          },
-        }],
+        loader: "babel-loader"
       },
     ],
   },

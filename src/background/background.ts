@@ -1,5 +1,6 @@
 /* global chrome */
-import 'babel-polyfill'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import {
   SignatureProviderRequestEnvelope,
 } from 'eosjs-signature-provider-interface'
