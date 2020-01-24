@@ -12,8 +12,6 @@ declare module "*.gif" {
   export default content
 }
 
-declare module "eosjs-ecc"
-
 declare module "bip38"
 declare module "wif"
 

@@ -2,12 +2,11 @@ import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { sha256 } from 'hash.js'
-import { isValidPrivate, privateToPublic } from 'eosjs-ecc'
 
 import AddAuthView from 'components/auth/AddAuth/AddAuthView'
 import { AddAuthFormInputs } from 'components/auth/AddAuth/AddAuthView'
 import { Dispatch } from 'store/storeHelpers'
-import { authAdd } from 'store/auths/authsActions'
+import { authAdd, recoverPublicKey } from 'store/auths/authsActions'
 import AppState from 'store/AppState'
 import Auth from 'utils/Auth'
 
@@ -80,12 +79,14 @@ export class AddAuthContainer extends React.Component<Props, State> {
     let nicknameError = ''
     let passphraseError = ''
 
-    if (!isValidPrivate(privateKey)) {
-      privateKeyError = ERROR_MESSAGES.INVALID_PRIVATE_KEY
-    }
+    try {
+      const publicKey = recoverPublicKey(privateKey)
 
-    if (!privateKeyError && this.auths.find((auth) => auth.publicKey === privateToPublic(privateKey))) {
-      privateKeyError = ERROR_MESSAGES.DUPLICATE_PRIVATE_KEY
+      if (this.auths.find((auth) => auth.publicKey === publicKey)) {
+        privateKeyError = ERROR_MESSAGES.DUPLICATE_PRIVATE_KEY
+      }
+    } catch (e) {
+      privateKeyError = ERROR_MESSAGES.INVALID_PRIVATE_KEY
     }
 
     if (sha256().update(passphrase).digest('hex') !== this.props.passphraseHash) {

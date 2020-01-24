@@ -1,4 +1,4 @@
-import { Api as EosApi, JsonRpc, RpcInterfaces, Serialize } from 'eosjs'
+import { Api as EosApi, RpcInterfaces, Serialize } from 'eosjs'
 import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig'
 import {
   HexAbi,
@@ -11,13 +11,11 @@ import AuthorityProvider from 'eos/AuthorityProvider'
 import { TransactionInfo, AbiInfo } from 'eos/Transaction'
 
 export default class Api {
-  private rpc: JsonRpc
   private abiProvider: AbiProvider
   private authorityProvider: AuthorityProvider
   private chainId: string
 
   constructor(abis: HexAbi[], publicKeys: string[], chainId: string) {
-    this.rpc = new JsonRpc(null) // provide null chainURL to ensure vault isn't reaching out to chain for info
     this.abiProvider = new AbiProvider(abis)
     this.authorityProvider = new AuthorityProvider(publicKeys)
     this.chainId = chainId
@@ -32,7 +30,7 @@ export default class Api {
   public async signTx(transaction: TransactionInfo, privateKeys: string[]): Promise<SignedTransaction> {
     const signatureProvider = new JsSignatureProvider(privateKeys)
     const api = new EosApi({
-      rpc: this.rpc,
+      rpc: null,
       signatureProvider,
       chainId: this.chainId,
       abiProvider: this.abiProvider,
@@ -55,7 +53,7 @@ export default class Api {
   public async deserialize(transactionHex: string): Promise<TransactionInfo> {
     const signatureProvider = new JsSignatureProvider([])
     const api = new EosApi({
-      rpc: this.rpc,
+      rpc: null,
       signatureProvider,
       chainId: this.chainId,
       abiProvider: this.abiProvider,
@@ -71,9 +69,9 @@ export default class Api {
   public decodeAbis(abis: HexAbi[]): AbiInfo[] {
     const signatureProvider = new JsSignatureProvider([])
     const api = new EosApi({
-      rpc: this.rpc,
+      rpc: null,
       signatureProvider,
-      chainId: null,
+      chainId: this.chainId,
       abiProvider: this.abiProvider,
     })
     return abis.map(({ abi, ...rest }) => {

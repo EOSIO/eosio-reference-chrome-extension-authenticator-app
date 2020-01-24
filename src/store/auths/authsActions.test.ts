@@ -1,7 +1,6 @@
 import * as authStorageMocks from 'utils/storage/__mocks__/AuthStorage.mock'
 import * as encrypter from 'utils/__mocks__/encrypter.mock'
 
-import * as ecc from 'eosjs-ecc'
 import * as hashjs from 'hash.js'
 
 import * as actions from 'store/auths/authsActions'
@@ -15,9 +14,23 @@ describe('Auths Actions', () => {
   let getState: jest.Mock
   let auth1: DelayedRemovable<Auth>
   let auth2: DelayedRemovable<Auth>
+  let privateKeys: string[]
+  let publicKeys: string[]
 
   beforeEach(() => {
     jest.clearAllMocks()
+
+    privateKeys = [
+      '5Juww5SS6aLWxopXBAWzwqrwadiZKz7XpKAiktXTKcfBGi1DWg8',
+      '5JnHjSFwe4r7xyqAUAaVs51G7HmzE86DWGa3VAA5VvQriGYnSUr',
+      '5K4XZH5XR2By7Q5KTcZnPAmUMU5yjUNBdoKzzXyrLfmiEZJqoKE',
+    ]
+
+    publicKeys = [
+      'PUB_K1_7tgwU6E7pAUQJgqEJt66Yi8cWvanTUW8ZfBjeXeJBQvhYTBFvY',
+      'PUB_K1_8VaY5CiTexYqgQZyPTJkc3qvWuZUi12QrZL9ssjqW2es7e7bRJ',
+      'PUB_K1_7VGhqctkKprW1VUj19DZZiiZLX3YcJqUJCuEcahJmUCw9RT8v2',
+    ]
 
     global.setTimeout = jest.fn((callback) => {
       callback()
@@ -25,32 +38,20 @@ describe('Auths Actions', () => {
     })
     global.clearTimeout = jest.fn()
 
-    jest.spyOn(ecc, 'privateToPublic').mockImplementation((privateKey: string) => {
-      if (privateKey.toLowerCase() === 'privatekey1') {
-        return 'publicKey1'
-      }
-
-      if (privateKey.toLowerCase() === 'privatekey2') {
-        return 'publicKey2'
-      }
-
-      return null
-    })
-
-    encrypter.encrypt.mockImplementation((privateKey, passphrase) => (`encrypted${privateKey}`))
+    encrypter.encrypt.mockImplementation((privateKey, passphrase) => (`${privateKey}`))
 
     dispatch = jest.fn()
     getState = jest.fn()
 
     auth1 = {
-      encryptedPrivateKey: 'encryptedPrivateKey1',
-      publicKey: 'publicKey1',
+      encryptedPrivateKey: privateKeys[0],
+      publicKey: publicKeys[0],
       nickname: 'name1',
     }
 
     auth2 = {
-      encryptedPrivateKey: 'encryptedPrivateKey2',
-      publicKey: 'publicKey2',
+      encryptedPrivateKey: privateKeys[1],
+      publicKey: publicKeys[1],
       nickname: 'name2',
     }
 
@@ -97,18 +98,17 @@ describe('Auths Actions', () => {
     })
 
     it('starts auth add', async () => {
-      await actions.authAdd('name2', 'PrivateKey2', 'passphrase')(dispatch, getState)
+      await actions.authAdd('name2', privateKeys[1], 'passphrase')(dispatch, getState)
       expect(dispatch).toHaveBeenCalledWith(actions.authsModifyAsync.start())
     })
 
     it('encrypts the auth private key', async () => {
-      jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(true)
-      await actions.authAdd('name2', 'PrivateKey2', 'passphrase')(dispatch, getState)
-      expect(encrypter.encrypt).toHaveBeenCalledWith('PrivateKey2', 'passphrase')
+      await actions.authAdd('name2', privateKeys[1], 'passphrase')(dispatch, getState)
+      expect(encrypter.encrypt).toHaveBeenCalledWith(privateKeys[1], 'passphrase')
     })
 
     it('succeeds with added auth if there is already an auth', async () => {
-      await actions.authAdd('name2', 'PrivateKey2', 'passphrase')(dispatch, getState)
+      await actions.authAdd('name2', privateKeys[1], 'passphrase')(dispatch, getState)
 
       expect(authStorageMocks.set).toHaveBeenCalledWith([
         auth1,
@@ -130,9 +130,8 @@ describe('Auths Actions', () => {
           data: 'passphraseHash',
         },
       })
-      jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(true)
 
-      await actions.authAdd('name2', 'PrivateKey2', 'passphrase')(dispatch, getState)
+      await actions.authAdd('name2', privateKeys[1], 'passphrase')(dispatch, getState)
       expect(authStorageMocks.set).toHaveBeenCalledWith([
         auth2,
       ])
@@ -150,9 +149,8 @@ describe('Auths Actions', () => {
           data: 'passphraseHash',
         },
       })
-      jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(true)
 
-      await actions.authAdd('name2', 'PrivateKey2', 'passphrase')(dispatch, getState)
+      await actions.authAdd('name2', privateKeys[1], 'passphrase')(dispatch, getState)
       expect(authStorageMocks.set).toHaveBeenCalledWith([
         auth2,
       ])
@@ -165,15 +163,14 @@ describe('Auths Actions', () => {
     it('dispatches error when duplicate key name is added error', async () => {
       const error = new Error('Key name already exists')
       authStorageMocks.set.mockRejectedValue(error)
-      await actions.authAdd('name1', 'PrivateKey1', 'blah')(dispatch, getState)
+      await actions.authAdd('name1', privateKeys[0], 'blah')(dispatch, getState)
       expect(dispatch).toHaveBeenCalledWith(actions.authsModifyAsync.error(error))
       expect(dispatch).not.toHaveBeenCalledWith(actions.authsModifyAsync.success())
     })
 
     it('dispatches invalid key error if the private key is invalid', async () => {
       const error = new Error('Invalid private key')
-      jest.spyOn(ecc, 'isValidPrivate').mockReturnValue(false)
-      await actions.authAdd('name1', 'PrivateKey1', 'blah')(dispatch, getState)
+      await actions.authAdd('name1', 'privateKey', 'blah')(dispatch, getState)
       expect(dispatch).toHaveBeenCalledWith(actions.authsModifyAsync.error(error))
       expect(dispatch).not.toHaveBeenCalledWith(actions.authsModifyAsync.success())
     })
@@ -187,7 +184,7 @@ describe('Auths Actions', () => {
 
       const error = new Error('Invalid Passphrase')
       authStorageMocks.set.mockRejectedValue(error)
-      await actions.authAdd('name2', 'PrivatKey2', 'something')(dispatch, getState)
+      await actions.authAdd('name2', privateKeys[1], 'something')(dispatch, getState)
       expect(dispatch).toHaveBeenCalledWith(actions.authsModifyAsync.error(error))
       expect(dispatch).not.toHaveBeenCalledWith(actions.authsModifyAsync.success())
     })
@@ -256,12 +253,12 @@ describe('Auths Actions', () => {
     })
 
     it('starts auth remove', async () => {
-      await actions.authRemove('publicKey')(dispatch, getState)
+      await actions.authRemove(publicKeys[0])(dispatch, getState)
       expect(dispatch).toHaveBeenCalledWith(actions.authsModifyAsync.start())
     })
 
     it('succeeds with removed auth if auth found', async () => {
-      await actions.authRemove('publicKey1')(dispatch, getState)
+      await actions.authRemove(publicKeys[0])(dispatch, getState)
 
       expect(authStorageMocks.set).toHaveBeenCalledWith([
         auth2,
@@ -286,7 +283,7 @@ describe('Auths Actions', () => {
     it('dispatches error on storage error', async () => {
       const error = new Error()
       authStorageMocks.set.mockRejectedValue(error)
-      await actions.authRemove('publicKey1')(dispatch, getState)
+      await actions.authRemove(publicKeys[0])(dispatch, getState)
       expect(dispatch).toHaveBeenCalledWith(actions.authsModifyAsync.error(error))
       expect(dispatch).not.toHaveBeenCalledWith(actions.authsModifyAsync.success())
     })
@@ -309,28 +306,28 @@ describe('Auths Actions', () => {
 
     afterEach(() => {
       // Clears up timeouts
-      actions.authDelayedRemoveUndo('publicKey1')(dispatch)
-      actions.authDelayedRemoveUndo('publicKey2')(dispatch)
+      actions.authDelayedRemoveUndo(publicKeys[0])(dispatch)
+      actions.authDelayedRemoveUndo(publicKeys[1])(dispatch)
     })
 
     it('dispatches authsRemoving action', async () => {
-      await actions.authDelayedRemove('publicKey1')(dispatch, getState)
-      expect(dispatch).toHaveBeenCalledWith(actions.authMarkForRemoval('publicKey1', true))
+      await actions.authDelayedRemove(publicKeys[0])(dispatch, getState)
+      expect(dispatch).toHaveBeenCalledWith(actions.authMarkForRemoval(publicKeys[0], true))
     })
 
     it('dispatches authRemove action after a timeout', async () => {
       auth1.removing = true
-      await actions.authDelayedRemove('publicKey1')(dispatch, getState)
-      expect(authRemoveSpy).toHaveBeenCalledWith('publicKey1')
+      await actions.authDelayedRemove(publicKeys[0])(dispatch, getState)
+      expect(authRemoveSpy).toHaveBeenCalledWith(publicKeys[0])
     })
 
     describe('if the auth is already marked for removal', () => {
       beforeEach(async () => {
-        await actions.authDelayedRemove('publicKey3')(dispatch, getState)
+        await actions.authDelayedRemove(publicKeys[2])(dispatch, getState)
       })
 
       it('does not set timeout to remove twice', async () => {
-        await actions.authDelayedRemove('publicKey3')(dispatch, getState)
+        await actions.authDelayedRemove(publicKeys[2])(dispatch, getState)
 
         expect(authRemovingSpy).toHaveBeenCalledTimes(1)
       })
@@ -347,16 +344,43 @@ describe('Auths Actions', () => {
     })
 
     it('dispatches authsRemoving action', async () => {
-      await actions.authDelayedRemoveUndo('publicKey1')(dispatch)
-      expect(dispatch).toHaveBeenCalledWith(actions.authMarkForRemoval('publicKey1', false))
+      await actions.authDelayedRemoveUndo(publicKeys[0])(dispatch)
+      expect(dispatch).toHaveBeenCalledWith(actions.authMarkForRemoval(publicKeys[0], false))
     })
 
     it('stops timeout to undo the removal', async () => {
-      await actions.authDelayedRemove('publicKey')(dispatch, getState)
+      await actions.authDelayedRemove(publicKeys[0])(dispatch, getState)
       expect(setTimeout).toHaveBeenCalledTimes(1)
 
-      await actions.authDelayedRemoveUndo('publicKey')(dispatch)
+      await actions.authDelayedRemoveUndo(publicKeys[0])(dispatch)
       expect(clearTimeout).toHaveBeenCalledWith('timeoutId')
+    })
+  })
+
+  describe('recoverPublicKey', () => {
+    it('should throw if invalid private key', () => {
+      const invalidPrivateKey = 'invalidPrivateKey'
+
+      expect(() => {
+        actions.recoverPublicKey(invalidPrivateKey)
+      }).toThrow()
+    })
+
+    it('should not throw if valid private key', () => {
+      const validPrivateKey = privateKeys[0]
+
+      expect(() => {
+        actions.recoverPublicKey(validPrivateKey)
+      }).not.toThrow()
+    })
+
+    it('should recover correct public key', () => {
+      const validPrivateKey = privateKeys[0]
+      const expectedPublicKey = publicKeys[0]
+
+      const result = actions.recoverPublicKey(validPrivateKey)
+
+      expect(result).toBe(expectedPublicKey)
     })
   })
 })
