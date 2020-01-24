@@ -360,28 +360,25 @@ describe('Auths Actions', () => {
   describe('recoverPublicKey', () => {
     it('should throw if invalid private key', () => {
       const invalidPrivateKey = 'invalidPrivateKey'
-      const data = 'someData'
 
       expect(() => {
-        actions.recoverPublicKey(invalidPrivateKey, data)
+        actions.recoverPublicKey(invalidPrivateKey)
       }).toThrow()
     })
 
     it('should not throw if valid private key', () => {
       const validPrivateKey = privateKeys[0]
-      const data = 'someData'
 
       expect(() => {
-        actions.recoverPublicKey(validPrivateKey, data)
+        actions.recoverPublicKey(validPrivateKey)
       }).not.toThrow()
     })
 
     it('should recover correct public key', () => {
       const validPrivateKey = privateKeys[0]
-      const data = 'someData'
       const expectedPublicKey = publicKeys[0]
 
-      const result = actions.recoverPublicKey(validPrivateKey, data)
+      const result = actions.recoverPublicKey(validPrivateKey)
 
       expect(result).toBe(expectedPublicKey)
     })

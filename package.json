@@ -23,7 +23,7 @@
     "bs58": "4.0.1",
     "classnames": "2.2.6",
     "elliptic": "6.5.2",
-    "eosjs": "20.0.4-e2c667e.0",
+    "eosjs": "21.0.0-131a987.0",
     "eosjs-signature-provider-interface": "0.1.2",
     "hash.js": "1.1.5",
     "lodash": "4.17.15",

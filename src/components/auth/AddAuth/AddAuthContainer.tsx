@@ -80,7 +80,7 @@ export class AddAuthContainer extends React.Component<Props, State> {
     let passphraseError = ''
 
     try {
-      const publicKey = recoverPublicKey(privateKey, passphrase)
+      const publicKey = recoverPublicKey(privateKey)
 
       if (this.auths.find((auth) => auth.publicKey === publicKey)) {
         privateKeyError = ERROR_MESSAGES.DUPLICATE_PRIVATE_KEY

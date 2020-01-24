@@ -85,7 +85,7 @@ export const authAdd = (nickname: string, privateKey: string, passphrase: string
       }
 
       try {
-        publicKey = recoverPublicKey(privateKey, passphrase)
+        publicKey = recoverPublicKey(privateKey)
       } catch (e) {
         throw new Error('Invalid private key')
       }
@@ -110,17 +110,9 @@ export const authAdd = (nickname: string, privateKey: string, passphrase: string
     }
   }
 
-export const recoverPublicKey = (privateKey: string, data: string) => {
-  const ellipticHashedData = ec.hash().update(data).digest()
-  const privateKeyElliptic = PrivateKey.fromString(privateKey).toElliptic(ec)
-  const ellipticSig = privateKeyElliptic.sign(ellipticHashedData)
-  const recoveredPublicKey = ec.recoverPubKey(
-            ellipticHashedData,
-            ellipticSig,
-            ellipticSig.recoveryParam
-        )
-  const ellipticKPub = ec.keyFromPublic(recoveredPublicKey)
-  return PublicKey.fromElliptic(ellipticKPub).toString()
+export const recoverPublicKey = (privateKey: string) => {
+  const priv = PrivateKey.fromString(privateKey)
+  return priv.getPublicKey().toString()
 }
 
 export const authUpdate = (currentNickname: string, newNickname: string) =>
