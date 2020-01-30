@@ -1,6 +1,7 @@
 {
   "extends": [
-    "@blockone/tslint-config-blockone/tslint-config"
+    "tslint:recommended",
+    "tslint-eslint-rules"
   ],
   "linterOptions": {
     "exclude": [
@@ -12,16 +13,21 @@
     "semicolon": [true, "never"]
   },
   "rules": {
+    "object-literal-sort-keys": false,
     "interface-name": [true, "never-prefix"],
+    "semicolon": [true, "never"],
+    "ter-indent": [true, 2],
+    "trailing-comma": [true, { "esSpecCompliant": true }],
+    "quotemark": [true, "single"],
+    "member-ordering": [false],
+    "ordered-imports": false,
+    "no-non-null-assertion": true,
     "jsx-no-lambda": false,
     "no-console": [
       "error",
       { "allow": ["info", "warn", "error"] }
     ],
-    "object-literal-sort-keys": false,
-    "ordered-imports": false,
     "no-floating-promises": false,
-    "semicolon": [true, "never"],
     "variable-name": [true, "ban-keywords"]
   }
 }

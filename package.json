@@ -22,7 +22,7 @@
     "bip38": "^2.0.2",
     "bs58": "^4.0.1",
     "classnames": "^2.2.6",
-    "eosjs": "^20.0.0",
+    "eosjs": "file:../eosjs",
     "eosjs-ecc": "^4.0.2",
     "eosjs-signature-provider-interface": "^0.1.1",
     "hash.js": "1.1.5",
@@ -60,6 +60,9 @@
     "@types/sinon-chrome": "^2.2.6",
     "@types/text-encoding": "^0.0.35",
     "@types/uuid": "^3.4.4",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
     "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-react": "^6.24.1",
@@ -91,7 +94,8 @@
     "worker-loader": "^2.0.0"
   },
   "resolutions": {
-    "@types/sinon": "5.0.2"
+    "@types/sinon": "5.0.2",
+    "eosjs": "file:../eosjs"
   },
   "scripts": {
     "build": "npm-run-all -p build-css build-js build-scripts",
@@ -104,7 +108,7 @@
     "test-coverage": "react-scripts-ts test --coverage --env=jsdom --no-cache",
     "test-ratchet": "jest-coverage-ratchet",
     "eject": "react-scripts-ts eject",
-    "lint": "tslint \"src/**/*.ts{,?}\""
+    "lint": "eslint \"src/**/*.ts{,?}\""
   },
   "jest": {
     "collectCoverageFrom": [
