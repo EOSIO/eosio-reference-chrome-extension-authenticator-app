@@ -48,25 +48,7 @@ module.exports = {
         "@typescript-eslint/consistent-type-definitions": "error",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/explicit-member-accessibility": "off",
-        "@typescript-eslint/indent": [
-            "error",
-            2,
-            {
-                "VariableDeclarator": 2,
-                "SwitchCase": 0,
-                "FunctionDeclaration": {
-                    "parameters": "off"
-                },
-                "FunctionExpression": {
-                    "parameters": "off"
-                },
-                "CallExpression": {
-                    "arguments": "off"
-                },
-                "ArrayExpression": "off",
-                "ObjectExpression": "off"
-            }
-        ],
+        "@typescript-eslint/indent": "off",
         "@typescript-eslint/interface-name-prefix": "error",
         "@typescript-eslint/member-delimiter-style": "off",
         "@typescript-eslint/member-ordering": "off",
@@ -124,10 +106,9 @@ module.exports = {
         "no-caller": "error",
         "no-cond-assign": "error",
         "no-console": [
-            "off",
+            "error",
             {
                 "allow": [
-                    "log",
                     "debug",
                     "info",
                     "dirxml",
@@ -198,34 +179,8 @@ module.exports = {
             }
         ],
         "spaced-comment": "error",
+        "ter-indent": [true, 2],
         "use-isnan": "error",
-        "valid-typeof": "off",
-        "@typescript-eslint/tslint/config": [
-            "error",
-            {
-                "rules": {
-                    "import-spacing": true,
-                    "jsdoc-format": true,
-                    "no-reference-import": true,
-                    "one-line": [
-                        true,
-                        "check-catch",
-                        "check-else",
-                        "check-finally",
-                        "check-open-brace",
-                        "check-whitespace"
-                    ],
-                    "whitespace": [
-                        true,
-                        "check-branch",
-                        "check-decl",
-                        "check-operator",
-                        "check-separator",
-                        "check-type",
-                        "check-typecast"
-                    ]
-                }
-            }
-        ]
+        "valid-typeof": "off"
     }
 };
