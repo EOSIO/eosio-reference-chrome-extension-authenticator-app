@@ -157,7 +157,7 @@
                         "check-open-brace",
                         "check-whitespace"
                     ],
-                    "ter-indent": [
+                    "indent": [
                         true,
                         2
                     ],
