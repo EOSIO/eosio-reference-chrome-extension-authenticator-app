@@ -41,7 +41,7 @@
     "wif": "^2.0.6"
   },
   "devDependencies": {
-    "@blockone/tslint-config-blockone": "^4.0.1",
+    "@blockone/tslint-config-blockone": "file:../tslint-config-blockone",
     "@types/bs58": "^4.0.0",
     "@types/chrome": "^0.0.74",
     "@types/classnames": "^2.2.7",
@@ -69,12 +69,8 @@
     "babel-preset-stage-3": "^6.24.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
-    "eslint": "^5.1.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-loader": "2.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "6.1.1",
-    "eslint-plugin-react": "^7.10.0",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
     "gulp": "^3.9.1",
     "gulp-crx-pack": "^1.0.2",
     "gulp-git": "^2.8.0",
@@ -89,7 +85,6 @@
     "sinon-chrome": "^2.3.2",
     "text-encoding": "^0.7.0",
     "ts-loader": "^3.5.0",
-    "tslint-eslint-rules": "^5.3.1",
     "typescript": "^3.3.3333",
     "worker-loader": "^2.0.0"
   },
