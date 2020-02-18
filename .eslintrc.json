@@ -2,7 +2,11 @@
   "extends": [
     "@blockone/blockone"
   ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "rules": {
+    "@typescript-eslint/no-floating-promises": "off",
     "interface-name": [true, "never-prefix"],
     "jsx-no-lambda": false,
     "no-console": [
@@ -11,7 +15,6 @@
     ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "no-floating-promises": false,
     "semicolon": [true, "never"],
     "variable-name": [true, "ban-keywords"]
   }
