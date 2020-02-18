@@ -7,15 +7,9 @@
   },
   "rules": {
     "@typescript-eslint/no-floating-promises": "off",
-    "interface-name": [true, "never-prefix"],
-    "jsx-no-lambda": false,
     "no-console": [
       "error",
       { "allow": ["info", "warn", "error"] }
-    ],
-    "object-literal-sort-keys": false,
-    "ordered-imports": false,
-    "semicolon": [true, "never"],
-    "variable-name": [true, "ban-keywords"]
+    ]
   }
 }
