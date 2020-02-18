@@ -1,177 +1,27 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": [
-        "plugin:@typescript-eslint/recommended"
+  "extends": [
+    "@blockone/tslint-config-blockone/.eslintrc"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**/*.ts"
+    ]
+  },
+  "jsRules": {
+    "object-literal-sort-keys": false,
+    "semicolon": [true, "never"]
+  },
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "jsx-no-lambda": false,
+    "no-console": [
+      "error",
+      { "allow": ["info", "warn", "error"] }
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": "tsconfig.json",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "@typescript-eslint/tslint"
-    ],
-    "rules": {
-        "@typescript-eslint/array-type": "off",
-        "@typescript-eslint/camelcase": "off",
-        "@typescript-eslint/consistent-type-definitions": "error",
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/explicit-member-accessibility": "off",
-        "@typescript-eslint/member-delimiter-style": "off",
-        "@typescript-eslint/member-ordering": "off",
-        "@typescript-eslint/no-empty-interface": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-floating-promises": "error",
-        "@typescript-eslint/no-inferrable-types": "off",
-        "@typescript-eslint/no-non-null-assertion": "error",
-        "@typescript-eslint/no-parameter-properties": "off",
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-use-before-define": "off",
-        "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/prefer-for-of": "error",
-        "@typescript-eslint/prefer-function-type": "error",
-        "@typescript-eslint/quotes": "off",
-        "@typescript-eslint/require-await": "off",
-        "@typescript-eslint/semi": [
-            "error",
-            "never"
-        ],
-        "@typescript-eslint/unified-signatures": "error",
-        "comma-dangle": ["error", {
-            "arrays": "only-multiline",
-            "objects": "only-multiline",
-            "imports": "only-multiline",
-            "exports": "only-multiline",
-            "functions": "only-multiline"
-        }],
-        "complexity": "off",
-        "constructor-super": "error",
-        "curly": "error",
-        "dot-notation": "off",
-        "eol-last": "error",
-        "eqeqeq": [
-            "error",
-            "smart"
-        ],
-        "guard-for-in": "error",
-        "id-match": "error",
-        "import/order": "off",
-        "max-classes-per-file": "off",
-        "max-len": "off",
-        "new-parens": "error",
-        "no-bitwise": "error",
-        "no-caller": "error",
-        "no-cond-assign": "error",
-        "no-console": [
-            "error",
-            {
-                "allow": [
-                    "debug",
-                    "info",
-                    "dirxml",
-                    "warn",
-                    "error",
-                    "dir",
-                    "time",
-                    "timeEnd",
-                    "timeLog",
-                    "trace",
-                    "assert",
-                    "clear",
-                    "count",
-                    "countReset",
-                    "group",
-                    "groupCollapsed",
-                    "groupEnd",
-                    "table",
-                    "Console",
-                    "markTimeline",
-                    "profile",
-                    "profileEnd",
-                    "timeline",
-                    "timelineEnd",
-                    "timeStamp",
-                    "context"
-                ]
-            }
-        ],
-        "no-debugger": "error",
-        "no-empty": "error",
-        "no-eval": "error",
-        "no-fallthrough": "off",
-        "no-invalid-this": "off",
-        "no-multiple-empty-lines": "error",
-        "no-new-wrappers": "error",
-        "no-shadow": [
-            "error",
-            {
-                "hoist": "all"
-            }
-        ],
-        "no-throw-literal": "error",
-        "no-trailing-spaces": "error",
-        "no-undef-init": "error",
-        "no-underscore-dangle": "error",
-        "no-unsafe-finally": "error",
-        "no-unused-expressions": "off",
-        "no-unused-labels": "error",
-        "no-var": "off",
-        "object-shorthand": "error",
-        "one-var": [
-            "error",
-            "never"
-        ],
-        "quote-props": [
-            "error",
-            "consistent-as-needed"
-        ],
-        "radix": "error",
-        "space-before-function-paren": [
-            "error",
-            {
-                "anonymous": "never",
-                "asyncArrow": "always",
-                "named": "never"
-            }
-        ],
-        "spaced-comment": "error",
-        "use-isnan": "error",
-        "valid-typeof": "off",
-        "@typescript-eslint/tslint/config": [
-            "error",
-            {
-                "rules": {
-                    "import-spacing": true,
-                    "jsdoc-format": true,
-                    "no-reference-import": true,
-                    "one-line": [
-                        true,
-                        "check-catch",
-                        "check-else",
-                        "check-finally",
-                        "check-open-brace",
-                        "check-whitespace"
-                    ],
-                    "indent": [
-                        true,
-                        2
-                    ],
-                    "whitespace": [
-                        true,
-                        "check-branch",
-                        "check-decl",
-                        "check-operator",
-                        "check-separator",
-                        "check-type",
-                        "check-typecast"
-                    ]
-                }
-            }
-        ]
-    }
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "no-floating-promises": false,
+    "semicolon": [true, "never"],
+    "variable-name": [true, "ban-keywords"]
+  }
 }
