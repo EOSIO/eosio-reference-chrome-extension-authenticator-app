@@ -41,7 +41,7 @@
     "wif": "^2.0.6"
   },
   "devDependencies": {
-    "@blockone/tslint-config-blockone": "file:../tslint-config-blockone",
+    "@blockone/eslint-config-blockone": "file:../tslint-config-blockone",
     "@types/bs58": "^4.0.0",
     "@types/chrome": "^0.0.74",
     "@types/classnames": "^2.2.7",
@@ -69,7 +69,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
-    "eslint": "^6.8.0",
+    "eslint": "5.16.0",
     "eslint-loader": "^3.0.3",
     "gulp": "^3.9.1",
     "gulp-crx-pack": "^1.0.2",

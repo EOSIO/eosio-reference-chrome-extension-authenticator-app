@@ -1,16 +1,7 @@
 {
   "extends": [
-    "@blockone/tslint-config-blockone/.eslintrc"
+    "@blockone/blockone"
   ],
-  "linterOptions": {
-    "exclude": [
-      "node_modules/**/*.ts"
-    ]
-  },
-  "jsRules": {
-    "object-literal-sort-keys": false,
-    "semicolon": [true, "never"]
-  },
   "rules": {
     "interface-name": [true, "never-prefix"],
     "jsx-no-lambda": false,
