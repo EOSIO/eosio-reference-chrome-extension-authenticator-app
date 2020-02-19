@@ -1,15 +1,6 @@
 {
-  "extends": [
-    "@blockone/blockone"
-  ],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
+  "extends": "@blockone/blockone",
   "rules": {
-    "@typescript-eslint/no-floating-promises": "off",
-    "no-console": [
-      "error",
-      { "allow": ["info", "warn", "error"] }
-    ]
+    "@typescript-eslint/no-floating-promises": "off"
   }
 }
