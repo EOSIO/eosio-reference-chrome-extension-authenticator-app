@@ -1,6 +1,6 @@
 import * as encryption from "./encryption"
-import bip38 from "bip38"
-import wif from "wif"
+import * as bip38 from 'bip38'
+import * as wif from 'wif'
 
 describe("encryption", () => {
   describe("encrypt", () => {
