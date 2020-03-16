@@ -284,7 +284,7 @@ describe('ManifestProvider', () => {
         await manifestProvider.getAppMetadataInfo()
 
         expect(windowFetchMock)
-          .toHaveBeenCalledWith(`http://domain.one/app-metadata.json#SHA256Hash`, expect.any(Object))
+          .toHaveBeenCalledWith('http://domain.one/app-metadata.json#SHA256Hash', expect.any(Object))
       })
 
       it('fails if there are no chain manifests', async (done) => {

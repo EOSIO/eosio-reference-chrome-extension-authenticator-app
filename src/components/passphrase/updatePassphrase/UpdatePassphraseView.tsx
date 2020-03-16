@@ -26,20 +26,20 @@ export const UpdatePassphraseView: React.SFC<Props> = ({
   resetForm,
   error,
 }) => (
-    <React.Fragment>
-      <h2 className='update-passphrase-title'>Update Passphrase</h2>
-      <UpdatePassphraseForm
-        currentPassphrase={currentPassphrase}
-        newPassphrase={newPassphrase}
-        confirmPassphrase={confirmPassphrase}
-        onFormSubmit={onFormSubmit}
-        onFormInputChange={onFormInputChange}
-        resetForm={resetForm}
-        passphraseRequirements={passphraseRequirements}
-        error={error}
-      />
-    </React.Fragment >
-  )
+  <React.Fragment>
+    <h2 className='update-passphrase-title'>Update Passphrase</h2>
+    <UpdatePassphraseForm
+      currentPassphrase={currentPassphrase}
+      newPassphrase={newPassphrase}
+      confirmPassphrase={confirmPassphrase}
+      onFormSubmit={onFormSubmit}
+      onFormInputChange={onFormInputChange}
+      resetForm={resetForm}
+      passphraseRequirements={passphraseRequirements}
+      error={error}
+    />
+  </React.Fragment >
+)
 
 UpdatePassphraseView.displayName = 'UpdatePassphraseView'
 

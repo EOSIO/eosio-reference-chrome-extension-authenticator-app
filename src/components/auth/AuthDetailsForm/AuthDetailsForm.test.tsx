@@ -7,7 +7,7 @@ import FloatingInput from 'components/shared/input/FloatingInput'
 import { DEBOUNCE_DELAY } from 'constants/windowManager'
 import { NICKNAME_ERRORS } from 'components/auth/AuthDetailsForm/AuthDetailsForm'
 
-declare var global: any
+declare let global: any
 
 describe('AuthDetailsForm', () => {
   let inputForm: ReactWrapper

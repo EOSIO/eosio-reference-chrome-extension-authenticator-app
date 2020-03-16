@@ -7,7 +7,7 @@ import { MemoryRouter as Router, Route } from 'react-router-dom'
 import { NavBar, ButtonProps, settingsButton, ButtonAction } from 'components/navigation/NavBar'
 import RoutePath from 'constants/routePath'
 
-declare var global: any
+declare let global: any
 
 describe('NavBar', () => {
   let navBar: ShallowWrapper

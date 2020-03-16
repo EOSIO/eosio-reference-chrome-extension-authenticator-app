@@ -10,7 +10,7 @@ import { DelayedRemovable } from 'store/AppState'
 
 describe('AuthListView', () => {
   let authListView: ShallowWrapper
-  let auths: Array<DelayedRemovable<Auth>>
+  let auths: DelayedRemovable<Auth>[]
   let onAddAuth: jest.Mock
   let onAuthRemoveUndo: jest.Mock
 

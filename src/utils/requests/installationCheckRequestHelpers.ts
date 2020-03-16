@@ -15,7 +15,7 @@ export interface SignatureProviderRequestWithInstallationCheck extends Partial<I
 
 export interface SignatureProviderRequestEnvelopeWithInstallationCheck
   extends Pick<SignatureProviderRequestEnvelope,
-    Exclude<keyof SignatureProviderRequestEnvelope, 'request'>
+  Exclude<keyof SignatureProviderRequestEnvelope, 'request'>
   > {
   request: SignatureProviderRequest | SignatureProviderRequestWithInstallationCheck
 }
@@ -28,7 +28,7 @@ export interface SignatureProviderResponseWithInstallationCheck extends Partial<
 
 export interface SignatureProviderResponseEnvelopeWithInstallationCheck
   extends Pick<SignatureProviderResponseEnvelope,
-    Exclude<keyof SignatureProviderResponseEnvelope, 'response'>
+  Exclude<keyof SignatureProviderResponseEnvelope, 'response'>
   > {
   response: SignatureProviderResponse | SignatureProviderResponseWithInstallationCheck
 }

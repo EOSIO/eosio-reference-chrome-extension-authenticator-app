@@ -82,9 +82,9 @@ export const abis = [{
     actions: [{
       name: 'action1',
     },
-      {
-        name: 'action2',
-      }],
+    {
+      name: 'action2',
+    }],
   },
   account_name: 'account.one',
 }]

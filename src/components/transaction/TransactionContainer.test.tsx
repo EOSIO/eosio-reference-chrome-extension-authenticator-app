@@ -198,12 +198,12 @@ describe('TransactionContainer', () => {
       /* tslint:disable:no-string-literal */
       expect(transactionContainer.find(TransactionRoutes).props()).toEqual({
         ...state,
-        onTransactionSign: transactionContainer.instance()['onTransactionSign'],
-        onTransactionCancel: transactionContainer.instance()['onTransactionCancel'],
-        onTransactionError: transactionContainer.instance()['onTransactionError'],
-        onSetCanAccept: transactionContainer.instance()['onSetCanAccept'],
-        onConfirmPassphrase: transactionContainer.instance()['onConfirmPassphrase'],
-        onFailPassphrase: transactionContainer.instance()['onFailPassphrase'],
+        onTransactionSign: transactionContainer.instance().onTransactionSign,
+        onTransactionCancel: transactionContainer.instance().onTransactionCancel,
+        onTransactionError: transactionContainer.instance().onTransactionError,
+        onSetCanAccept: transactionContainer.instance().onSetCanAccept,
+        onConfirmPassphrase: transactionContainer.instance().onConfirmPassphrase,
+        onFailPassphrase: transactionContainer.instance().onFailPassphrase,
       })
       /* tslint:enable:no-string-literal */
     })

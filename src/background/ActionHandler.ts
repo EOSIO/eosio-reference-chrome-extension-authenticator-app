@@ -96,15 +96,15 @@ export default class ActionHandler {
     await this.dappInfoStorage.setDappInfo(dappInfo)
 
     switch (action) {
-    case EnvelopeDataType.TRANSACTION_SIGNATURE:
-      return this.onTransactionSignatureRequest(params)
-    case EnvelopeDataType.SELECTIVE_DISCLOSURE:
-      return this.onSelectiveDisclosure(params)
+      case EnvelopeDataType.TRANSACTION_SIGNATURE:
+        return this.onTransactionSignatureRequest(params)
+      case EnvelopeDataType.SELECTIVE_DISCLOSURE:
+        return this.onSelectiveDisclosure(params)
       // TODO: replace with EnvelopeDataType.INSTALLATION_CHECK_ACTION
-    case INSTALLATION_CHECK_ACTION:
-      return this.onInstallationCheck(params)
-    default:
-      return this.handleInVaultError({ port, error: ERROR_MESSAGES.INVALID_REQUEST_TYPE })
+      case INSTALLATION_CHECK_ACTION:
+        return this.onInstallationCheck(params)
+      default:
+        return this.handleInVaultError({ port, error: ERROR_MESSAGES.INVALID_REQUEST_TYPE })
     }
   }
 

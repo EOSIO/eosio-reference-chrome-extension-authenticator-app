@@ -25,20 +25,20 @@ export const createErrorResponseEnvelope = (
   dataType = dataType ? dataType : checkIfInstallationType(envelope)
 
   switch (dataType) {
-  case EnvelopeDataType.TRANSACTION_SIGNATURE:
-    return createTransactionSignatureResponseEnvelope(id, {
-      signatures: [],
-      packedTrx: '',
-      packedContextFreeData: '',
-      compression: 0,
-    }, error)
-  case EnvelopeDataType.SELECTIVE_DISCLOSURE:
-    return createSelectiveDisclosureResponseEnvelope(id, [], error)
+    case EnvelopeDataType.TRANSACTION_SIGNATURE:
+      return createTransactionSignatureResponseEnvelope(id, {
+        signatures: [],
+        packedTrx: '',
+        packedContextFreeData: '',
+        compression: 0,
+      }, error)
+    case EnvelopeDataType.SELECTIVE_DISCLOSURE:
+      return createSelectiveDisclosureResponseEnvelope(id, [], error)
     // TODO: replace with EnvelopeDataType.INSTALLATION_CHECK_ACTION
-  case INSTALLATION_CHECK_ACTION:
-    return createInstallationCheckResponseEnvelope(id, error)
-  default:
-    return null
+    case INSTALLATION_CHECK_ACTION:
+      return createInstallationCheckResponseEnvelope(id, error)
+    default:
+      return null
   }
 }
 

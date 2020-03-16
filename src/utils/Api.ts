@@ -23,6 +23,7 @@ export default class Api {
 
   /**
    * Signs a given transaction with given private key without broadcasting
+   *
    * @param {Object} transaction - JSON formatted object with transaction details
    * @param {String[]} privateKeys - array of private keys which should be used to sign the transaction
    * @return {Promise} The resultant payload from transact eosjs call (signed tx or error)
@@ -47,6 +48,7 @@ export default class Api {
 
   /**
    * Deserializes a transaction hex string into a JSON object
+   *
    * @param {String} transactionHex - hex value string representing packed transaction with TAPOS
    * @return {Promise} The resultant JSON blob representing the hex transaction
    */
@@ -63,6 +65,7 @@ export default class Api {
 
   /**
    * Takes in an array of abis as hex strings and returns the json version
+   *
    * @param abis Array of objects containing hex abis
    * @returns Array of abis as json
    */

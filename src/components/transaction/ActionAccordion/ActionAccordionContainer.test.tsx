@@ -110,8 +110,8 @@ describe('ActionAccordionContainer', () => {
         onTransactionError={onTransactionError}
         onSetCanAccept={onSetCanAccept}
       />
-    , {
-      disableLifecycleMethods: true,
-    })
+      , {
+        disableLifecycleMethods: true,
+      })
   }
 })

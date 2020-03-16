@@ -99,7 +99,7 @@ describe('instanceOfInstallValidationResponseEnvelope', () => {
 
 describe('checkIfInstallationType', () => {
   let envelope: SignatureProviderRequestEnvelopeWithInstallationCheck
-    | SignatureProviderResponseEnvelopeWithInstallationCheck
+  | SignatureProviderResponseEnvelopeWithInstallationCheck
 
   it('returns correct installationCheck type for valid request', () => {
     envelope = clone(data.installationCheckRequest)

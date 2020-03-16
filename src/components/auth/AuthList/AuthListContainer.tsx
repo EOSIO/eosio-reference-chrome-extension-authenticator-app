@@ -11,7 +11,7 @@ import { authDelayedRemoveUndo } from 'store/auths/authsActions'
 
 interface Props extends RouteComponentProps {
   loading: boolean
-  auths: Array<DelayedRemovable<Auth>>
+  auths: DelayedRemovable<Auth>[]
   onAuthRemoveUndo: (publicKey: string) => void
 }
 

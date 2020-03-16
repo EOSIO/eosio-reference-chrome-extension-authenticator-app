@@ -9,7 +9,7 @@ import * as passphraseActions from 'store/passphrase/passphraseActions'
 import { UpdatePassphraseContainer, mapDispatchToProps } from './UpdatePassphraseContainer'
 import UpdatePassphraseView from './UpdatePassphraseView'
 
-declare var global: any
+declare let global: any
 global.alert = jest.fn()
 
 describe('UpdatePassphraseContainer', () => {

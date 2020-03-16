@@ -1,6 +1,6 @@
 import * as chrome from 'sinon-chrome'
 
-declare var global: any
+declare let global: any
 
 global.chrome = chrome
 

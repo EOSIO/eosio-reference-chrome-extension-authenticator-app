@@ -13,7 +13,7 @@ import { DelayedRemovable } from 'store/AppState'
 
 describe('AuthListContainer', () => {
   let authListContainer: ShallowWrapper
-  let auths: Array<DelayedRemovable<Auth>>
+  let auths: DelayedRemovable<Auth>[]
   let onAuthRemoveUndo: jest.Mock
   let history: any
   let dispatch: jest.Mock
@@ -57,7 +57,7 @@ describe('AuthListContainer', () => {
       expect(authListContainer.find(AuthListView).props()).toEqual({
         loading: true,
         auths,
-        onAddAuth: authListContainer.instance()['onAddAuth'],
+        onAddAuth: authListContainer.instance().onAddAuth,
         onAuthRemoveUndo: authListContainer.prop('onAuthRemoveUndo'),
       })
       /* tslint:enable:no-string-literal */
@@ -67,7 +67,7 @@ describe('AuthListContainer', () => {
   describe('onAddAuth', () => {
     it('navigates to add auth page', () => {
       /* tslint:disable-next-line:no-string-literal */
-      authListContainer.instance()['onAddAuth']()
+      authListContainer.instance().onAddAuth()
 
       expect(history.push).toHaveBeenCalledWith(RoutePath.ADD_AUTH)
     })

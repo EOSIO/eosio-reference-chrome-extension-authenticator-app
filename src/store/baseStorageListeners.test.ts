@@ -25,12 +25,12 @@ class TestStorageListeners extends BaseStorageListeners<TestStorageSchema> {
   }
 
   protected getUpdateAction: (newChanges: Partial<TestStorageSchema>, storeState: any) => AnyAction =
-    (newChanges, storeState) => {
-      this.changes = newChanges
-      this.storeState = storeState
+  (newChanges, storeState) => {
+    this.changes = newChanges
+    this.storeState = storeState
 
-      return { type: 'test action' }
-    }
+    return { type: 'test action' }
+  }
 
   public getChanges = () => this.changes
   public getStoreState = () => this.storeState

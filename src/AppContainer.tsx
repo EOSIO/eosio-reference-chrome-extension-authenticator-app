@@ -20,7 +20,7 @@ import Auth from 'utils/Auth'
 interface Props extends RouteComponentProps {
   request: DappRequest
   passphraseHash: string
-  auths: Array<DelayedRemovable<Auth>>
+  auths: DelayedRemovable<Auth>[]
   authDelayedRemove: (publicKey: string) => void
 }
 
@@ -60,12 +60,12 @@ export class AppContainer extends React.Component<Props> {
 
     const action = envelopeDataType(dappRequest.requestEnvelope)
     switch (action) {
-    case EnvelopeDataType.SELECTIVE_DISCLOSURE:
-      return RoutePath.SELECTIVE_DISCLOSURE
-    case EnvelopeDataType.TRANSACTION_SIGNATURE:
-      return RoutePath.TRANSACTION
-    default:
-      return RoutePath.AUTHS
+      case EnvelopeDataType.SELECTIVE_DISCLOSURE:
+        return RoutePath.SELECTIVE_DISCLOSURE
+      case EnvelopeDataType.TRANSACTION_SIGNATURE:
+        return RoutePath.TRANSACTION
+      default:
+        return RoutePath.AUTHS
     }
   }
 

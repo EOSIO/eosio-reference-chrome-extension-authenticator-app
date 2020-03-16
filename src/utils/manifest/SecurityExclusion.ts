@@ -2,12 +2,12 @@ import { SecurityExclusions } from 'eosjs-signature-provider-interface'
 
 import { InsecureMode } from 'utils/insecureMode/InsecureMode'
 
-export function shouldValidate(
+export const shouldValidate = (
   securityMeasure: keyof SecurityExclusions,
   securityExclusions: SecurityExclusions,
   insecureMode: InsecureMode,
   rootUrl: string,
-) {
+) => {
   const { enabled, whitelist } = insecureMode
   if (!enabled || !whitelist || !securityExclusions) {
     return true

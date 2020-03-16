@@ -2,7 +2,7 @@
 
 import Storage, { StorageAreaName, StorageChanges } from 'utils/storage/Storage'
 
-declare var window: any
+declare let window: any
 
 interface Schema {
   key: string

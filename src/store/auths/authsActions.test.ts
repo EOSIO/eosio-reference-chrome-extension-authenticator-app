@@ -7,7 +7,7 @@ import * as actions from 'store/auths/authsActions'
 import Auth from 'utils/Auth'
 import { DelayedRemovable } from 'store/AppState'
 
-declare var global: any
+declare let global: any
 
 describe('Auths Actions', () => {
   let dispatch: jest.Mock

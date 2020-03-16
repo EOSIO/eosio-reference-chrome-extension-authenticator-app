@@ -111,10 +111,10 @@ describe('AuthDetailsContainer', () => {
       expect(authDetailsContainer.find(AuthDetailsRoutes).props()).toEqual({
         auth,
         auths: [auth],
-        onAuthRemove: authDetailsContainer.instance()['onAuthRemove'],
+        onAuthRemove: authDetailsContainer.instance().onAuthRemove,
         onAuthUpdate: authDetailsContainer.prop('onAuthUpdate'),
-        onConfirmPassphrase: authDetailsContainer.instance()['onConfirmPassphrase'],
-        onFailPassphrase: authDetailsContainer.instance()['onFailPassphrase'],
+        onConfirmPassphrase: authDetailsContainer.instance().onConfirmPassphrase,
+        onFailPassphrase: authDetailsContainer.instance().onFailPassphrase,
       })
       /* tslint:enable:no-string-literal */
     })

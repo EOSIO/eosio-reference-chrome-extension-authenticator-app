@@ -23,14 +23,14 @@ interface Props {
 const AuthListView: React.SFC<Props> = ({ auths, onAddAuth, onAuthRemoveUndo }) => {
   const renderAuthList = () => (
     auths.length
-    ? auths.map((auth: DelayedRemovable<Auth>) => {
-      if (auth.removing) {
-        return <AuthItemRemovedView key={auth.publicKey} auth={auth} onAuthRemoveUndo={onAuthRemoveUndo} />
-      }
+      ? auths.map((auth: DelayedRemovable<Auth>) => {
+        if (auth.removing) {
+          return <AuthItemRemovedView key={auth.publicKey} auth={auth} onAuthRemoveUndo={onAuthRemoveUndo} />
+        }
 
-      return <AuthItemView key={auth.publicKey} auth={auth} />
-    })
-    : renderNoAuths()
+        return <AuthItemView key={auth.publicKey} auth={auth} />
+      })
+      : renderNoAuths()
   )
 
   const renderNoAuths = () => (

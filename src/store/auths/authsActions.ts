@@ -28,7 +28,7 @@ export const AUTHS_MODIFY = {
 export const AUTHS_MARK_FOR_REMOVAL = 'AUTHS_MARK_FOR_REMOVAL'
 
 export type AuthsModifyAction = AsyncAction<{}, {
-  auths: Array<DelayedRemovable<Auth>>,
+  auths: DelayedRemovable<Auth>[],
 }, {
   error: Error,
 }>
@@ -44,7 +44,7 @@ export const authsModifyAsync: AsyncActionCreator = {
     type: AUTHS_MODIFY.START,
   }),
 
-  success: (auths: Array<DelayedRemovable<Auth>>): AuthsModifyAction['success'] => ({
+  success: (auths: DelayedRemovable<Auth>[]): AuthsModifyAction['success'] => ({
     type: AUTHS_MODIFY.SUCCESS,
     auths,
   }),

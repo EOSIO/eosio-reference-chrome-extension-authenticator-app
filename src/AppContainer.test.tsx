@@ -20,7 +20,7 @@ describe('AppContainer', () => {
   let history: any
   let passphrase: string
   let request: DappRequest
-  let auths: Array<DelayedRemovable<Auth>>
+  let auths: DelayedRemovable<Auth>[]
   let dispatch: jest.Mock
   let authDelayedRemove: jest.Mock
 

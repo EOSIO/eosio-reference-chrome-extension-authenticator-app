@@ -212,14 +212,14 @@ describe('ActionAccordionView', () => {
     describe('toggling both tabs open with canOpenMultiple false', () => {
       beforeEach(() => {
         actionAccordion = shallow(
-        <ActionAccordionView
-          transactionInfo={transactionInfo}
-          abis={abis}
-          onSetCanAccept={onSetCanAccept}
-          onTransactionError={onTransactionError}
-          allowUnusedContractVariables={false}
-          canOpenMultiple={false}
-        />)
+          <ActionAccordionView
+            transactionInfo={transactionInfo}
+            abis={abis}
+            onSetCanAccept={onSetCanAccept}
+            onTransactionError={onTransactionError}
+            allowUnusedContractVariables={false}
+            canOpenMultiple={false}
+          />)
         actionAccordion.find(AccordionTab).first().prop('toggleOpen')(actionId)
         actionAccordion.find(AccordionTab).first().prop('toggleOpen')(actionIdTwo)
       })
@@ -252,14 +252,14 @@ describe('ActionAccordionView', () => {
       }
       transactionInfo.actions = [actionCreate]
       actionAccordion = shallow(
-      <ActionAccordionView
-        transactionInfo={transactionInfo}
-        abis={abis}
-        onSetCanAccept={onSetCanAccept}
-        onTransactionError={onTransactionError}
-        allowUnusedContractVariables={false}
-        canOpenMultiple
-      />)
+        <ActionAccordionView
+          transactionInfo={transactionInfo}
+          abis={abis}
+          onSetCanAccept={onSetCanAccept}
+          onTransactionError={onTransactionError}
+          allowUnusedContractVariables={false}
+          canOpenMultiple
+        />)
     })
 
     it('sends an error message back to the dapp', () => {
@@ -288,14 +288,14 @@ describe('ActionAccordionView', () => {
       }
       transactionInfo.actions = [actionCreate]
       actionAccordion = shallow(
-      <ActionAccordionView
-        transactionInfo={transactionInfo}
-        abis={abis}
-        onSetCanAccept={onSetCanAccept}
-        onTransactionError={onTransactionError}
-        allowUnusedContractVariables={false}
-        canOpenMultiple
-      />)
+        <ActionAccordionView
+          transactionInfo={transactionInfo}
+          abis={abis}
+          onSetCanAccept={onSetCanAccept}
+          onTransactionError={onTransactionError}
+          allowUnusedContractVariables={false}
+          canOpenMultiple
+        />)
     })
 
     it('sends an error message back to the dapp', () => {

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
 
 import TransactionStatusContainer,
-  { APPROVED_DETAILS, CANCELLED_DETAILS } from 'components/transactionStatus/TransactionStatusContainer'
+{ APPROVED_DETAILS, CANCELLED_DETAILS } from 'components/transactionStatus/TransactionStatusContainer'
 import TransactionStatusView from 'components/transactionStatus/TransactionStatusView'
 import TXStatus from 'constants/txStatus'
 

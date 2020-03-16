@@ -24,7 +24,7 @@ export type StateToHandlerFunctionsMap<TState> = (state?: TState) => HandlerFunc
 
 export function createReducers<TState>(
   initialState: TState,
-  handlerFunctionMaps: StateToHandlerFunctionsMap<TState> | Array<StateToHandlerFunctionsMap<TState>>,
+  handlerFunctionMaps: StateToHandlerFunctionsMap<TState> | StateToHandlerFunctionsMap<TState>[],
 ): Reducer<TState> {
   return function reducer(state: TState = initialState, action: Action) {
     let handlers

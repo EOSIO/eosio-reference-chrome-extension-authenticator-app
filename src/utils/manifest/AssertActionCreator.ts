@@ -95,7 +95,7 @@ export default class AssertActionCreator {
     actions.forEach((action) =>
       action.authorization.forEach((authorization) => {
         if (!authorizations.some((auth) =>
-            auth.actor === authorization.actor && auth.permission === authorization.permission)) {
+          auth.actor === authorization.actor && auth.permission === authorization.permission)) {
           authorizations.push(authorization)
         }
       }),

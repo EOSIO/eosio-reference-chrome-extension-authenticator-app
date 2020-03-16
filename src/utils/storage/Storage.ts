@@ -4,7 +4,7 @@ export interface StorageSchema {
   [key: string]: any
 }
 
-export type StorageKeys<TSchema extends StorageSchema> = keyof TSchema | Array<keyof TSchema>
+export type StorageKeys<TSchema extends StorageSchema> = keyof TSchema | (keyof TSchema)[]
 
 export enum StorageAreaName {
   local = 'local',

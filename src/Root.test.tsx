@@ -13,7 +13,7 @@ import * as globalActions from 'store/global/globalActions'
 import * as storeListeners from 'store/storeListeners'
 import RoutePath from 'constants/routePath'
 
-declare var global: any
+declare let global: any
 
 describe('Root', () => {
   let root: ShallowWrapper
@@ -47,7 +47,7 @@ describe('Root', () => {
           globalLoad={globalLoad}
           passphraseHash={fakePassphraseHash}
         />,
-      { disableLifecycleMethods: true })
+        { disableLifecycleMethods: true })
 
       startStoreListenersSpy = jest.spyOn(storeListeners, 'startStoreListeners')
 
@@ -73,7 +73,7 @@ describe('Root', () => {
           globalLoad={globalLoad}
           passphraseHash={fakePassphraseHash}
         />,
-      { disableLifecycleMethods: true })
+        { disableLifecycleMethods: true })
 
       stopStoreListenersSpy = jest.spyOn(storeListeners, 'stopStoreListeners')
 

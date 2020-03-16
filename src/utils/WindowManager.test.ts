@@ -4,7 +4,7 @@ import { DEFAULT_WINDOW_SIZE, WINDOW_CASCADE_OFFSET, EXTENSION_HOME_POSITION } f
 
 import * as WindowManagerImport from 'utils/WindowManager'
 
-declare var window: any
+declare let window: any
 
 jest.useFakeTimers()
 

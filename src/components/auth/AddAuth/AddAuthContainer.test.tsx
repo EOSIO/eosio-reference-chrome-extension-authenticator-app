@@ -322,9 +322,9 @@ describe('AddAuthContainer', () => {
     it('renders the AddAuthView', () => {
       /* tslint:disable:no-string-literal */
       expect(addAuthContainer.find(AddAuthView).props()).toEqual({
-        onFormInputChange: addAuthContainer.instance()['onFormInputChange'],
-        onAuthAdd: addAuthContainer.instance()['onAuthAdd'],
-        onAuthCancel: addAuthContainer.instance()['onAuthCancel'],
+        onFormInputChange: addAuthContainer.instance().onFormInputChange,
+        onAuthAdd: addAuthContainer.instance().onAuthAdd,
+        onAuthCancel: addAuthContainer.instance().onAuthCancel,
         addAuthErrors: {
           privateKey: '',
           nickname: '',

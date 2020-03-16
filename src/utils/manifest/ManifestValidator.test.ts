@@ -605,7 +605,7 @@ describe('ManifestValidator', () => {
           transactionInfo,
           chainManifest.chainId,
           requestEnvelope,
-          )
+        )
 
         expect(assertActionCreatorMocks.transactionWithAssertAction).toHaveBeenCalledWith({
           dappInfo,
@@ -628,7 +628,7 @@ describe('ManifestValidator', () => {
           transactionInfo,
           chainManifest.chainId,
           requestEnvelope,
-          )
+        )
 
         expect(result).toEqual({
           transactionInfo,

@@ -35,36 +35,36 @@ const chainManifests: ChainManifest[] = [{
       contract: 'account.one',
       action: 'action1',
     },
-      {
-        contract: 'account.one',
-        action: 'action2',
-      },
-      {
-        contract: 'account.one',
-        action: 'action3',
-      }],
+    {
+      contract: 'account.one',
+      action: 'action2',
+    },
+    {
+      contract: 'account.one',
+      action: 'action3',
+    }],
   },
 },
-  {
-    chainId: 'chainId2',
-    manifest: {
-      account: 'account',
-      domain: 'http://domain.one',
-      appmeta: 'http://domain.one/app-metadata.json#SHA256Hash',
-      whitelist: [{
-        contract: 'account.one',
-        action: 'action4',
-      },
-        {
-          contract: 'account.one',
-          action: 'action5',
-        },
-        {
-          contract: 'account.one',
-          action: 'action6',
-        }],
+{
+  chainId: 'chainId2',
+  manifest: {
+    account: 'account',
+    domain: 'http://domain.one',
+    appmeta: 'http://domain.one/app-metadata.json#SHA256Hash',
+    whitelist: [{
+      contract: 'account.one',
+      action: 'action4',
     },
+    {
+      contract: 'account.one',
+      action: 'action5',
+    },
+    {
+      contract: 'account.one',
+      action: 'action6',
+    }],
   },
+},
 ]
 
 export const appManifest: AppManifest = {

@@ -1,6 +1,6 @@
 import * as backgroundMessageHandlerMocks from 'background/__mocks__/BackgroundMessageHandler.mock'
 
-declare var global: any
+declare let global: any
 
 describe('Background', () => {
   let port: any

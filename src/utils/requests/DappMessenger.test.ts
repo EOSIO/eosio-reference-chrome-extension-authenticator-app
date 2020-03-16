@@ -3,7 +3,7 @@ import * as data from '__mocks__/data.mock'
 
 import * as DappMessengerImport from './DappMessenger'
 
-declare var global: any
+declare let global: any
 
 describe('DappMessenger', () => {
   let dappMessenger: DappMessengerImport.DappMessenger

@@ -3,7 +3,7 @@ import Auth from 'utils/Auth'
 import { DelayedRemovable } from 'store/AppState'
 
 export interface AuthSchema {
-  auths: Array<DelayedRemovable<Auth>>
+  auths: DelayedRemovable<Auth>[]
 }
 
 const STORAGE_KEY: StorageKeys<AuthSchema> = 'auths'

@@ -1,90 +1,90 @@
-import * as encryption from "./encryption"
-import bip38 from "bip38"
-import wif from "wif"
+import * as encryption from './encryption'
+import bip38 from 'bip38'
+import wif from 'wif'
 
-describe("encryption", () => {
-  describe("encrypt", () => {
+describe('encryption', () => {
+  describe('encrypt', () => {
     let encryptedValue
 
     beforeEach(() => {
-      jest.spyOn(wif, "decode").mockReturnValue({
-        privateKey: "privateKey",
+      jest.spyOn(wif, 'decode').mockReturnValue({
+        privateKey: 'privateKey',
         compressed: true,
       })
 
-      jest.spyOn(bip38, "encrypt").mockReturnValue("encryptedKey")
+      jest.spyOn(bip38, 'encrypt').mockReturnValue('encryptedKey')
 
-      encryptedValue = encryption.encrypt("value", "passphrase")
+      encryptedValue = encryption.encrypt('value', 'passphrase')
     })
 
-    it("decodes the value as a WIF key", () => {
-      expect(wif.decode).toHaveBeenCalledWith("value")
+    it('decodes the value as a WIF key', () => {
+      expect(wif.decode).toHaveBeenCalledWith('value')
     })
 
-    it("encrypts the decoded key", () => {
+    it('encrypts the decoded key', () => {
       expect(bip38.encrypt).toHaveBeenCalledWith(
-        "privateKey",
+        'privateKey',
         true,
-        "passphrase",
+        'passphrase',
         undefined,
         { N: 512, r: 8, p: 8 },
       )
     })
 
-    it("returns the encrypted value", () => {
-      expect(encryptedValue).toEqual("encryptedKey")
+    it('returns the encrypted value', () => {
+      expect(encryptedValue).toEqual('encryptedKey')
     })
   })
 
-  describe("decrypt", () => {
+  describe('decrypt', () => {
     let decryptedValue
 
     beforeEach(() => {
-      jest.spyOn(bip38, "decrypt").mockReturnValue({
-        privateKey: "privateKey",
+      jest.spyOn(bip38, 'decrypt').mockReturnValue({
+        privateKey: 'privateKey',
         compressed: true,
       })
 
-      jest.spyOn(wif, "encode").mockReturnValue("decryptedValue")
+      jest.spyOn(wif, 'encode').mockReturnValue('decryptedValue')
 
-      decryptedValue = encryption.decrypt("value", "passphrase")
+      decryptedValue = encryption.decrypt('value', 'passphrase')
     })
 
-    it("decrypts the encrypted value", () => {
+    it('decrypts the encrypted value', () => {
       expect(bip38.decrypt).toHaveBeenCalledWith(
-        "value",
-        "passphrase",
+        'value',
+        'passphrase',
         undefined,
         { N: 512, r: 8, p: 8 },
       )
     })
 
-    it("decodes the value as a WIF key", () => {
+    it('decodes the value as a WIF key', () => {
       expect(wif.encode).toHaveBeenCalledWith(
         0x80,
-        "privateKey",
+        'privateKey',
         true,
       )
     })
 
-    it("returns the decrypted value", () => {
-      expect(decryptedValue).toEqual("decryptedValue")
+    it('returns the decrypted value', () => {
+      expect(decryptedValue).toEqual('decryptedValue')
     })
   })
 
-  describe("reEncrypt", () => {
+  describe('reEncrypt', () => {
     let encryptedValue
     let encryptSpy
     let decryptSpy
 
     beforeEach(() => {
-      encryptSpy = jest.spyOn(encryption, "encrypt")
-      decryptSpy = jest.spyOn(encryption, "decrypt")
+      encryptSpy = jest.spyOn(encryption, 'encrypt')
+      decryptSpy = jest.spyOn(encryption, 'decrypt')
 
-      encryptSpy.mockReturnValue("newEncryptedValue")
-      decryptSpy.mockReturnValue("decryptedValue")
+      encryptSpy.mockReturnValue('newEncryptedValue')
+      decryptSpy.mockReturnValue('decryptedValue')
 
-      encryptedValue = encryption.reEncrypt("encryptedValue", "currentPassphrase", "newPassphrase")
+      encryptedValue = encryption.reEncrypt('encryptedValue', 'currentPassphrase', 'newPassphrase')
     })
 
     afterEach(() => {
@@ -92,10 +92,10 @@ describe("encryption", () => {
       decryptSpy.mockClear()
     })
 
-    it("reEncrypts a value", () => {
-      expect(decryptSpy).toHaveBeenCalledWith("encryptedValue", "currentPassphrase")
-      expect(encryptSpy).toHaveBeenCalledWith("decryptedValue", "newPassphrase")
-      expect(encryptedValue).toEqual("newEncryptedValue")
+    it('reEncrypts a value', () => {
+      expect(decryptSpy).toHaveBeenCalledWith('encryptedValue', 'currentPassphrase')
+      expect(encryptSpy).toHaveBeenCalledWith('decryptedValue', 'newPassphrase')
+      expect(encryptedValue).toEqual('newEncryptedValue')
     })
   })
 })
