@@ -1,6 +1,5 @@
 import { sha256 } from 'hash.js'
-import { ec as EC } from 'elliptic'
-import { PrivateKey, PublicKey } from 'eosjs/dist/eosjs-jssig'
+import { PrivateKey } from 'eosjs/dist/eosjs-jssig'
 
 import { Dispatch } from 'store/storeHelpers'
 import { AsyncAction, AsyncActionCreator } from 'store/storeHelpers'
@@ -8,8 +7,6 @@ import AppState, { DelayedRemovable } from 'store/AppState'
 import Auth from 'utils/Auth'
 import AuthStorage from 'utils/storage/AuthStorage'
 import { encrypt } from 'utils/encrypter'
-
-const ec = new EC('secp256k1')
 
 const REMOVE_DELAY = 6000
 

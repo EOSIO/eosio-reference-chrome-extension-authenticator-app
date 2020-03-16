@@ -1,5 +1,5 @@
 import * as bs58 from 'bs58'
-import * as RIPEMD160 from 'ripemd160'
+const RIPEMD160 = require('ripemd160')
 
 export const clone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj)) as T
 

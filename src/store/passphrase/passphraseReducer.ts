@@ -21,7 +21,7 @@ export default createReducers(initialState, (state: PassphraseState) => ({
     ...state,
     loading: false,
     data: action.passphraseHash,
-    error: null,
+    error: null as any,
   }),
 
   [Actions.PASSPHRASE_MODIFY.ERROR]: (action: Actions.PassphraseModifyAction['error']) => ({

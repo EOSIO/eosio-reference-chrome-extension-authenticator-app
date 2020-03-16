@@ -24,7 +24,7 @@ export default createReducers(initialData, (state: InsecureModeState) => ({
     ...state,
     loading: false,
     data: action.insecureMode,
-    error: null,
+    error: null as any,
   }),
 
   [Actions.INSECURE_MODE_MODIFY.ERROR]: (action: Actions.InsecureModeModifyAction['error']) => ({

@@ -10,7 +10,7 @@ const initialData: AuthsState = {
   error: undefined,
 }
 
-export default createReducers(initialData, (state: AuthsState) => ({
+export default createReducers(initialData, (state: any) => ({
 
   [Actions.AUTHS_MODIFY.START]: () => ({
     ...state,
@@ -30,7 +30,7 @@ export default createReducers(initialData, (state: AuthsState) => ({
   }),
 
   [Actions.AUTHS_MARK_FOR_REMOVAL]: (action: Actions.AuthsMarkForRemovalAction) => {
-    const data = state.data.map((auth) => {
+    const data = state.data.map((auth: any) => {
       if (auth.publicKey !== action.publicKey) {
         return auth
       }

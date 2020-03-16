@@ -38,7 +38,7 @@ export default class Storage<TSchema> {
 
   public async get<TKeys extends StorageKeys<TSchema>>(keys: TKeys): Promise<Partial<TSchema>> {
     return new Promise((resolve, reject): void => {
-      this.storageArea.get(keys, (data: Partial<TSchema>) => {
+      this.storageArea.get(keys, (data: any) => {
         if (chrome.runtime.lastError) {
           reject(chrome.runtime.lastError)
         } else {
@@ -123,7 +123,7 @@ export default class Storage<TSchema> {
     const callbackId = uuid()
     Storage.callbackMap[callbackId] = scopedCallback
 
-    chrome.storage.onChanged.addListener(scopedCallback)
+    chrome.storage.onChanged.addListener(scopedCallback as any)
     return callbackId
   }
 
