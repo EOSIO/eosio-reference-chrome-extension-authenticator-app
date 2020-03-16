@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "outDir": "build",
     "module": "esnext",
     "target": "es5",
-    "lib": ["es7", "dom"],
+    "lib": [
+      "es7",
+      "dom"
+    ],
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "moduleResolution": "node",
-    "baseUrl": "./src",
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
@@ -16,6 +19,14 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "downlevelIteration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "exclude": [
     "node_modules",
@@ -25,6 +36,14 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "background"
+    "background",
+    "index.d.ts",
+    "src/**/*.mock.ts",
+    "src/**/*.test.*"
+  ],
+  "include": [
+    "src",
+    "node_modules/@types/*",
+    "custom.d.ts"
   ]
 }

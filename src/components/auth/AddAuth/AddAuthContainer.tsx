@@ -52,7 +52,7 @@ export class AddAuthContainer extends React.Component<Props, State> {
     )
   }
 
-  private onFormInputChange = (formInputs: Pick<State, keyof State>) => {
+  private onFormInputChange = (formInputs: any) => {
     this.setState(formInputs)
   }
 

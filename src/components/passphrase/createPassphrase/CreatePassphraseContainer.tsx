@@ -45,7 +45,7 @@ export class CreatePassphraseContainer extends React.Component<Props, CreatePass
     this.props.history.replace(RoutePath.AUTHS)
   }
 
-  private onFormInputChange = (formInputs: Pick<CreatePassphraseFormInputs, keyof CreatePassphraseFormInputs>) => {
+  private onFormInputChange = (formInputs: any) => {
     this.setState(formInputs)
   }
 }

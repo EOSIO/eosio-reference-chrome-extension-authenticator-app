@@ -31,7 +31,7 @@
     "react-dom": "16.12.0",
     "react-redux": "5.1.2",
     "react-router-dom": "4.3.1",
-    "react-scripts-ts": "2.17.0",
+    "react-scripts": "3.4.0",
     "react-transition-group": "2.9.0",
     "redux": "4.0.5",
     "redux-thunk": "2.3.0",
@@ -61,19 +61,18 @@
     "@types/sinon-chrome": "^2.2.6",
     "@types/text-encoding": "^0.0.35",
     "@types/uuid": "^3.4.4",
-    "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
-    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "24.9.0",
     "jest-coverage-ratchet": "^0.2.3",
     "node-fetch": "^2.3.0",
     "node-sass-chokidar": "^1.3.0",
@@ -83,7 +82,7 @@
     "text-encoding": "^0.7.0",
     "ts-loader": "^3.5.0",
     "tslint-eslint-rules": "^5.3.1",
-    "typescript": "^3.3.3333",
+    "typescript": "^3.8.3",
     "worker-loader": "^2.0.0"
   },
   "resolutions": {
@@ -91,21 +90,19 @@
     "handlebars": "4.5.3",
     "js-yaml": "3.13.1",
     "mem": "4.0.0",
-    "serialize-javascript": "2.1.1",
-    "webpack-dev-server": "3.1.11"
+    "serialize-javascript": "2.1.1"
   },
   "scripts": {
     "build": "npm-run-all -p build-css build-js build-scripts",
     "build-fix": "npm run lint --fix && npm run build",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "build-js": "react-scripts-ts build",
+    "build-js": "react-scripts build",
     "build-scripts": "BABEL_ENV=production webpack --progress --config webpack.scripts.js",
     "build-production": "npm-run-all lint build test-coverage test-ratchet",
-    "test": "react-scripts-ts test --env=jsdom",
-    "test-coverage": "react-scripts-ts test --coverage --env=jsdom --no-cache",
+    "test": "react-scripts test --env=jsdom",
+    "test-coverage": "react-scripts test --coverage --env=jsdom --no-cache",
     "test-ratchet": "jest-coverage-ratchet",
-    "eject": "react-scripts-ts eject",
-    "lint": "tslint \"src/**/*.ts{,?}\""
+    "eject": "react-scripts eject"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -127,5 +124,11 @@
         "branches": 95.65
       }
     }
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

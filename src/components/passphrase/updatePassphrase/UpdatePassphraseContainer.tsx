@@ -52,7 +52,7 @@ export class UpdatePassphraseContainer extends React.Component<Props, State> {
     )
   }
 
-  private onFormInputChange = (formInputs: Pick<UpdatePassphraseFormInputs, keyof UpdatePassphraseFormInputs>) => {
+  private onFormInputChange = (formInputs: any) => {
     this.setState(formInputs)
   }
 

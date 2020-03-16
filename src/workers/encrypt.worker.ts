@@ -5,6 +5,7 @@ export interface EncryptMessage {
   passphrase: string
 }
 
+/* eslint no-restricted-globals: 0 */
 const worker: Worker = self as any
 
 worker.addEventListener('message', (event) => {

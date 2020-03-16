@@ -1,4 +1,5 @@
 import chrome from '__mocks__/chrome.mock'
+import { jest } from 'jest'
 
 declare var global: any
 

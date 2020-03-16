@@ -6,7 +6,7 @@ import FloatingInput from 'components/shared/input/FloatingInput'
 interface Props {
   urlList: string[],
   urlInput: string,
-  onInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  onInput: (e: any) => void,
   error?: Error,
   onWhitelistAdd: (url: string) => void,
   onWhitelistDelete: (url: string) => void,

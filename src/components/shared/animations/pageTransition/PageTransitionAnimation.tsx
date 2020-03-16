@@ -21,8 +21,8 @@ export const PageTransitionAnimation: React.SFC<Props> = ({
     const pathname = location.pathname
     key = pathname.split('/')[1]
   }
-  const state = history.location.state
-  const skipAnimation = (history.action !== 'POP' && state) ? history.location.state.skipAnimation : false
+  const state: any = history.location.state
+  const skipAnimation = (history.action !== 'POP' && state) ? state.skipAnimation : false
 
   const transitionGroupClasses = classNames({
     'page-transition-container': true,
