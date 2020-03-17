@@ -1,4 +1,4 @@
-import global from '__mocks__/global.mock'
+import '__mocks__/global.mock'
 import * as payloadData from '__mocks__/data.mock'
 import * as manifestData from 'utils/manifest/__mocks__/manifestData.mock'
 
@@ -22,19 +22,16 @@ describe('AssertActionCreator', () => {
   let expectedRequestEnvelope: SignatureProviderRequestEnvelope
 
   beforeEach(() => {
-    global.TextEncoder = TextEncoder
-    global.TextDecoder = TextDecoder
-
     jest.spyOn(eosjs, 'Api').mockImplementation(() => ({
       transactionTypes: jest.fn(),
       serialize: jest.fn(),
     }))
 
-    jest.spyOn(hash, 'sha256').mockImplementation(() => ({
-      update: () => ({
-        digest: () => 'SHA256Hash',
+    jest.spyOn(hashjs, 'sha256').mockReturnValue({
+      update: jest.fn().mockReturnValue({
+        digest: jest.fn().mockReturnValue('SHA256Hash'),
       }),
-    }))
+    } as any)
 
     jest.spyOn(getAssertAbiHex, 'default').mockReturnValue('hex3')
 

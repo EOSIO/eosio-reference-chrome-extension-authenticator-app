@@ -4,4 +4,4 @@ declare var global: any
 
 global.chrome = chrome
 
-export default chrome
+module.exports = chrome

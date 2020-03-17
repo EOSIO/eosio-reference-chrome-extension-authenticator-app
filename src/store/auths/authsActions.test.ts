@@ -85,7 +85,7 @@ describe('Auths Actions', () => {
         update: jest.fn().mockReturnValue({
           digest: jest.fn().mockReturnValue('passphraseHash'),
         }),
-      })
+      } as any)
 
       getState.mockReturnValue({
         auths: {
@@ -180,7 +180,7 @@ describe('Auths Actions', () => {
         update: jest.fn().mockReturnValue({
           digest: jest.fn().mockReturnValue('hashedPassphrase'),
         }),
-      })
+      } as any)
 
       const error = new Error('Invalid Passphrase')
       authStorageMocks.set.mockRejectedValue(error)

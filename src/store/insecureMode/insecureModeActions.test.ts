@@ -1,5 +1,5 @@
 import * as insecureModeStorageMocks from 'utils/storage/__mocks__/InsecureModeStorage.mock'
-import global from '__mocks__/global.mock'
+import * as global from '__mocks__/global.mock'
 
 import * as actions from 'store/insecureMode/insecureModeActions'
 import { InsecureMode } from 'utils/insecureMode/InsecureMode'
