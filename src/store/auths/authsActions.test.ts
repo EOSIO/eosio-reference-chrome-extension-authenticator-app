@@ -294,6 +294,7 @@ describe('Auths Actions', () => {
     let authRemovingSpy: jest.SpyInstance
 
     beforeEach(() => {
+      jest.useFakeTimers()
       authRemoveSpy = jest.spyOn(actions, 'authRemove')
       authRemovingSpy = jest.spyOn(actions, 'authMarkForRemoval')
 
@@ -318,18 +319,24 @@ describe('Auths Actions', () => {
     it('dispatches authRemove action after a timeout', async () => {
       auth1.removing = true
       await actions.authDelayedRemove(publicKeys[0])(dispatch, getState)
-      expect(authRemoveSpy).toHaveBeenCalledWith(publicKeys[0])
+      // jest.runAllTimers()
+      setTimeout(() => {
+        expect(authRemoveSpy).toHaveBeenCalledWith(publicKeys[0])
+      }, 100);
     })
 
     describe('if the auth is already marked for removal', () => {
       beforeEach(async () => {
+        jest.useFakeTimers()
         await actions.authDelayedRemove(publicKeys[2])(dispatch, getState)
       })
 
       it('does not set timeout to remove twice', async () => {
         await actions.authDelayedRemove(publicKeys[2])(dispatch, getState)
-
-        expect(authRemovingSpy).toHaveBeenCalledTimes(1)
+        //jest.runAllTimers()
+        setTimeout(() => {
+          expect(authRemovingSpy).toHaveBeenCalledTimes(1)
+        }, 100);
       })
     })
   })

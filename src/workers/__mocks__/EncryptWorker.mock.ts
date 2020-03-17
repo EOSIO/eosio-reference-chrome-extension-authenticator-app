@@ -8,6 +8,6 @@ const mock = ({
   onerror: jest.fn(),
 })
 
-jest.mock('../EncryptWorker', () => ({ default: jest.fn().mockImplementation(() => mock) }))
+jest.mock('../EncryptWorker', () => (jest.fn().mockImplementation(() => mock)))
 
 export default mock
