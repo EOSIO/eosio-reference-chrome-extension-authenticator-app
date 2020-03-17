@@ -5,7 +5,7 @@ import * as manifestProviderMocks from 'utils/manifest/__mocks__/ManifestProvide
 import * as assertActionCreatorMocks from 'utils/manifest/__mocks__/AssertActionCreator.mock'
 import * as insecureModeStorageMocks from 'utils/storage/__mocks__/InsecureModeStorage.mock'
 
-import * as hash from 'hash.js'
+import hashjs from 'hash.js'
 import {
   SecurityExclusions,
   AppManifest,
@@ -56,11 +56,11 @@ describe('ManifestValidator', () => {
 
     jest.spyOn(SecurityExclusionHelpers, 'shouldValidate').mockReturnValue(true)
 
-    jest.spyOn(hash, 'sha256').mockImplementation(() => ({
-      update: () => ({
-        digest: () => 'SHA256Hash',
+    jest.spyOn(hashjs, 'sha256').mockReturnValue({
+      update: jest.fn().mockReturnValue({
+        digest: jest.fn().mockReturnValue('SHA256Hash'),
       }),
-    }))
+    } as any)
 
     fetchMock = jest.fn(() => ({
       ok: true,

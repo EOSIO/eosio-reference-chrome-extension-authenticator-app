@@ -2,7 +2,7 @@ import global from '__mocks__/global.mock'
 import * as payloadData from '__mocks__/data.mock'
 import * as manifestData from 'utils/manifest/__mocks__/manifestData.mock'
 
-import * as hash from 'hash.js'
+import hashjs from 'hash.js'
 import * as eosjs from 'eosjs'
 import { SignatureProviderRequestEnvelope } from 'eosjs-signature-provider-interface'
 import { TextDecoder, TextEncoder } from 'text-encoding'

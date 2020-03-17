@@ -1,7 +1,7 @@
 import * as authStorageMocks from 'utils/storage/__mocks__/AuthStorage.mock'
 import * as encrypter from 'utils/__mocks__/encrypter.mock'
 
-import * as hashjs from 'hash.js'
+import hashjs from 'hash.js'
 
 import * as actions from 'store/auths/authsActions'
 import Auth from 'utils/Auth'

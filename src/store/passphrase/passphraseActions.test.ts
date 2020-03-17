@@ -2,7 +2,7 @@ import * as passphraseStorageMocks from 'utils/storage/__mocks__/PassphraseStora
 import * as authStorageMocks from 'utils/storage/__mocks__/AuthStorage.mock'
 import * as encrypter from 'utils/__mocks__/encrypter.mock'
 
-import * as hash from 'hash.js'
+import hashjs from 'hash.js'
 
 import * as actions from 'store/passphrase/passphraseActions'
 import Auth from 'utils/Auth'
@@ -25,7 +25,7 @@ describe('PassphraseActions', () => {
     digest = jest.fn().mockReturnValue('hashed passphrase')
     update = jest.fn().mockReturnValue({ digest })
 
-    jest.spyOn(hash, 'sha256').mockImplementation(() => ({ update }))
+    jest.spyOn(hashjs, 'sha256').mockImplementation(() => ({ update } as any))
     encrypter.decrypt.mockImplementation((key) => `decrypted ${key}`)
     encrypter.encrypt.mockImplementation((key) => `re-encrypted ${key}`)
 

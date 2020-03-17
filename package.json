@@ -25,7 +25,7 @@
     "elliptic": "6.5.2",
     "eosjs": "21.0.0-131a987.0",
     "eosjs-signature-provider-interface": "0.1.2",
-    "hash.js": "1.1.5",
+    "hash.js": "1.1.7",
     "lodash": "4.17.15",
     "react": "16.12.0",
     "react-dom": "16.12.0",
